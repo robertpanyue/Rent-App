@@ -1,0 +1,19 @@
+{
+  "name": "rent-app",
+  "version": "1.0.0",
+  "description": "Rent-App: CS546 Project",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/robertpanyue/Rent-App.git"
+  },
+  "author": "Tim Leonard, Yue Pan, Haritha Pothapragada, Kah Soon Yap",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/robertpanyue/Rent-App/issues"
+  },
+  "homepage": "https://github.com/robertpanyue/Rent-App#readme"
+}
