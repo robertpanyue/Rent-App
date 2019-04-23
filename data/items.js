@@ -2,7 +2,7 @@ const db = require('./dbCollections');
 const items = db.itemPosts;
 const { ObjectId } = require('mongodb');
 
-async function create() {}
+async function create(startDate, endDate, requested, status, userId, itemName, itemDescription, city, state) {}
 
 async function update() {}
 
