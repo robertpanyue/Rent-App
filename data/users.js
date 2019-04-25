@@ -78,7 +78,25 @@ async function getAll() {
 	}
 }
 
-async function deleteById() {}
+async function deleteById(id) {
+	try{
+		 await userCollection.findOne({ _id: parsedId});
+	}
+	catch(e){
+		console.log(e)
+	}
+	if (!id) throw "You must provide an id to search for";
+    if (typeof id !== "string") {
+      throw "ID parameter is invalid"
+    }
+    const parsedId = ObjectId.createFromHexString(id);
+	const userCollection = await users();
+    const deletionInfo = await userCollection.removeOne({ _id:parsedId});
+    if (deletionInfo.deletedCount === 0) {
+      throw `Could not delete post with id of ${id}`;
+    }
+    return post;
+}
 
 module.exports = {
 	create,
