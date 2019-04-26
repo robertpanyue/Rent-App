@@ -1,9 +1,23 @@
 const db = require('./dbCollections');
 const items = db.itemPosts;
 const users = db.users;
+const userData = require('./users');
 const { ObjectId } = require('mongodb');
 
-async function create(startDate, endDate, requested, status, userId, itemName, itemDescription, city, state) {
+async function create(
+	startDate,
+	endDate,
+	requested,
+	status,
+	userId,
+	itemName,
+	itemDescription,
+	city,
+	state,
+	zip,
+	price,
+	cloudinaryURL
+) {
 	if (
 		!startDate ||
 		!endDate ||
@@ -13,9 +27,12 @@ async function create(startDate, endDate, requested, status, userId, itemName, i
 		!itemName ||
 		!itemDescription ||
 		!city ||
-		!state
+		!state ||
+		!zip ||
+		!price ||
+		!cloudinaryURL
 	) {
-		throw `Need all fields to create user`;
+		throw `Need all fields to create item`;
 	}
 	const newItem = {
 		startDate,
@@ -26,12 +43,17 @@ async function create(startDate, endDate, requested, status, userId, itemName, i
 		itemName,
 		itemDescription,
 		city,
-		state
+		state,
+		zip,
+		price,
+		cloudinaryURL
 	};
 	try {
 		const userCollection = await users();
-		await userCollection.findOne({ _id: ObjectId.createFromHexString(userId)});
-		const insertInfo = await userCollection.insertOne(newItem);
+		const itemsCollection = await items();
+		const user = await users.get(userId);
+		//TODO: update user itemListed and posted
+		const insertInfo = await itemsCollection.insertOne(newItem);
 		if (insertInfo.insertedCount === 0) throw 'Could not add item';
 		const newId = insertInfo.insertedId;
 		const itemInserted = await this.get(newId.toHexString());
