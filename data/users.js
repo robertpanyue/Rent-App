@@ -55,7 +55,9 @@ async function create(
 	}
 }
 
-async function update() {}
+async function updateItemList() {}
+
+async function updateRequestList() {}
 
 async function get(id) {
 	try {
@@ -98,7 +100,8 @@ async function deleteById(id) {
 
 module.exports = {
 	create,
-	update,
+	updateItemList,
+	updateRequestList,
 	get,
 	getAll,
 	deleteById

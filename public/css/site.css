@@ -1,0 +1,12 @@
+h3 {
+	text-align: center;
+	padding-top: 50px;
+}
+
+.mb-2 {
+	margin-left: 10px;
+}
+
+.btn .btn-success #registerButton {
+	text-align: center !important;
+}

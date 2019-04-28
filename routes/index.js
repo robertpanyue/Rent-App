@@ -12,9 +12,10 @@ router.get('/', (req, res) => {
 });
 
 const constructorMethod = (app) => {
-	app.use('/', router);
-	app.use('/register', registerRoutes);
+	app.get('/', router);
+	app.get('/register', registerRoutes);
 	//app.use('/login', loginRoutes);
+
 	app.use('*', (req, res) => {
 		res.status(404).json({
 			error: 'Invalid Route',
