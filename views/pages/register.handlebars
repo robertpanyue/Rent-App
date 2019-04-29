@@ -16,6 +16,7 @@
     </ul>
   </div>
 </nav>
+
 <section id="cover">
     <div id="cover-caption">
         <div id="container" class="container">
@@ -23,31 +24,34 @@
                 <div class="col-sm-6 offset-sm-3">
                     <h3>Let's get your information</h3>
                     <div class="info-form">
-                        <form method="POST" action="/register" class="form-inlin justify-content-center">
+                        <form method="POST" action="/register" class="form-inlin justify-content-center" id="form">
                             <div class="form-group">
                                 <label for="name" >Name</label>
-                                <input type="text" class="form-control" placeholder="Jane Doe" id="name">
+                                <input type="text" class="form-control" placeholder="Jane Doe" id="name" required>
+                                <div class="invalid-feedback">
+                                    Please provide a valid name.
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label for="email">Email</label>
-                                <input type="text" class="form-control" placeholder="name@example.com" id="email">
+                                <input type="email" class="form-control" placeholder="name@example.com" id="email" required>
                             </div>
                             <div class="form-group">
                                 <label for="password">Password</label>
-                                <input type="text" class="form-control" id="password">
+                                <input type="password" class="form-control" id="password" required>
                             </div>
                             <div class="form-group">
                                 <label for="phone">Phone Number</label>
-                                <input type="text" class="form-control" placeholder="000-000-0000" id="phone">
+                                <input type="tel" class="form-control" id="phone" maxlength="10" required>
                             </div>
                             <div class="form-group">
                                 <label for="city">City</label>
-                                <input type="text" class="form-control" id="city">
+                                <input type="text" class="form-control" id="city" required>
                             </div>
                             <div class="form-group">
                                 <label for="state">State</label>    
-                                    <select class="form-control" id="state" name="state">
-                                        <option value="">N/A</option>
+                                    <select class="form-control" id="state" name="state" required>
+                                        <option value=""></option>
                                         <option value="AK">Alaska</option>
                                         <option value="AL">Alabama</option>
                                         <option value="AR">Arkansas</option>
@@ -100,15 +104,15 @@
                                         <option value="WI">Wisconsin</option>
                                         <option value="WV">West Virginia</option>
                                         <option value="WY">Wyoming</option>
-                                    </select>
+                            </select>
                                   
                             </div>
                             <div class="form-group">
                                 <label for="zip">Zip</label>
-                                <input type="text" class="form-control" id="zip" maxlength="5">
+                                <input type="number" class="form-control" id="zip" maxlength="5" required>
                             </div>
                             <div class="text-center">
-                                <button type="submit" class="btn btn-success" id="registerButton">Register!</button>
+                                <button type="submit" value="submit" class="btn btn-success" id="registerButton">Register!</button>
                             </div>
                         </form>
                     </div>
@@ -117,9 +121,4 @@
         </div>
     </div>
 </section>
-
-
-
-
-
-
+<script src='/public/js/firebaseConfig.js'></script>

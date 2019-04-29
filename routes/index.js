@@ -15,6 +15,7 @@ router.get('/', (req, res) => {
 const constructorMethod = (app) => {
 	app.get('/', router);
 	app.get('/register', registerRoutes);
+	app.post('/register', registerRoutes);
 	//app.use('/login', loginRoutes);
 	app.get('/main', mainPageSearchRoutes);
 	app.use('*', (req, res) => {
