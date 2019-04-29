@@ -1,5 +1,6 @@
 const loginRoutes = require('./login');
 const registerRoutes = require('./register');
+const mainPageSearchRoutes = require('./main');
 const express = require('express');
 const router = express.Router();
 
@@ -15,7 +16,7 @@ const constructorMethod = (app) => {
 	app.get('/', router);
 	app.get('/register', registerRoutes);
 	//app.use('/login', loginRoutes);
-
+	app.get('/main', mainPageSearchRoutes);
 	app.use('*', (req, res) => {
 		res.status(404).json({
 			error: 'Invalid Route',

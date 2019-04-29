@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const firebase = require('firebase');
+const firebaseAuth = require('firebase/auth');
 
 router.get('/register', async (req, res) => {
 	console.log('get register');
@@ -12,5 +14,7 @@ router.get('/register', async (req, res) => {
 		});
 	}
 });
+
+router.post('/register', async (req, res) => {});
 
 module.exports = router;
