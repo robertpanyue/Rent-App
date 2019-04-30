@@ -21,7 +21,7 @@ router.post('/', async (req, res) => {
 	try {
 		firebase.auth().setPersistence(firebase.auth.Auth.Persistence.NONE);
 		firebase.auth().signInWithEmailAndPassword(req.body.email, req.body.password).then(() => {
-			res.render('pages/mainPageSearch');
+			res.redirect('main');
 		});
 	} catch (error) {
 		res.status(400).render('pages/error', {
