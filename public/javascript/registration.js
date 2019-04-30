@@ -1,6 +1,5 @@
 $(document).ready(function () {
   let confirmPassword = document.getElementById("confirmPassword");
-  console.log(confirmPassword);
 
   // check if confirmPassword exists in page
   if (confirmPassword) {
@@ -9,8 +8,13 @@ $(document).ready(function () {
       // need to clean up error message
       if ($("#password").val() == $("#confirmPassword").val()) {
         $("#passwordMessage").html("Matching").css("color", "green");
-      } else
+        $('#registerButton').prop('disabled', false);
+        console.log('matching');
+      } else {
+        console.log('different');
         $("#passwordMessage").html("Not Matching").css("color", "red");
+        $('#registerButton').prop('disabled', true);
+      }
     });
   }
 });
