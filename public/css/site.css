@@ -6,6 +6,7 @@ h3 {
 .mb-2 {
 	margin-left: 10px;
 }
+<<<<<<< HEAD
 #searchbar-form{
 	
 	
@@ -21,3 +22,16 @@ h3 {
 
 }
 
+=======
+#searchbar-form {
+	position: absolute;
+	width: 300px;
+	height: 200px;
+	z-index: 15;
+	top: 50%;
+	left: 50%;
+	margin: -100px 0 0 -150px;
+	text-align: center;
+	font-size: 20px;
+}
+>>>>>>> 358e4079ee493f3afaf469c0849d16b24c8aa143
