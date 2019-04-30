@@ -19,14 +19,29 @@
     </ul>
   </div>
 </nav>
-<form>
-    <label for="username">
-        Username:
-        <input type="text" id="username" name="username" placeholder="enter your username" />
-    </label>
-    <label for="password">
-        Password:
-    <input type="password" id="password" name="password" placeholder="enter your password"/>
-    </label>
-    <button type="submit">Submit</button>
-</form>
+<section id="cover">
+    <div id="cover-caption">
+        <div id="container" class="container">
+            <div class="row">
+                <div class="col-sm-6 offset-sm-3">
+                    <h3>Let's get your information</h3>
+                    <div class="info-form">
+                        <form method="POST" action="/login" class="form-inlin justify-content-center" id="form">
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" class="form-control" name="email" placeholder="name@example.com" id="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" name="password" id="password" required>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" value="submit" class="btn btn-success" id="loginButton">Login!</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

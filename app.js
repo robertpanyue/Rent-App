@@ -4,6 +4,7 @@ const app = express();
 const configRoutes = require('./routes');
 const exphbs = require('express-handlebars');
 const static = express.static(__dirname + '/public');
+const firebase = require('firebase');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -11,6 +12,18 @@ app.use('/public', static);
 
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
+
+let firebaseConfig = {
+	apiKey: 'AIzaSyAWG_cGdLuTz23H_foOSZB8P0zOjuaCUeI',
+	authDomain: 'rent-app-546.firebaseapp.com',
+	databaseURL: 'https://rent-app-546.firebaseio.com',
+	projectId: 'rent-app-546',
+	storageBucket: 'rent-app-546.appspot.com',
+	messagingSenderId: '677383383091'
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
 
 configRoutes(app);
 
