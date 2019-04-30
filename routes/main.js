@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/main', async (req, res) => {
+router.get('/', async (req, res) => {
 	try {
 		res.render('pages/mainPageSearch');
 	} catch (error) {
