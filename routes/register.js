@@ -45,16 +45,4 @@ router.post('/', async (req, res) => {
 	}
 });
 
-router.post('/register', async (req, res) => {
-	console.log('register submit');
-	try {
-		res.render('pages/register');
-	} catch (error) {
-		res.status(400).render('pages/error', {
-			errorMessage: 'Register Error',
-			title: 'Error'
-		});
-	}
-});
-
 module.exports = router;
