@@ -3,6 +3,16 @@ $(document).ready(function () {
   let lengthOK = false;
   let matchOK = false;
 
+  let removeError = function() {
+    let button = $('#registerButton');
+
+    if (lengthOK && matchOK) {
+      button.prop('disabled', false);
+    } else {
+      button.prop('disabled', true);
+    }
+  }
+
   // check if confirmPassword exists in page
   if (confirmPassword) {
     // when something is typed into the field it will check if passwords are equal
@@ -24,11 +34,7 @@ $(document).ready(function () {
         $("#passwordMatch").html("Not Matching").css("color", "red");
       }
 
-      if (lengthOK && matchOK) {
-        $('#registerButton').prop('disabled', false);
-      } else {
-        $('#registerButton').prop('disabled', true);
-      }
+      removeError();
     });
   }
 });
