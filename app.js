@@ -5,6 +5,7 @@ const configRoutes = require('./routes');
 const exphbs = require('express-handlebars');
 const static = express.static(__dirname + '/public');
 const firebase = require('firebase');
+const cloudinary = require('cloudinary').v2;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -24,6 +25,12 @@ let firebaseConfig = {
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
+
+cloudinary.config({
+  cloud_name: 'dl6xltl5t',
+  api_key: '111556952576531',
+  api_secret: '3bDYh04SKMi69_ByMTPKI9pa3ko'
+});
 
 configRoutes(app);
 
