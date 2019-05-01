@@ -1,4 +1,4 @@
-html, body {
+html, body, main {
 	height: 100%;
 }
 
@@ -9,10 +9,33 @@ h3 {
 }
 
 #searchbar-form {
-	margin-top: 25%;
+	height: 20%;
+	width: 100%;
+	margin-top: 10%;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;	
 }
 
+#advertising {
+	height: 60%;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+}
+
+#rental-left {
+	width: 50%;
+	height: 100%;
+	background-color: #ffc17a;
+}
+
+#requested-right {
+	width: 50%;
+	height: 100%;
+	background-color: #b4dc6c;
+}
+.ad-section-header {
+	text-align: center;
+}
