@@ -3,36 +3,14 @@ const users = db.users;
 const { ObjectId } = require('mongodb');
 
 //register
-async function create(
-	firstName,
-	lastName,
-	email,
-	phoneNumber,
-	city,
-	state,
-	zip,
-	hashedPassword,
-	itemsListed,
-	itemsRequested
-) {
-	if (
-		!firstName ||
-		!lastName ||
-		!email ||
-		!phoneNumber ||
-		!city ||
-		!state ||
-		!zip ||
-		!hashedPassword ||
-		!itemsListed ||
-		!itemsRequested
-	) {
+async function create(id, name, email, phoneNumber, city, state, zip, hashedPassword) {
+	if (!id || !name || !email || !phoneNumber || !city || !state || !zip || !hashedPassword) {
 		throw `Need all fields to create user`;
 	}
 
 	let newUser = {
-		firstName,
-		lastName,
+		_id: id,
+		name,
 		email,
 		phoneNumber,
 		city,
