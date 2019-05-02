@@ -4,7 +4,7 @@ const firebase = require('firebase');
 
 router.get('/', async (req, res) => {
 	try {
-		firebase.auth().signOut();
+		req.session.destroy();
 		res.render('pages/logout');
 	} catch (error) {
 		res.status(400).render('pages/error', {
