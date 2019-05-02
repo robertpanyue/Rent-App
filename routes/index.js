@@ -9,7 +9,7 @@ const firebase = require('firebase');
 
 router.get('/', (req, res) => {
 	try {
-		if (firebase.auth().currentUser) {
+		if (req.session && req.session.user) {
 			res.redirect('/main');
 		} else {
 			res.render('pages/mainPage', { title: 'Main Page' });

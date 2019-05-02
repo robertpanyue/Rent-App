@@ -1,11 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const firebase = require('firebase');
-const firebaseAuth = require('firebase/auth');
 
 router.get('/', async (req, res) => {
 	try {
-		if (firebase.auth().currentUser) {
+		if (req.session && req.session.user) {
 			res.render('pages/mainPageSearch');
 		} else {
 			res.render('pages/error', { errorMessage: 'You do not have authentication', title: '403' });

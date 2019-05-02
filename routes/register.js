@@ -26,10 +26,10 @@ router.post('/', async (req, res) => {
 		firebase
 			.auth()
 			.createUserWithEmailAndPassword(req.body.email, req.body.password)
-			.then((cred) => {
+			.then(async (cred) => {
 				//push the user date to the database
 				try {
-					userDB.create(
+					const user = await userDB.create(
 						cred.user.uid,
 						req.body.name,
 						req.body.email,
@@ -37,26 +37,31 @@ router.post('/', async (req, res) => {
 						req.body.city,
 						req.body.state,
 						req.body.zip,
-						bcrypt.getHashPassword(req.body.password)
+						await bcrypt.getHashPassword(req.body.password)
 					);
+					req.session.user = cred.user.uid;
 				} catch (error) {
 					res.status(500).render('pages/error', {
-						errorMessage: 'Register DB Post Error' + `${error}`,
+						errorMessage: 'Register DB Post Error ' + `${error}`,
 						title: 'Error'
 					});
 				}
-
+			})
+			.then(() => {
+				firebase.auth().signOut();
+			})
+			.then(() => {
 				res.redirect('/main');
 			})
 			.catch(function(error) {
 				res.status(400).render('pages/error', {
-					errorMessage: 'Register Post Error' + `${error}`,
+					errorMessage: 'Register Post Error ' + `${error}`,
 					title: 'Error'
 				});
 			});
 	} catch (error) {
 		res.status(400).render('pages/error', {
-			errorMessage: 'Register Post Error!' + `${error}`,
+			errorMessage: 'Register Post Error! ' + `${error}`,
 			title: 'Error'
 		});
 	}
