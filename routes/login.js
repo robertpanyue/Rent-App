@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const firebase = require('firebase');
-
+const userDB = require('../data/users');
 router.get('/', async (req, res) => {
 	try {
 		if (firebase.auth().currentUser) {
@@ -20,9 +20,17 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
 	try {
 		firebase.auth().setPersistence(firebase.auth.Auth.Persistence.NONE);
-		firebase.auth().signInWithEmailAndPassword(req.body.email, req.body.password).then(() => {
-			res.redirect('main');
-		});
+		firebase
+			.auth()
+			.signInWithEmailAndPassword(req.body.email, req.body.password)
+			.then((cred) => {
+				req.session.user = cred.user.uid;
+
+				firebase.auth().signOut();
+			})
+			.then(() => {
+				res.redirect('/main');
+			});
 	} catch (error) {
 		res.status(400).render('pages/error', {
 			errorMessage: 'Login POST Error' + ` ${error}`,
