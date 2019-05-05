@@ -15,3 +15,7 @@ h3 {
 	justify-content: center;
 	align-items: center;
 }
+
+.text-center p {
+	color: red;
+}
