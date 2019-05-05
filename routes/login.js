@@ -38,6 +38,9 @@ router.post('/', async (req, res) => {
 			})
 			.then(() => {
 				res.redirect('/main');
+			})
+			.catch(() => {
+				res.render('pages/login', { error: true, message: 'Your username and password are invalid' });
 			});
 	} catch (error) {
 		res.status(400).render('pages/error', {
