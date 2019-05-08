@@ -5,7 +5,8 @@
 	"main": "app.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"start": "node app.js"
+		"start": "node app.js",
+		"build": "node seed.js && exit"
 	},
 	"repository": {
 		"type": "git",
@@ -28,6 +29,7 @@
 		"firebase": "^5.10.1",
 		"jquery": "^3.4.0",
 		"mongodb": "^3.2.3",
+		"node-pre-gyp": "^0.13.0",
 		"popper.js": "^1.15.0"
 	}
 }
