@@ -6,6 +6,7 @@ const exphbs = require('express-handlebars');
 const static = express.static(__dirname + '/public');
 const firebase = require('firebase');
 const cloudinary = require('cloudinary').v2;
+const session = require('express-session');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -13,6 +14,15 @@ app.use('/public', static);
 
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
+
+app.use(
+	session({
+		name: 'AuthCookie',
+		secret: 'rentapp rentapp',
+		resave: false,
+		saveUninitialized: true
+	})
+);
 
 let firebaseConfig = {
 	apiKey: 'AIzaSyAWG_cGdLuTz23H_foOSZB8P0zOjuaCUeI',
@@ -27,9 +37,9 @@ let firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 cloudinary.config({
-  cloud_name: 'dl6xltl5t',
-  api_key: '111556952576531',
-  api_secret: '3bDYh04SKMi69_ByMTPKI9pa3ko'
+	cloud_name: 'dl6xltl5t',
+	api_key: '111556952576531',
+	api_secret: '3bDYh04SKMi69_ByMTPKI9pa3ko'
 });
 
 configRoutes(app);

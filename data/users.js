@@ -3,36 +3,14 @@ const users = db.users;
 const { ObjectId } = require('mongodb');
 
 //register
-async function create(
-	firstName,
-	lastName,
-	email,
-	phoneNumber,
-	city,
-	state,
-	zip,
-	hashedPassword,
-	itemsListed,
-	itemsRequested
-) {
-	if (
-		!firstName ||
-		!lastName ||
-		!email ||
-		!phoneNumber ||
-		!city ||
-		!state ||
-		!zip ||
-		!hashedPassword ||
-		!itemsListed ||
-		!itemsRequested
-	) {
+async function create(id, name, email, phoneNumber, city, state, zip, hashedPassword) {
+	if (!id || !name || !email || !phoneNumber || !city || !state || !zip || !hashedPassword) {
 		throw `Need all fields to create user`;
 	}
 
 	let newUser = {
-		firstName,
-		lastName,
+		_id: id,
+		name,
 		email,
 		phoneNumber,
 		city,
@@ -48,21 +26,21 @@ async function create(
 		const insertInfo = await userCollection.insertOne(newUser);
 		if (insertInfo.insertedCount === 0) throw 'Could not add user';
 		const newId = insertInfo.insertedId;
-		const user = await this.get(newId.toHexString());
+		const user = await this.get(newId.toString());
 		return user;
 	} catch (error) {
-		throw 'create user error';
+		throw 'create user error' + ` ${error}`;
 	}
 }
 
-async function updateItemList() {}
+async function updateItemList(itemID) {}
 
-async function updateRequestList() {}
+async function updateRequestList(itemID) {}
 
 async function get(id) {
 	try {
 		const userCollection = await users();
-		const user = await userCollection.findOne({ _id: ObjectId.createFromHexString(id) });
+		const user = await userCollection.findOne({ _id: id });
 		if (user === null) throw 'No user with that id';
 		return user;
 	} catch (error) {

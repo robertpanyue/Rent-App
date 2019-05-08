@@ -3,13 +3,14 @@ const registerRoutes = require('./register');
 const mainPageSearchRoutes = require('./main');
 const logoutRoutes = require('./logout');
 const postRoutes = require('./post');
+const profileRoutes = require('./profile');
+const searchRoutes = require('./search');
 const express = require('express');
 const router = express.Router();
-const firebase = require('firebase');
 
 router.get('/', (req, res) => {
 	try {
-		if (firebase.auth().currentUser) {
+		if (req.session && req.session.user) {
 			res.redirect('/main');
 		} else {
 			res.render('pages/mainPage', { title: 'Main Page' });
@@ -26,6 +27,8 @@ const constructorMethod = (app) => {
 	app.use('/main', mainPageSearchRoutes);
 	app.use('/logout', logoutRoutes);
 	app.use('/post', postRoutes);
+	app.use('/profile', profileRoutes);
+	app.use('/search', searchRoutes);
 	app.use('*', (req, res) => {
 		res.status(404).json({
 			error: 'Invalid Route',
