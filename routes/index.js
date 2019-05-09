@@ -7,7 +7,6 @@ const profileRoutes = require('./profile');
 const postlistings=require("./postlistings");
 const express = require('express');
 const router = express.Router();
-const firebase = require('firebase');
 
 router.get('/', (req, res) => {
 	try {

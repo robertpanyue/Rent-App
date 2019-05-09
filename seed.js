@@ -1,30 +1,25 @@
-const dbConnection = require("./data/dbConnection");
-const data = require("./data");
-const users = data.usersData;
-const posts = data.itemsData;
+const MongoClient = require('mongodb').MongoClient;
+const url = 'mongodb://localhost:27017/Rent-App';
+(async function() {
+	try {
+		const db = await MongoClient.connect(url, { useNewUrlParser: true });
+		const dbo = db.db('Rent-App');
+		await dbo.createCollection('users', function(err, res) {
+			if (err) throw err;
+			console.log('Collection users created!');
+		});
+		await dbo.createCollection('itemPosts', function(err, res) {
+			if (err) throw err;
+			console.log('Collection itemPosts created!');
+		});
 
-const main = async () => {
-  const db = await dbConnection();
-  await db.dropDatabase();
-  const phil = await users.addUser("Phil", "Barresi");
-  const id = phil._id;
-  const firstPost = await posts.addPost(
-    "Hello, class!",
-    "Today we are creating a blog!",
-    id
-  );
-  const second = await posts.addPost(
-    "Using the seed",
-    "We use the seed to have some initial data so we can just focus on servers this week",
-    id
-  );
-  const third = await posts.addPost(
-    "Using routes",
-    "The purpose of today is to simply look at some GET routes",
-    id
-  );
-  console.log("Done seeding database");
-  await db.serverConfig.close();
-};
+		await dbo.collection('itemPosts').createIndex({ itemName: 'text', itemDescription: 'text' });
+		console.log('CreateIndex');
 
-main().catch(console.log);
+		//insert fake data
+
+		await db.close();
+	} catch (error) {
+		throw error;
+	}
+})();

@@ -1,13 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const firebase = require('firebase');
-const firebaseAuth = require('firebase/auth');
 const userDB = require('../data/users');
 const bcrypt = require('../bcrypt_usage');
 
 router.get('/', async (req, res) => {
 	try {
-		if (firebase.auth().currentUser) {
+		if (req.session && req.session.user) {
 			res.redirect('/main');
 		} else {
 			res.render('pages/register');
