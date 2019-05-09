@@ -4,6 +4,7 @@ const mainPageSearchRoutes = require('./main');
 const logoutRoutes = require('./logout');
 const postRoutes = require('./post');
 const profileRoutes = require('./profile');
+const postlistings=require("./postlistings");
 const express = require('express');
 const router = express.Router();
 const firebase = require('firebase');
@@ -28,6 +29,7 @@ const constructorMethod = (app) => {
 	app.use('/logout', logoutRoutes);
 	app.use('/post', postRoutes);
 	app.use('/profile', profileRoutes);
+	app.use('/postlistings',postlistings);
 	app.use('*', (req, res) => {
 		res.status(404).json({
 			error: 'Invalid Route',
