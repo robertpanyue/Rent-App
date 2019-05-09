@@ -33,9 +33,9 @@ async function create(id, name, email, phoneNumber, city, state, zip, hashedPass
 	}
 }
 
-async function updateItemList() {}
+async function updateItemList(itemID) {}
 
-async function updateRequestList() {}
+async function updateRequestList(itemID) {}
 
 async function get(id) {
 	try {
