@@ -32,36 +32,29 @@ const bcrypt = require('./bcrypt_usage');
 		// Initialize Firebase
 		firebase.initializeApp(firebaseConfig);
 
-		var userId = '';
+		let userId = '';
 		//insert user fake data
-		await firebase
-			.auth()
-			.createUserWithEmailAndPassword('test@test.com', '123456')
-			.then(async (cred) => {
-				//push the user date to the database
-				try {
-					const user = await userDB.create(
-						cred.user.uid,
-						'Patric Hill',
-						'test@test.com',
-						'8888888888',
-						'Hoboken',
-						'NJ',
-						'07030',
-						await bcrypt.getHashPassword('123456')
-					);
-					console.log(cred.user.uid);
-					userId = cred.user.uid;
-				} catch (error) {
-					throw error;
-				}
-			})
-			.then(() => {
-				firebase.auth().signOut();
-			})
-			.catch(function(error) {
-				throw error;
-			});
+		const cred = await firebase.auth().createUserWithEmailAndPassword('test@test.com', '123456');
+		userId = cred.user.uid;
+		console.log(userId);
+		firebase.auth().signOut();
+
+		//push the user date to the database
+		try {
+			const user = await userDB.create(
+				userId,
+				'Patric Hill',
+				'test@test.com',
+				'8888888888',
+				'Hoboken',
+				'NJ',
+				'07030',
+				await bcrypt.getHashPassword('123456')
+			);
+			console.log(cred.user.uid);
+		} catch (error) {
+			throw error;
+		}
 
 		console.log('create user');
 		console.log(userId);
@@ -88,7 +81,8 @@ const bcrypt = require('./bcrypt_usage');
 
 		await db.close();
 		console.log('DONE');
+		process.exit();
 	} catch (error) {
 		throw error;
 	}
-})();
+})().catch((error) => console.log(error));
