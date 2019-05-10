@@ -59,6 +59,7 @@ const bcrypt = require('./bcrypt_usage');
 		console.log('create user');
 		console.log(userId);
 		//insert item fake data
+		//item 1
 		try {
 			const item = await itemDB.create(
 				'2019-04-01T00:00:00',
@@ -78,7 +79,152 @@ const bcrypt = require('./bcrypt_usage');
 		} catch (error) {
 			throw error;
 		}
+		//item 2 
+		try {
+			const item = await itemDB.create(
+				'2019-05-01T00:00:00',
+				'2019-05-05T00:00:00',
+				'Listed',
+				'open',
+				userId,
+				'iPhone Xr',
+				'Phone',
+				'Hoboken',
+				'New Jersey',
+				'07030',
+				100,
+				'https://res.cloudinary.com/dl6xltl5t/image/upload/v1557334517/macbook-select-space-gray-201706_GEO_US_uk1xhr.jpg'
+			);
+			console.log('create item');
+		} catch (error) {
+			throw error;
+		}
+		//item 3
+		try {
+			const item = await itemDB.create(
+				'2019-06-01T00:00:00',
+				'2019-06-05T00:00:00',
+				'Listed',
+				'open',
+				userId,
+				'Dell Inspiron 15',
+				'Laptop',
+				'Hoboken',
+				'New Jersey',
+				'07030',
+				100,
+				'https://res.cloudinary.com/dl6xltl5t/image/upload/v1557334517/macbook-select-space-gray-201706_GEO_US_uk1xhr.jpg'
+			);
+			console.log('create item');
+		} catch (error) {
+			throw error;
+		}
+		//item 4 - listed
+		try {
+			const item = await itemDB.create(
+				'2019-07-01T00:00:00',
+				'2019-07-05T00:00:00',
+				'Listed',
+				'open',
+				userId,
+				'google pixel 2',
+				'Phone',
+				'Hoboken',
+				'New Jersey',
+				'07030',
+				100,
+				'https://res.cloudinary.com/dl6xltl5t/image/upload/v1557334517/macbook-select-space-gray-201706_GEO_US_uk1xhr.jpg'
+			);
+			console.log('create item');
+		} catch (error) {
+			throw error;
+		}
+		//item 1- requested
 
+		try {
+			const item = await itemDB.create(
+				'2019-04-01T00:00:00',
+				'2019-04-05T00:00:00',
+				'Requested',
+				'open',
+				userId,
+				'google pixel 3',
+				'Phone',
+				'Hoboken',
+				'New Jersey',
+				'07030',
+				100,
+				'https://res.cloudinary.com/dl6xltl5t/image/upload/v1557334517/macbook-select-space-gray-201706_GEO_US_uk1xhr.jpg'
+			);
+			console.log('create item');
+		} catch (error) {
+			throw error;
+		}
+
+		//item2 - requested
+		
+		try {
+			const item = await itemDB.create(
+				'2019-05-01T00:00:00',
+				'2019-05-05T00:00:00',
+				'Requested',
+				'open',
+				userId,
+				'iphone 6s',
+				'Phone',
+				'Hoboken',
+				'New Jersey',
+				'07030',
+				100,
+				'https://res.cloudinary.com/dl6xltl5t/image/upload/v1557334517/macbook-select-space-gray-201706_GEO_US_uk1xhr.jpg'
+			);
+			console.log('create item');
+		} catch (error) {
+			throw error;
+		}
+
+		//item3 - requested
+
+		try {
+			const item = await itemDB.create(
+				'2019-06-01T00:00:00',
+				'2019-06-05T00:00:00',
+				'Requested',
+				'open',
+				userId,
+				'Lenovo',
+				'Laptop',
+				'Hoboken',
+				'New Jersey',
+				'07030',
+				100,
+				'https://res.cloudinary.com/dl6xltl5t/image/upload/v1557334517/macbook-select-space-gray-201706_GEO_US_uk1xhr.jpg'
+			);
+			console.log('create item');
+		} catch (error) {
+			throw error;
+		}
+
+		//item4- Requested
+		try {
+			const item = await itemDB.create(
+				'2019-05-01T00:00:00',
+				'2019-05-05T00:00:00',
+				'Requested',
+				'open',
+				userId,
+				'acer predator helios 300',
+				'Laptop',
+				'Hoboken',
+				'New Jersey',
+				'07030',
+				100,
+				'https://res.cloudinary.com/dl6xltl5t/image/upload/v1557334517/macbook-select-space-gray-201706_GEO_US_uk1xhr.jpg'
+			);
+			console.log('create item');
+		} catch (error) {
+			throw error;
+		}
 		await db.close();
 		console.log('DONE');
 		process.exit();
