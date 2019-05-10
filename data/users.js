@@ -47,7 +47,19 @@ async function updateItemList(id, itemID) {
 	}
 }
 
-async function updateRequestList(id, itemID) {}
+async function updateRequestList(id, itemID) {
+	try {
+		const userCollection = await users();
+		const user = await this.get(id);
+		let array = user.itemsRequested;
+		array.push(itemID);
+		const updateInfo = userCollection.findOneAndUpdate({ _id: id }, { $set: { itemsRequested: array } });
+		if (updateInfo == null) throw 'updateRequestList fail';
+		return updateInfo;
+	} catch (error) {
+		throw error;
+	}
+}
 
 async function get(id) {
 	try {
