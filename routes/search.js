@@ -7,7 +7,8 @@ router.get('/:item', async (req, res) => {
 		if (req.session && req.session.user) {
 			const keyWord = req.param.item;
 			const itemCollection = await items();
-			await itemCollection.res.render('pages/searchResult');
+			const result = await itemCollection.find({ $text: { $search: keyWord } });
+			res.render('pages/searchResult', { type: 'Listed' });
 		} else {
 			res.render('pages/error', { errorMessage: 'You do not have authentication', title: '403' });
 		}

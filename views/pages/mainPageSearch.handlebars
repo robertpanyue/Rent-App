@@ -153,15 +153,17 @@
 </nav>
 
 <div id="searchbar-form">
-    <form class= "search-bar" id="search-bar">
-        <input type="text" id="search" placeholder="Search"/>   
-        <button type="submit" class="btn btn-primary" >Submit</button>
-        <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown">
-        <span class="caret"></span>
-        </button>
-        <div class="dropdown-menu">
-            <a class="dropdown-item" href="/postlistings/requested">Requested</a>
-            <a class="dropdown-item" href="/postlistings/listed">Listed</a>
+    <form method="POST" action="/search" class="search-bar" id="search-bar">
+        {{!-- <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Requested</a>
+            <a class="dropdown-item" href="#">Listed</a>
+        </div> --}}
+        {{!-- <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"></button> --}}
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" name="searchContent" placeholder="Search" aria-label="Search" aria-describedby="basic-addon2" id="search">
+            <div class="input-group-append">
+                <button type="submit" class="btn btn-primary" type="button">Submit</button>
+            </div>
         </div>
     </form>
 </div>

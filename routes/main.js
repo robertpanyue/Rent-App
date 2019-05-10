@@ -4,7 +4,7 @@ const router = express.Router();
 router.get('/', async (req, res) => {
 	try {
 		if (req.session && req.session.user) {
-			res.render('pages/mainPageSearch');
+			res.render('pages/mainPageSearch', { title: 'Main Page' });
 		} else {
 			res.render('pages/error', { errorMessage: 'You do not have authentication', title: '403' });
 		}

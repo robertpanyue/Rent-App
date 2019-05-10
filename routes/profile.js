@@ -5,7 +5,7 @@ const userDB = require('../data/users');
 router.get('/', async (req, res) => {
 	try {
 		if (req.session && req.session.user) {
-			res.render('pages/userProfile');
+			res.render('pages/userProfile', { title: 'User Profile' });
 		} else {
 			res.redirect('/login');
 		}

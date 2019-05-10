@@ -9,7 +9,7 @@ router.get('/', async (req, res) => {
 		if (req.session && req.session.user) {
 			res.redirect('/main');
 		} else {
-			res.render('pages/register');
+			res.render('pages/register', { title: 'Register' });
 		}
 	} catch (error) {
 		res.status(400).render('pages/error', {
