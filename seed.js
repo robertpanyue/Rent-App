@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> 336398affe87a06a3f4d5e7998def9c6e6c7b710
 const MongoClient = require('mongodb').MongoClient;
 const url = 'mongodb://localhost:27017/Rent-App';
 const userDB = require('./data/users');
@@ -85,4 +89,9 @@ const bcrypt = require('./bcrypt_usage');
 	} catch (error) {
 		throw error;
 	}
+<<<<<<< HEAD
 })().catch((error) => console.log(error));
+=======
+})();
+
+>>>>>>> 336398affe87a06a3f4d5e7998def9c6e6c7b710

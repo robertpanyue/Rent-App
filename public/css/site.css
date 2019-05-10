@@ -1,6 +1,14 @@
+<<<<<<< HEAD
 html,
 body,
 main {
+=======
+
+html,
+body,
+main {
+>>>>>>> master
+>>>>>>> 336398affe87a06a3f4d5e7998def9c6e6c7b710
 	height: 100%;
 }
 h3 {
@@ -144,10 +152,19 @@ h3 {
     border-top: 1px solid #eee;
 }
 
+<<<<<<< HEAD
 .label-rating { margin-right:10px;
     color: #333;
     display: inline-block;
     vertical-align: middle;}
+=======
+
+.label-rating { margin-right:10px;
+    color: #333;
+    display: inline-block;
+    vertical-align: middle;
+
+>>>>>>> 336398affe87a06a3f4d5e7998def9c6e6c7b710
 @media (min-width: 768px) {
 	/* show 3 items */
 	.carousel-inner .active,
@@ -254,6 +271,10 @@ h3 {
 		opacity: .5;
 		transition: opacity .15s ease;
 	}
+<<<<<<< HEAD
+=======
+
+>>>>>>> 336398affe87a06a3f4d5e7998def9c6e6c7b710
 }
 
 .card-product .price-old {
