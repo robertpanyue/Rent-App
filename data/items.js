@@ -49,17 +49,20 @@ async function create(
 		cloudinaryURL
 	};
 	try {
-		const userCollection = await users();
 		const itemsCollection = await items();
-		const user = await users.get(userId);
-		//TODO: update user itemListed and posted
 		const insertInfo = await itemsCollection.insertOne(newItem);
 		if (insertInfo.insertedCount === 0) throw 'Could not add item';
 		const newId = insertInfo.insertedId;
 		const itemInserted = await this.get(newId.toHexString());
+		if (requested == 'Requested') {
+			await userData.updateRequestList(userId, newId);
+		} else if (requested == 'Listed') {
+			await userData.updateItemList(userId, newId);
+		}
 		return itemInserted;
 	} catch (e) {
 		console.log(e);
+		throw error;
 	}
 }
 

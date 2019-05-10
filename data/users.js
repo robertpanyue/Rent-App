@@ -33,9 +33,21 @@ async function create(id, name, email, phoneNumber, city, state, zip, hashedPass
 	}
 }
 
-async function updateItemList(itemID) {}
+async function updateItemList(id, itemID) {
+	try {
+		const userCollection = await users();
+		const user = await this.get(id);
+		let array = user.itemsListed;
+		array.push(itemID);
+		const updateInfo = userCollection.findOneAndUpdate({ _id: id }, { $set: { itemsListed: array } });
+		if (updateInfo == null) throw 'updateItemList fail';
+		return updateInfo;
+	} catch (error) {
+		throw error;
+	}
+}
 
-async function updateRequestList(itemID) {}
+async function updateRequestList(id, itemID) {}
 
 async function get(id) {
 	try {
