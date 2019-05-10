@@ -7,7 +7,7 @@ router.get('/', async (req, res) => {
 		if (req.session && req.session.user) {
 			res.redirect('/main');
 		} else {
-			res.render('pages/login');
+			res.render('pages/login', { title: 'Login' });
 		}
 	} catch (error) {
 		res.status(400).render('pages/error', {
@@ -40,7 +40,7 @@ router.post('/', async (req, res) => {
 				res.redirect('/main');
 			})
 			.catch(() => {
-				res.render('pages/login', { error: true, message: 'Your username and password are invalid' });
+				res.render('pages/login', { title: 'Login', error: true, message: 'Your username and password are invalid' });
 			});
 	} catch (error) {
 		res.status(400).render('pages/error', {
