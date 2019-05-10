@@ -44,7 +44,7 @@ const bcrypt = require('./bcrypt_usage');
 			const user = await userDB.create(
 				userId,
 				'Patrick Hill',
-				'test@test1.com',
+				'test@test.com',
 				'8888888888',
 				'Hoboken',
 				'NJ',
