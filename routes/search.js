@@ -9,7 +9,7 @@ router.get('/:item', async (req, res) => {
 			const itemCollection = await items();
 			//get the result of the key word from the datbase
 			const result = await itemCollection.find({ $text: { $search: keyWord } });
-			console.log();
+			console.log(result);
 			res.render('pages/searchResult', { title: keyWord, type: 'Listed', resultList: result });
 		} else {
 			res.render('pages/error', { errorMessage: 'You do not have authentication', title: '403' });
