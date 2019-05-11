@@ -61,7 +61,7 @@
                                                         <div class="form-group">
                                                             <label for="state">State</label>    
                                                                 <select class="form-control" id="state" name="state">
-                                                                    <option value="">N/A</option>
+                                                                    <option value="N/A">N/A</option>
                                                                     <option value="AK">Alaska</option>
                                                                     <option value="AL">Alabama</option>
                                                                     <option value="AR">Arkansas</option>
@@ -157,24 +157,28 @@
 <br>  <h1 class="text-center">{{type}}</h1>
 <hr>
 <div class="row">
+{{#each resultList}}
 <div class="col-md-4">
 	<figure class="card card-product">
-		<div class="img-wrap"><img src="https://s9.postimg.org/tupxkvfj3/image.jpg"></div>
+		<div class="img-wrap"><img src="{{this.cloudinaryURL}}"></div>
 		<figcaption class="info-wrap">
-				<h4 class="title">Another name of item</h4>
-				<p class="desc">Some small description goes here</p>
-				<div class="rating-wrap">
+				<h4 class="title">{{this.itemName}}</h4>
+				<p class="desc">{{this.itemDescription}}</p>
+                <p class="desc">{{this.city}}</p>
+				{{!-- <div class="rating-wrap">
 					<div class="label-rating">132 reviews</div>
 					<div class="label-rating">154 orders </div>
-				</div> <!-- rating-wrap.// -->
+				</div> <!-- rating-wrap.// --> --}}
 		</figcaption>
 		<div class="bottom-wrap">
 			<div class="price-wrap h5">
-				<span class="price-new">$1280</span> <del class="price-old">$1980</del>
+				<span class="price-new">${{this.price}}</span>
 			</div> <!-- price-wrap.// -->
 		</div> <!-- bottom-wrap.// -->
 	</figure>
 </div> <!-- col // -->
+{{/each}}
+
 
 </div> <!-- row.// -->
 </div> 
@@ -191,6 +195,6 @@ and product landing pages</p>   <br>
 <br><br><br>
 </article>
 
-
+ <script src="public/javascript/searchAddResult.js"></script>
 
 

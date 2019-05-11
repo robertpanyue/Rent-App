@@ -5,16 +5,18 @@ const items = db.itemPosts;
 router.get('/:item', async (req, res) => {
 	try {
 		if (req.session && req.session.user) {
-			const keyWord = req.param.item;
+			const keyWord = req.params.item;
 			const itemCollection = await items();
+			//get the result of the key word from the datbase
 			const result = await itemCollection.find({ $text: { $search: keyWord } });
-			res.render('pages/searchResult', { type: 'Listed' });
+			console.log();
+			res.render('pages/searchResult', { title: keyWord, type: 'Listed', resultList: result });
 		} else {
 			res.render('pages/error', { errorMessage: 'You do not have authentication', title: '403' });
 		}
 	} catch (error) {
 		res.status(400).render('pages/error', {
-			errorMessage: 'Search Error',
+			errorMessage: 'Search Error' + `${error}`,
 			title: 'Error'
 		});
 	}
