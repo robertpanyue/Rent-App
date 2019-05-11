@@ -21,7 +21,7 @@ router.get('/', async (req, res) => {
 				img3: itemList[2],
 				user3:userInfo[2],
 				img4: itemList[3],
-				user4:userInfo[3],
+				user:userInfo[3],
 				img5: itemList[4],
 				user5:userInfo[4],
 				img6: itemList[5],
