@@ -6,6 +6,7 @@ const postRoutes = require('./post');
 const profileRoutes = require('./profile');
 const searchRoutes = require('./search');
 const express = require('express');
+const landing=require('./landingpage');
 const router = express.Router();
 
 router.get('/', (req, res) => {
@@ -21,7 +22,7 @@ router.get('/', (req, res) => {
 });
 
 const constructorMethod = (app) => {
-	app.get('/', router);
+	app.get('/', landing);
 	app.use('/register', registerRoutes);
 	app.use('/login', loginRoutes);
 	app.use('/main', mainPageSearchRoutes);
