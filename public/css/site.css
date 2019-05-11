@@ -270,3 +270,68 @@ h3 {
 	size: 40pxs;
 	color: black;
 }
+
+.card-product1 .img-wrap1 {
+	border-radius: 4px 4px 0 0;
+	overflow: hidden;
+	position: relative;
+	height: 220px;
+	text-align: center;
+	
+}
+.card-product1 .img-wrap1 img {
+	padding-top: 10px;
+	max-height: 100%;
+	max-width: 100%;
+	object-fit: fill;
+
+}
+.card-product1 .info-wrap1 {
+	overflow: hidden;
+	padding: 15px;
+	border-top: 1px solid white;
+	font-size: 20px;
+	font-weight: bolder;
+	color:black;
+	text-align: center
+	
+}
+.card-product1 .bottom-wrap1 {
+	padding: 15px;
+	border-top: 1px solid white;
+	
+}
+.bottom-wrap1{
+	text-align: center;
+
+}
+.bg{
+	background-image:url( "https://res.cloudinary.com/dl6xltl5t/image/upload/v1557546639/background-balance-commerce-583846_ftrpbe.jpg");
+	height: 100%;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size:cover
+}
+
+.caption span.border {
+    background-color:black;
+    color: #fff;
+    padding: 18px;
+	font-size: 70px;
+	font-family: "Trebuchet MS";
+    letter-spacing: 10px;
+}
+
+.caption {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    text-align: center;
+    color: rgb(36, 33, 33);
+}
+.headercar{
+	font-weight: bolder;
+	color: black;
+	font-size: 20px
+}

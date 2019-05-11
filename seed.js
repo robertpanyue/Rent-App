@@ -6,16 +6,17 @@ const firebase = require('firebase');
 const bcrypt = require('./bcrypt_usage');
 (async function() {
 	try {
+	
 		const db = await MongoClient.connect(url, { useNewUrlParser: true });
 		const dbo = db.db('Rent-App');
 		await dbo.createCollection('users', function(err, res) {
 			if (err) throw err;
 			console.log('Collection users created!');
 		});
-		await dbo.createCollection('itemPosts', function(err, res) {
-			if (err) throw err;
-			console.log('Collection itemPosts created!');
-		});
+		// await dbo.createCollection('itemPosts', function(err, res) {
+		// 	if (err) throw err;
+		// 	console.log('Collection itemPosts created!');
+		// });
 
 		await dbo.collection('itemPosts').createIndex({ itemName: 'text', itemDescription: 'text' });
 		console.log('CreateIndex');
@@ -93,7 +94,7 @@ const bcrypt = require('./bcrypt_usage');
 				'New Jersey',
 				'07030',
 				100,
-				'https://res.cloudinary.com/dl6xltl5t/image/upload/v1557334517/macbook-select-space-gray-201706_GEO_US_uk1xhr.jpg'
+				'https://res.cloudinary.com/dl6xltl5t/image/upload/v1557521042/iphone_egrdtd.jpg'
 			);
 			console.log('create item');
 		} catch (error) {
@@ -113,7 +114,7 @@ const bcrypt = require('./bcrypt_usage');
 				'New Jersey',
 				'07030',
 				100,
-				'https://res.cloudinary.com/dl6xltl5t/image/upload/v1557334517/macbook-select-space-gray-201706_GEO_US_uk1xhr.jpg'
+				'https://res.cloudinary.com/dl6xltl5t/image/upload/v1557521397/dell_qpvsul.webp'
 			);
 			console.log('create item');
 		} catch (error) {
@@ -133,7 +134,7 @@ const bcrypt = require('./bcrypt_usage');
 				'New Jersey',
 				'07030',
 				100,
-				'https://res.cloudinary.com/dl6xltl5t/image/upload/v1557334517/macbook-select-space-gray-201706_GEO_US_uk1xhr.jpg'
+				'https://res.cloudinary.com/dl6xltl5t/image/upload/v1557521490/google-pixel-2header_wiyuy7.jpg'
 			);
 			console.log('create item');
 		} catch (error) {
@@ -154,7 +155,7 @@ const bcrypt = require('./bcrypt_usage');
 				'New Jersey',
 				'07030',
 				100,
-				'https://res.cloudinary.com/dl6xltl5t/image/upload/v1557334517/macbook-select-space-gray-201706_GEO_US_uk1xhr.jpg'
+				'https://res.cloudinary.com/dl6xltl5t/image/upload/v1557521395/google_pixel_3_cvug2p.jpg'
 			);
 			console.log('create item');
 		} catch (error) {
@@ -176,7 +177,7 @@ const bcrypt = require('./bcrypt_usage');
 				'New Jersey',
 				'07030',
 				100,
-				'https://res.cloudinary.com/dl6xltl5t/image/upload/v1557334517/macbook-select-space-gray-201706_GEO_US_uk1xhr.jpg'
+				'https://res.cloudinary.com/dl6xltl5t/image/upload/v1557521393/iphoen6s_zeihfk.jpg'
 			);
 			console.log('create item');
 		} catch (error) {
@@ -198,7 +199,7 @@ const bcrypt = require('./bcrypt_usage');
 				'New Jersey',
 				'07030',
 				100,
-				'https://res.cloudinary.com/dl6xltl5t/image/upload/v1557334517/macbook-select-space-gray-201706_GEO_US_uk1xhr.jpg'
+				'https://res.cloudinary.com/dl6xltl5t/image/upload/v1557521390/lenovo_jzrfs7.jpg'
 			);
 			console.log('create item');
 		} catch (error) {
@@ -219,7 +220,7 @@ const bcrypt = require('./bcrypt_usage');
 				'New Jersey',
 				'07030',
 				100,
-				'https://res.cloudinary.com/dl6xltl5t/image/upload/v1557334517/macbook-select-space-gray-201706_GEO_US_uk1xhr.jpg'
+				'https://res.cloudinary.com/dl6xltl5t/image/upload/v1557521391/acer_rwdjrw.jpg'
 			);
 			console.log('create item');
 		} catch (error) {
