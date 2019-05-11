@@ -305,3 +305,33 @@ h3 {
 	text-align: center;
 
 }
+.bg{
+	background-image:url( "https://res.cloudinary.com/dl6xltl5t/image/upload/v1557546639/background-balance-commerce-583846_ftrpbe.jpg");
+	height: 100%;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size:cover
+}
+
+.caption span.border {
+    background-color:black;
+    color: #fff;
+    padding: 18px;
+	font-size: 70px;
+	font-family: "Trebuchet MS";
+    letter-spacing: 10px;
+}
+
+.caption {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    text-align: center;
+    color: rgb(36, 33, 33);
+}
+.headercar{
+	font-weight: bolder;
+	color: black;
+	font-size: 20px
+}
