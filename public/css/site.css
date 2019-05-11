@@ -270,3 +270,34 @@ h3 {
 	size: 40pxs;
 	color: black;
 }
+
+.card-product1 .img-wrap1 {
+	border-radius: 4px 4px 0 0;
+	overflow: hidden;
+	position: relative;
+	height: 220px;
+	text-align: center;
+	
+}
+.card-product1 .img-wrap1 img {
+	padding-top: 10px;
+	max-height: 100%;
+	max-width: 100%;
+	object-fit: fill;
+
+}
+.card-product1 .info-wrap1 {
+	overflow: hidden;
+	padding: 15px;
+	border-top: 1px solid white;
+	font-size: 20px;
+	font-weight: bolder;
+	color:black;
+	text-align: center
+	
+}
+.card-product1 .bottom-wrap1 {
+	padding: 15px;
+	border-top: 1px solid white;
+	
+}
