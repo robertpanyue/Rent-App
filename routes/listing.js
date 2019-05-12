@@ -1,0 +1,53 @@
+const express = require('express');
+const router = express.Router();
+const firebase = require('firebase');
+const data = require('../data');
+const itemData = data.items;
+
+router.get('/', (req, res) => {
+	try {
+		res.render('pages/listing', { });
+	} catch (e) {
+		res.status(400).render('pages/error', { errorMessage: 'listing page Error', title: 'Error' });
+	}
+});
+
+router.post('/', async (req, res) => {
+	console.log(req.body);
+	console.log(req.session);
+	console.log(req.session.user);
+	try {
+		if (req.session && req.session.user) {
+			let item = await itemData.create(
+				req.body.startDate,
+				req.body.endDate,
+				req.body.reqOrPost,
+				'open',
+				req.session.user,
+				req.body.itemName,
+				req.body.itemDesc,
+				req.body.address,
+				req.body.price
+			);
+			res.redirect(`/listing/images/${item._id}`);
+			return;
+		} else {
+			res.redirect('/login');
+		}
+	} catch (error) {
+		res.status(400).render('pages/error', {
+			errorMessage: 'Listing POST Error',
+			title: 'Error'
+		});
+	}
+});
+
+router.get('/images/:id', (req, res) => {
+	try {
+		res.render('pages/images', { });
+	} catch (e) {
+		res.status(400).render('pages/error', { errorMessage: 'listing page Error', title: 'Error' });
+	}
+});
+
+module.exports = router;

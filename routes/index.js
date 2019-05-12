@@ -2,9 +2,7 @@ const loginRoutes = require('./login');
 const registerRoutes = require('./register');
 const mainPageSearchRoutes = require('./main');
 const logoutRoutes = require('./logout');
-const postRoutes = require('./post');
-const profileRoutes = require('./profile');
-const searchRoutes = require('./search');
+const listingRoutes = require('./listing');
 const express = require('express');
 const landing=require('./landingpage');
 const deleteRoute=require('./delete')
@@ -28,9 +26,7 @@ const constructorMethod = (app) => {
 	app.use('/login', loginRoutes);
 	app.use('/main', mainPageSearchRoutes);
 	app.use('/logout', logoutRoutes);
-	app.use('/post', postRoutes);
-	app.use('/profile', profileRoutes);
-	app.use('/search', searchRoutes);
+	app.use('/listing', listingRoutes);
 	app.use('/delete', deleteRoute);
 	app.use('*', (req, res) => {
 		res.status(404).json({

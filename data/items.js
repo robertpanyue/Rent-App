@@ -12,11 +12,8 @@ async function create(
 	userId,
 	itemName,
 	itemDescription,
-	city,
-	state,
-	zip,
-	price,
-	cloudinaryURL
+	address,
+	price
 ) {
 	if (
 		!startDate ||
@@ -26,11 +23,8 @@ async function create(
 		!userId ||
 		!itemName ||
 		!itemDescription ||
-		!city ||
-		!state ||
-		!zip ||
-		!price ||
-		!cloudinaryURL
+		!address ||
+		!price
 	) {
 		throw `Need all fields to create item`;
 	}
@@ -42,11 +36,8 @@ async function create(
 		userId,
 		itemName,
 		itemDescription,
-		city,
-		state,
-		zip,
-		price,
-		cloudinaryURL
+		address,
+		price
 	};
 	try {
 		const itemsCollection = await items();
