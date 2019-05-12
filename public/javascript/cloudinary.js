@@ -17,7 +17,10 @@ $(document).ready(function () {
           $.ajax({
             type: "POST",
             url: `addCloudinary/${id}`,
-            data: { url: result.info.url }
+            data: {
+              url: result.info.url,
+              turl:result.info.thumbnail_url
+            }
           });
 
           let images = document.getElementById("cloudinary-images");
