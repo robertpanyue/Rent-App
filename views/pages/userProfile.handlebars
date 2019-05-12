@@ -16,16 +16,54 @@
     <h1>User Name</h1>
     <div class="row m-y-6">
         <div class="col-lg-12 push-lg-4">
-            <ul class="nav nav-tabs">
+            <ul class="nav nav-tabs"> 
                 <li class="nav-item">
-                    <a href="" data-target="#profile" data-toggle="tab" class="nav-link active">Profile</a>
+                    <a href="" data-target="#edit" data-toggle="tab" class="nav-link active">Edit Listings</a>
                 </li>
                 <li class="nav-item">
-                    <a href="" data-target="#edit" data-toggle="tab" class="nav-link">Edit Listings</a>
+                    <a href="" data-target="#profile" data-toggle="tab" class="nav-link">Profile</a>
                 </li>
             </ul>
             <div class="tab-content pt-3">
-                <div class="tab-pane active" id="profile">
+                <div class="tab-pane active" id="edit">
+                    <h4 class="m-y-2">Edit Listings</h4>
+                    <div class="container">
+<br>  <h1 class="text-center">{{type}}</h1>
+<hr>
+<div class="row">
+{{#each resultList}}
+
+<div class="col-md-4">
+
+	<figure class="card card-product">
+        <div class="headercar">{{this.requested}}</div>
+		<div class="img-wrap"><img src="{{this.cloudinaryURL}}"></div>
+		<figcaption class="info-wrap">
+				<h4 class="title">{{this.itemName}}</h4>
+				<p class="desc">{{this.itemDescription}}</p>
+                <p class="desc">{{this.city}}</p>
+				{{!-- <div class="rating-wrap">
+					<div class="label-rating">132 reviews</div>
+					<div class="label-rating">154 orders </div>
+				</div> <!-- rating-wrap.// --> --}}
+		</figcaption>
+		<div class="bottom-wrap">
+			<div class="price-wrap h5">
+				<span class="price-new">${{this.price}}</span>
+                <form action="/delete/{{this._id}}" method="post">
+                <button class="delete">Delete</button>
+                </form>
+			</div> <!-- price-wrap.// -->
+		</div> <!-- bottom-wrap.// -->
+	</figure>
+</div> <!-- col // -->
+{{/each}}
+
+
+</div> <!-- row.// -->
+</div> 
+                </div> 
+                <div class="tab-pane" id="profile">
                     <h4 class="m-y-2">User Profile</h4>
                     <div class="row">
                         <div class="col-md-6">
@@ -85,44 +123,7 @@
                     </div>
                     <!--/row-->
                 </div>
-                <div class="tab-pane" id="edit">
-                    <h4 class="m-y-2">Edit Listings</h4>
-                    <div class="container">
-<br>  <h1 class="text-center">{{type}}</h1>
-<hr>
-<div class="row">
-{{#each resultList}}
-
-<div class="col-md-4">
-
-	<figure class="card card-product">
-        <div class="headercar">{{this.requested}}</div>
-		<div class="img-wrap"><img src="{{this.cloudinaryURL}}"></div>
-		<figcaption class="info-wrap">
-				<h4 class="title">{{this.itemName}}</h4>
-				<p class="desc">{{this.itemDescription}}</p>
-                <p class="desc">{{this.city}}</p>
-				{{!-- <div class="rating-wrap">
-					<div class="label-rating">132 reviews</div>
-					<div class="label-rating">154 orders </div>
-				</div> <!-- rating-wrap.// --> --}}
-		</figcaption>
-		<div class="bottom-wrap">
-			<div class="price-wrap h5">
-				<span class="price-new">${{this.price}}</span>
-                <form action="/delete/{{this._id}}" method="post">
-                <button class="delete">Delete</button>
-                </form>
-			</div> <!-- price-wrap.// -->
-		</div> <!-- bottom-wrap.// -->
-	</figure>
-</div> <!-- col // -->
-{{/each}}
-
-
-</div> <!-- row.// -->
-</div> 
-                </div> 
+                
 <!--container.//-->
             </div>
         </div>
