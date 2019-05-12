@@ -2,7 +2,9 @@ const express = require('express');
 const router = express.Router();
 const firebase = require('firebase');
 const data = require('../data');
+const cloudinary = require('cloudinary').v2;
 const itemData = data.items;
+const userData = data.users;
 
 router.get('/', (req, res) => {
 	try {
@@ -29,8 +31,17 @@ router.post('/', async (req, res) => {
 				req.body.address,
 				req.body.price
 			);
+
+			let user = await userData.get(req.session.user);
+			if (req.body.reqOrPost === 'Listed') {
+				user.updateItemList(item._id);
+			} else if (req.body.reqOrPost === 'Requested') {
+				user.updateRequestList(item._id);
+			} else {
+				console.log("item type is not listed or requested");
+			}
+
 			res.redirect(`/listing/images/${item._id}`);
-			return;
 		} else {
 			res.redirect('/login');
 		}
@@ -42,10 +53,18 @@ router.post('/', async (req, res) => {
 	}
 });
 
-router.get('/images/:id', (req, res) => {
+router.get('/images/add/:id', (req, res) => {
 	try {
-		res.render('pages/images', { });
+		cloudinary.api.resources_by_tag(`${req.params.id}`,
+      function(error, result){
+				console.log(result.resources);
+				res.render('pages/images', { images: result.resources });
+				// images = result.resources;
+			}
+		);
+
 	} catch (e) {
+		console.log(e);
 		res.status(400).render('pages/error', { errorMessage: 'listing page Error', title: 'Error' });
 	}
 });
