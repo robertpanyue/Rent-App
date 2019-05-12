@@ -20,6 +20,8 @@ router.post('/', async (req, res) => {
 	console.log(req.session.user);
 	try {
 		if (req.session && req.session.user) {
+			let addr = req.body.address.split(', ');
+
 			let item = await itemData.create(
 				req.body.startDate,
 				req.body.endDate,
@@ -28,7 +30,10 @@ router.post('/', async (req, res) => {
 				req.session.user,
 				req.body.itemName,
 				req.body.itemDesc,
-				req.body.address,
+				addr[0],
+				addr[1],
+				addr[2],
+				req.body.postal_code,
 				req.body.price
 			);
 
