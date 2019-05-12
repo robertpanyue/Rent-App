@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const firebase = require('firebase');
-
+const data = require('../data');
+const itemData = data.items;
 
 router.get('/', (req, res) => {
 	try {
@@ -13,7 +14,17 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
 	console.log(req.body);
-	debugger
+	itemData.create(
+		req.body.startDate,
+		req.body.endDate,
+		req.body.reqOrPost,
+		'open',
+		'temp',
+		req.body.itemName,
+		req.body.itemDesc,
+		req.body.address,
+		req.body.price
+	);
 	res.render('pages/cloudinary', { });
 });
 

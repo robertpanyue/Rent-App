@@ -12,11 +12,8 @@ async function create(
 	userId,
 	itemName,
 	itemDescription,
-	city,
-	state,
-	zip,
-	price,
-	cloudinaryURL
+	address,
+	price
 ) {
 	if (
 		!startDate ||
@@ -26,11 +23,8 @@ async function create(
 		!userId ||
 		!itemName ||
 		!itemDescription ||
-		!city ||
-		!state ||
-		!zip ||
-		!price ||
-		!cloudinaryURL
+		!address ||
+		!price
 	) {
 		throw `Need all fields to create item`;
 	}
@@ -42,16 +36,13 @@ async function create(
 		userId,
 		itemName,
 		itemDescription,
-		city,
-		state,
-		zip,
-		price,
-		cloudinaryURL
+		address,
+		price
 	};
 	try {
 		const userCollection = await users();
 		const itemsCollection = await items();
-		const user = await users.get(userId);
+		// const user = await users.get(userId);
 		//TODO: update user itemListed and posted
 		const insertInfo = await itemsCollection.insertOne(newItem);
 		if (insertInfo.insertedCount === 0) throw 'Could not add item';
