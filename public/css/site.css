@@ -17,6 +17,9 @@ h3 {
 	justify-content: center;
 	align-items: center;
 }
+#search-bar{
+	width: 80%;
+}
 
 @media (min-width: 768px) {
 	/* show 3 items */
