@@ -33,11 +33,11 @@
 <div class="row">
 {{#each resultList}}
 
-<div class="col-md-4">
+<div class="col-md-4 card card-product">
 
-	<figure class="card card-product">
+	<figure>
         <div class="headercar">{{this.requested}}</div>
-		<div class="img-wrap"><img src="{{this.cloudinaryURL}}"></div>
+		<div class="img-wrap"><img src="{{this.cloudinaryURL}}" alt="{{this.itemName}}"></div>
 		<figcaption class="info-wrap">
 				<h4 class="title">{{this.itemName}}</h4>
 				<p class="desc">{{this.itemDescription}}</p>
@@ -47,15 +47,16 @@
 					<div class="label-rating">154 orders </div>
 				</div> <!-- rating-wrap.// --> --}}
 		</figcaption>
-		<div class="bottom-wrap">
-			<div class="price-wrap h5">
-				<span class="price-new">${{this.price}}</span>
-                <form action="/delete/{{this._id}}" method="post">
-                <button class="delete">Delete</button>
-                </form>
-			</div> <!-- price-wrap.// -->
-		</div> <!-- bottom-wrap.// -->
-	</figure>
+    </figure>
+    <div class="bottom-wrap">
+        <div class="price-wrap h5">
+            <span class="price-new">${{this.price}}</span>
+            <form action="/delete/{{this._id}}" method="post">
+            <button class="delete">Delete</button>
+            </form>
+        </div> <!-- price-wrap.// -->
+    </div> <!-- bottom-wrap.// -->
+
 </div> <!-- col // -->
 {{/each}}
 
