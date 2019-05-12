@@ -3,6 +3,7 @@ const router = express.Router();
 const firebase = require('firebase');
 const data = require('../data');
 const itemData = data.items;
+const userData = data.users;
 
 router.get('/', (req, res) => {
 	try {
@@ -29,8 +30,11 @@ router.post('/', async (req, res) => {
 				req.body.address,
 				req.body.price
 			);
+
+			let user = await userData.get(req.session.user);
+			user.updateItemList(item._id);
+
 			res.redirect(`/listing/images/${item._id}`);
-			return;
 		} else {
 			res.redirect('/login');
 		}
