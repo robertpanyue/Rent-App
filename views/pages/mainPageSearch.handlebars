@@ -160,15 +160,19 @@
 </nav>
 
 <div id="searchbar-form">
-    <form method="POST" action="/search" class="search-bar" id="search-bar">
+    {{!-- <button class="btn btn-success" id = "find-me">Show my location</button><br/>
+                    <p id = "status"></p>
+                    <a id = "map-link" target="_blank"></a> --}}
 
+    <form method="POST" action="/search" class="search-bar" id="search-bar">
         <div class="input-group mb-3">
            <select class="form-control col-md-2" id="selectSearch" name="selectSearch" required>
                 <option value="Requests">Requests</option>
                 <option value="Listings">Listings</option>
             </select>
+            <button class="btn btn-success" id = "find-me" name="location">Show my location</button><br/>
             <input type="text" class="form-control" name="searchContent" placeholder="Search" aria-label="Search" aria-describedby="basic-addon2" id="search" required>
-            <div class="input-group-append">
+            <div class="input-group-append">  
                 <button type="submit" class="btn btn-primary" type="button">Submit</button>
             </div>
         </div>
@@ -217,15 +221,9 @@
 				        <p class="desc">{{img3.itemDescription}}</p>
 		            </figcaption>
 		            <div class="bottom-wrap1">
-<<<<<<< HEAD
-                        <p>Name:{{user3.name}}</p>
-                        <p>Email id:{{user3.email}}</p>
-                        <p>Contact No:{{user3.phoneNumber}}</p>
-=======
                         <p>Name:{{img3.name}}</p>
                         <p>Email id:{{img3.email}}</p>
                         <p>Contact No:{{img3.phoneNumber}}</p>            
->>>>>>> master
 		            </div> <!-- bottom-wrap.// -->
 	            </figure>
             </div>
@@ -253,19 +251,11 @@
 				        <p class="desc">{{img5.itemDescription}}</p>
 		            </figcaption>
 		            <div class="bottom-wrap1">
-<<<<<<< HEAD
-
-                        <p>Name:{{user5.name}}</p>
-                        <p>Email id:{{user5.email}}</p>
-                        <p>Contact No:{{user5.phoneNumber}}</p>
-
-=======
 			            
                         <p>Name:{{img5.name}}</p>
                         <p>Email id:{{img5.email}}</p>
                         <p>Contact No:{{img5.phoneNumber}}</p>
                     
->>>>>>> master
 		            </div> <!-- bottom-wrap.// -->
 	            </figure>
             </div>
@@ -278,15 +268,9 @@
 				        <p class="desc">{{img6.itemDescription}}</p>
 		            </figcaption>
 		            <div class="bottom-wrap1">
-<<<<<<< HEAD
-                        <p>Name:{{user6.name}}</p>
-                        <p>Email id:{{user6.email}}</p>
-                        <p>Contact No:{{user6.phoneNumber}}</p>
-=======
                         <p>Name:{{img6.name}}</p>
                         <p>Email id:{{img6.email}}</p>
                         <p>Contact No:{{img6.phoneNumber}}</p>        
->>>>>>> master
 		            </div> <!-- bottom-wrap.// -->
 	            </figure>
             </div>
@@ -337,5 +321,6 @@
         </a>
     </div>
 </div>
-
+ 
  <script src="public/javascript/carousel.js"></script>
+  <script src="public/javascript/location.js"></script>
