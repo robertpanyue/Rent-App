@@ -2,18 +2,22 @@ const express = require('express');
 const router = express.Router();
 const db = require('../data/dbCollections');
 const items = db.itemPosts;
+const users = db.users;
 router.get('/listings/:item', async (req, res) => {
 	try {
 		if (req.session && req.session.user) {
 			const keyWord = req.params.item;
 			const itemCollection = await items();
+			const userCollection = await users();
 			const searchType = req.body.selectSearch;
 			//get the result of the key word from the datbase
 			const result = await itemCollection.find({ $text: { $search: keyWord } }).toArray();
 			const returnArray = [];
-
 			for (let i = 0; i < result.length; i++) {
 				if (result[i].requested == 'Listed') {
+					let user = await userCollection.findOne({_id:  result[i].userId} );
+					result[i].email = user.email;
+					result[i].phoneNumber = user.phoneNumber;
 					returnArray.push(result[i]);
 				}
 			}
@@ -35,15 +39,20 @@ router.get('/requests/:item', async (req, res) => {
 		if (req.session && req.session.user) {
 			const keyWord = req.params.item;
 			const itemCollection = await items();
+			const userCollection = await users();
 			//get the result of the key word from the datbase
 			const result = await itemCollection.find({ $text: { $search: keyWord } }).toArray();
 			const returnArray = [];
 
 			for (let i = 0; i < result.length; i++) {
 				if (result[i].requested == 'Requested') {
+					let user = await userCollection.findOne({_id:  result[i].userId} );
+					result[i].email = user.email;
+					result[i].phoneNumber = user.phoneNumber;
 					returnArray.push(result[i]);
 				}
 			}
+
 
 			res.render('pages/searchResult', { title: keyWord, type: 'Requests', resultList: returnArray });
 		} else {
