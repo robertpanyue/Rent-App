@@ -13,7 +13,13 @@ $(document).ready(function () {
       uploadPreset: 'xc8fh9wr',
       tags: [id]}, (error, result) => {
         if (!error && result && result.event === "success") {
-          console.log('Done! Here is the image info: ', result.info);
+
+          $.ajax({
+            type: "POST",
+            url: `addCloudinary/${id}`,
+            data: { url: result.info.url }
+          });
+
           let images = document.getElementById("cloudinary-images");
           let thumbnail = document.createElement('img');
           thumbnail.src = result.info.thumbnail_url;
@@ -26,19 +32,5 @@ $(document).ready(function () {
     document.getElementById("upload_widget").addEventListener("click", function(){
       myWidget.open();
     }, false);
-
-    // grab images for this project
-    // cloudinary.v2.api.resources_by_tag(`${id}`,
-    //   function(error, result){
-    //     console.log(result);
-    //     for (i in result) {
-    //       let images = document.getElementById("cloudinary-images");
-    //       let thumbnail = document.createElement('img');
-    //       thumbnail.src = result.info.thumbnail_url;
-    //       images.appendChild(thumbnail);
-    //     }
-    //   }
-    // );
-
   }
 });
