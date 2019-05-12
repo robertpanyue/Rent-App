@@ -6,6 +6,7 @@ router.get('/', async (req, res) => {
 		if (req.session && req.session.user) {
 			res.redirect('/main');
 		} else {
+
 			res.render('pages/landingpage', {title: "Rent-App"});
 		}	
 	} catch (error) {
