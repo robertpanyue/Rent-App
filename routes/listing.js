@@ -32,7 +32,13 @@ router.post('/', async (req, res) => {
 			);
 
 			let user = await userData.get(req.session.user);
-			user.updateItemList(item._id);
+			if (req.body.reqOrPost === 'Listed') {
+				user.updateItemList(item._id);
+			} else if (req.body.reqOrPost === 'Requested') {
+				user.updateRequestList(item._id);
+			} else {
+				console.log("item type is not listed or requested");
+			}
 
 			res.redirect(`/listing/images/${item._id}`);
 		} else {
