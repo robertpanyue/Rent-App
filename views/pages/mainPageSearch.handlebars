@@ -10,6 +10,11 @@
         </li>
     </ul>
     <ul class="navbar-nav">
+        <li class="nav-item active">
+        <a class="nav-link" href="/listing">listings <span class="sr-only">(current)</span></a>
+        </li>
+    </ul>
+    <ul class="navbar-nav">
         <li class="nav-item">
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
                 Forms to request/rent
@@ -36,7 +41,7 @@
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="itemDesc" >Item Description</label>
-                                                            <textarea name="itemDesc" class="itemDesc" row="30" cols="30" placeholder="A good condition working iPhone...."></textarea> 
+                                                            <textarea name="itemDesc" class="itemDesc" row="30" cols="30" placeholder="A good condition working iPhone...."></textarea>
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="startDate" >Start Date</label>
@@ -58,7 +63,7 @@
                                                             </select>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="state">State</label>    
+                                                            <label for="state">State</label>
                                                                 <select class="form-control" id="state" name="state">
                                                                     <option value="">N/A</option>
                                                                     <option value="AK">Alaska</option>
@@ -113,7 +118,7 @@
                                                                     <option value="WI">Wisconsin</option>
                                                                     <option value="WV">West Virginia</option>
                                                                     <option value="WY">Wyoming</option>
-                                                                </select>  
+                                                                </select>
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="zip">Zip</label>
@@ -128,7 +133,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </section>        
+                            </section>
                         </div>
                     <!-- Modal footer -->
                         <div class="modal-footer">
@@ -154,7 +159,7 @@
 
 <div id="searchbar-form">
     <form method="POST" action="/search" class="search-bar" id="search-bar">
-        
+
         <div class="input-group mb-3">
            <select class="form-control col-md-2" id="selectSearch" name="selectSearch" required>
                 <option value="Requests">Requests</option>
@@ -184,7 +189,7 @@
                         <p>Email id:{{user1.email}}</p>
                         <p>Contact No:{{user1.phoneNumber}}</p>
 		            </div> <!-- bottom-wrap.// -->
-	            </figure> 
+	            </figure>
             </div>
             <div class="carousel-item col-md-4">
                 <figure class="card card-product1" alt="slide 2">
@@ -212,7 +217,7 @@
 		            <div class="bottom-wrap1">
                         <p>Name:{{user3.name}}</p>
                         <p>Email id:{{user3.email}}</p>
-                        <p>Contact No:{{user3.phoneNumber}}</p>            
+                        <p>Contact No:{{user3.phoneNumber}}</p>
 		            </div> <!-- bottom-wrap.// -->
 	            </figure>
             </div>
@@ -240,11 +245,11 @@
 				        <p class="desc">{{img5.itemDescription}}</p>
 		            </figcaption>
 		            <div class="bottom-wrap1">
-			            
+
                         <p>Name:{{user5.name}}</p>
                         <p>Email id:{{user5.email}}</p>
                         <p>Contact No:{{user5.phoneNumber}}</p>
-                    
+
 		            </div> <!-- bottom-wrap.// -->
 	            </figure>
             </div>
@@ -259,7 +264,7 @@
 		            <div class="bottom-wrap1">
                         <p>Name:{{user6.name}}</p>
                         <p>Email id:{{user6.email}}</p>
-                        <p>Contact No:{{user6.phoneNumber}}</p>        
+                        <p>Contact No:{{user6.phoneNumber}}</p>
 		            </div> <!-- bottom-wrap.// -->
 	            </figure>
             </div>
@@ -310,5 +315,5 @@
         </a>
     </div>
 </div>
- 
+
  <script src="public/javascript/carousel.js"></script>

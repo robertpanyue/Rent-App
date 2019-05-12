@@ -12,25 +12,39 @@ router.get('/', (req, res) => {
 	}
 });
 
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
 	console.log(req.body);
-	itemData.create(
-		req.body.startDate,
-		req.body.endDate,
-		req.body.reqOrPost,
-		'open',
-		'temp',
-		req.body.itemName,
-		req.body.itemDesc,
-		req.body.address,
-		req.body.price
-	);
-	res.render('pages/cloudinary', { });
+	console.log(req.session);
+	console.log(req.session.user);
+	try {
+		if (req.session && req.session.user) {
+			let item = await itemData.create(
+				req.body.startDate,
+				req.body.endDate,
+				req.body.reqOrPost,
+				'open',
+				req.session.user,
+				req.body.itemName,
+				req.body.itemDesc,
+				req.body.address,
+				req.body.price
+			);
+			res.redirect(`/listing/images/${item._id}`);
+			return;
+		} else {
+			res.redirect('/login');
+		}
+	} catch (error) {
+		res.status(400).render('pages/error', {
+			errorMessage: 'Listing POST Error',
+			title: 'Error'
+		});
+	}
 });
 
-router.get('/cloud', (req, res) => {
+router.get('/images/:id', (req, res) => {
 	try {
-		res.render('pages/cloudinary', { });
+		res.render('pages/images', { });
 	} catch (e) {
 		res.status(400).render('pages/error', { errorMessage: 'listing page Error', title: 'Error' });
 	}
