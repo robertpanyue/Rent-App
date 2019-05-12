@@ -1,10 +1,10 @@
 $('#carouselExample').on('slide.bs.carousel', function (e) {
     var $e = $(e.relatedTarget);
     var idx = $e.index();
-    console.log(idx);
+    //console.log(idx);
     var itemsPerSlide = 3;
     var totalItems = $('.carousel-item').length;
-    console.log(totalItems)
+    //console.log(totalItems)
     if (idx >= totalItems-(itemsPerSlide-1)) {
         var it = itemsPerSlide - (totalItems - idx);
         for (var i=0; i<it; i++) {
