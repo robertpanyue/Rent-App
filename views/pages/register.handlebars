@@ -27,34 +27,34 @@
                         <form method="POST" action="/register" class="form-inlin justify-content-center" id="form">
                             <div class="form-group">
                                 <label for="name" >Name</label>
-                                <input type="text" class="form-control" placeholder="Jane Doe" id="name" required>
+                                <input type="text" class="form-control" placeholder="Jane Doe" name="name" id="name" required>
                             </div>
                             <div class="form-group">
                                 <label for="email">Email</label>
                                 <input type="email" class="form-control" name="email" placeholder="name@example.com" id="email" required>
                             </div>
                             <div class="form-group">
-                              <p id="passwordLength"></p>
-                              <p id="passwordMatch"></p>
                                 <label for="password">Password</label>
-                                <input type="password" class="form-control" name="password" id="password" required>
+                                <input type="password" class="form-control" name="password" id="password" minlength="6" required>
+                                <p id="passwordLength"></p>
                             </div>
                             <div class="form-group">
                                 <label for="confirmPassword">Confirm Password</label>
                                 <input type="password" class="form-control" id="confirmPassword" required>
+                                 <p id="passwordMatch"></p>
                             </div>
                             <div class="form-group">
                                 <label for="phone">Phone Number</label>
-                                <input type="tel" class="form-control" id="phone" maxlength="10" required>
+                                <input type="tel" class="form-control" name="phone" id="phone" maxlength="10" required>
                             </div>
                             <div class="form-group">
                                 <label for="city">City</label>
-                                <input type="text" class="form-control" id="city" required>
+                                <input type="text" class="form-control" name="city" id="city" required>
                             </div>
                             <div class="form-group">
                                 <label for="state">State</label>
                                     <select class="form-control" id="state" name="state" required>
-                                        <option value=""></option>
+                                        <option value="N/A">N/A</option>
                                         <option value="AK">Alaska</option>
                                         <option value="AL">Alabama</option>
                                         <option value="AR">Arkansas</option>
@@ -111,7 +111,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="zip">Zip</label>
-                                <input type="number" class="form-control" id="zip" maxlength="5" required>
+                                <input type="number" class="form-control" name="zip" id="zip" maxlength="5" required>
                             </div>
                             <div class="text-center">
                                 <button type="submit" value="submit" class="btn btn-success" id="registerButton">Register!</button>
@@ -123,4 +123,4 @@
         </div>
     </div>
 </section>
-<script src='/public/js/firebaseConfig.js'></script>
+<script type="text/javascript" src="/public/javascript/registration.js"></script>

@@ -40,17 +40,20 @@ async function create(
 		price
 	};
 	try {
-		const userCollection = await users();
 		const itemsCollection = await items();
-		// const user = await users.get(userId);
-		//TODO: update user itemListed and posted
 		const insertInfo = await itemsCollection.insertOne(newItem);
 		if (insertInfo.insertedCount === 0) throw 'Could not add item';
 		const newId = insertInfo.insertedId;
 		const itemInserted = await this.get(newId.toHexString());
+		if (requested == 'Requested') {
+			await userData.updateRequestList(userId, newId);
+		} else if (requested == 'Listed') {
+			await userData.updateItemList(userId, newId);
+		}
 		return itemInserted;
 	} catch (e) {
 		console.log(e);
+		throw error;
 	}
 }
 
@@ -88,6 +91,12 @@ async function deleteById(id) {
 		const deletionInfo = await itemsCollection.removeOne({ _id: ObjectId.createFromHexString(id) });
 		if (deletionInfo.deletedCount === 0) {
 			throw `Could not delete post with id of ${id}`;
+		}
+		if(itemdeleted.requested=="Listed"){
+			const info=await userData.removeItemList(String(itemdeleted.userId),String(itemdeleted._id))
+		}
+		else if(itemdeleted.requested=="Requested"){
+			const info=await userData.removeRequestList(String(itemdeleted.userId),String(itemdeleted._id))
 		}
 		return itemdeleted;
 	} catch (e) {

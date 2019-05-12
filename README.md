@@ -1,3 +1,8 @@
 # Rent-App
 
-Yue Pan  -- currently working on database CRUDg
+npm install
+
+create database and collection
+  npm run-script build 
+  
+npm start
