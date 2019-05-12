@@ -9,13 +9,12 @@ router.get('/listings/:item', async (req, res) => {
 			const keyWord = req.params.item;
 			const itemCollection = await items();
 			const userCollection = await users();
-			const searchType = req.body.selectSearch;
 			//get the result of the key word from the datbase
 			const result = await itemCollection.find({ $text: { $search: keyWord } }).toArray();
 			const returnArray = [];
 			for (let i = 0; i < result.length; i++) {
 				if (result[i].requested == 'Listed') {
-					let user = await userCollection.findOne({_id:  result[i].userId} );
+					let user = await userCollection.findOne({ _id: result[i].userId });
 					result[i].userName = user.name;
 					result[i].email = user.email;
 					result[i].phoneNumber = user.phoneNumber;
@@ -47,14 +46,13 @@ router.get('/requests/:item', async (req, res) => {
 
 			for (let i = 0; i < result.length; i++) {
 				if (result[i].requested == 'Requested') {
-					let user = await userCollection.findOne({_id:  result[i].userId} );
+					let user = await userCollection.findOne({ _id: result[i].userId });
 					result[i].userName = user.name;
 					result[i].email = user.email;
 					result[i].phoneNumber = user.phoneNumber;
 					returnArray.push(result[i]);
 				}
 			}
-
 
 			res.render('pages/searchResult', { title: keyWord, type: 'Requests', resultList: returnArray });
 		} else {
@@ -72,6 +70,7 @@ router.post('/', async (req, res) => {
 	try {
 		if (req.session && req.session.user) {
 			const searchType = req.body.selectSearch;
+			console.log(req.body.location);
 			if (searchType == 'Listings') {
 				res.redirect(`/search/listings/${req.body.searchContent}`);
 			} else {
