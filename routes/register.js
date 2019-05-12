@@ -53,15 +53,16 @@ router.post('/', async (req, res) => {
 				res.redirect('/main');
 			})
 			.catch(function(error) {
-				res.status(400).render('pages/error', {
-					errorMessage: 'Register Post Error ' + `${error}`,
-					title: 'Error'
+				res.status(400).render('pages/register', {
+					errormsg:`${error}`,
+					title: 'Register'
 				});
 			});
 	} catch (error) {
 		res.status(400).render('pages/error', {
-			errorMessage: 'Register Post Error! ' + `${error}`,
-			title: 'Error'
+			errormsg:`${error}`,
+			title: 'Register'
+			
 		});
 	}
 });
