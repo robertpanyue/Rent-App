@@ -33,19 +33,20 @@ router.post('/', async (req, res) => {
 			);
 
 			let user = await userData.get(req.session.user);
-			if (req.body.reqOrPost === 'Listed') {
-				user.updateItemList(item._id);
-			} else if (req.body.reqOrPost === 'Requested') {
-				user.updateRequestList(item._id);
+			if (req.body.reqOrPost === 'Post') {
+				userData.updateItemList(user._id, item._id);
+			} else if (req.body.reqOrPost === 'Request') {
+				userData.updateRequestList(user._id, item._id);
 			} else {
-				console.log("item type is not listed or requested");
+				console.log("item type is not listed nor requested");
 			}
 
-			res.redirect(`/listing/images/${item._id}`);
+			res.redirect(`/listing/images/add/${item._id}`);
 		} else {
 			res.redirect('/login');
 		}
 	} catch (error) {
+		console.log(error);
 		res.status(400).render('pages/error', {
 			errorMessage: 'Listing POST Error',
 			title: 'Error'
@@ -53,16 +54,24 @@ router.post('/', async (req, res) => {
 	}
 });
 
-router.get('/images/add/:id', (req, res) => {
+router.get('/images/add/:id', async (req, res) => {
 	try {
 		cloudinary.api.resources_by_tag(`${req.params.id}`,
       function(error, result){
-				console.log(result.resources);
 				res.render('pages/images', { images: result.resources });
-				// images = result.resources;
 			}
 		);
 
+	} catch (e) {
+		console.log(e);
+		res.status(400).render('pages/error', { errorMessage: 'listing page Error', title: 'Error' });
+	}
+});
+
+router.post('/images/add/addCloudinary/:id', (req, res) => {
+	try {
+		itemData.updateCloudinary(req.params.id, req.body.url);
+		return;
 	} catch (e) {
 		console.log(e);
 		res.status(400).render('pages/error', { errorMessage: 'listing page Error', title: 'Error' });
