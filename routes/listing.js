@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
 	console.log(req.body);
-	debugger	
+	debugger
 	res.render('pages/cloudinary', { });
 });
 
