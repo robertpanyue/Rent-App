@@ -60,6 +60,47 @@ async function updateRequestList(id, itemID) {
 		throw error;
 	}
 }
+async function removeItemList(id, itemID) {
+	try {
+		const userCollection = await users();
+		const user = await this.get(id);
+		let array = user.itemsListed;
+		const arr=[]
+		for(let i=0;i<array.length;i++){
+			if(String(array[i])!=String(itemID))
+			{
+				console.log(array[i]+" "+itemID)
+				arr.push(array[i])
+			}
+		}
+		console.log(arr+ "removvv list")
+		const updateInfo = userCollection.findOneAndUpdate({ _id: id }, { $set: { itemsListed: arr } });
+		if (updateInfo == null) throw 'removeItemList fail';
+		return updateInfo;
+	} catch (error) {
+		throw error;
+	}
+}
+async function removeRequestList(id, itemID) {
+	try {
+		const userCollection = await users();
+		const user = await this.get(id);
+		let array = user.itemsRequested;
+		const arr=[]
+		for(let i=0;i<array.length;i++){
+			if(array[i]!=itemID)
+			{
+				arr.push(array[i])
+			}
+		}
+		const updateInfo = userCollection.findOneAndUpdate({ _id: id }, { $set: { itemsRequested: arr } });
+		if (updateInfo == null) throw 'removeRequestList fail';
+		return updateInfo;
+	} catch (error) {
+		throw error;
+	}
+}
+
 
 async function get(id) {
 	try {
@@ -106,5 +147,7 @@ module.exports = {
 	updateRequestList,
 	get,
 	getAll,
-	deleteById
+	deleteById,
+	removeRequestList,
+	removeItemList
 };

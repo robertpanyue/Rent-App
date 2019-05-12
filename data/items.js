@@ -101,6 +101,12 @@ async function deleteById(id) {
 		if (deletionInfo.deletedCount === 0) {
 			throw `Could not delete post with id of ${id}`;
 		}
+		if(itemdeleted.requested=="Listed"){
+			const info=await userData.removeItemList(String(itemdeleted.userId),String(itemdeleted._id))
+		}
+		else if(itemdeleted.requested=="Requested"){
+			const info=await userData.removeRequestList(String(itemdeleted.userId),String(itemdeleted._id))
+		}
 		return itemdeleted;
 	} catch (e) {
 		console.log(e);
