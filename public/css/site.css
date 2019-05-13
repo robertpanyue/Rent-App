@@ -358,8 +358,7 @@ h3 {
 .page-footer,.container-fluid1,.footer-copyright{
 	background-color:black;
 	color:white;
-
-}THORS
+}
 .text-uppercase {
 	text-decoration: underline;
 }
@@ -369,7 +368,10 @@ h3 {
 #errorRegister{
 	color:red
 }
-
+#logouterr{
+	color:red;
+	text-align: center
+}
 #specialNav{
 	color: #525353;
 }

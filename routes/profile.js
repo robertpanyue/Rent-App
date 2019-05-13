@@ -17,7 +17,7 @@ router.get('/', async (req, res) => {
 
 			res.render('pages/userProfile', { title: 'User Profile', person:user, resultList: items});
 		} else {
-			res.redirect('/login');
+			res.render('pages/login', { title: 'Login',err:"You must login first" });
 		}
 	} catch (error) {
 		console.log(error);
