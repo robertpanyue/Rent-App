@@ -7,7 +7,7 @@ router.get('/', async (req, res) => {
 			req.session.destroy();
 		res.render('pages/logout', { title: 'Logout' });
 		} else {
-			res.render('pages/login', { title: 'Login' });
+			res.render('pages/login', { title: 'Login',err:"You must login first to logout" });
 		}
 		
 	} catch (error) {

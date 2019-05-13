@@ -5,18 +5,17 @@ const itemDB= require('../data/items')
 router.post('/:id', async (req, res) => {
 	try {
 		if (req.session && req.session.user) {
-      if(req.params.id){
-        const item = await itemDB.deleteById(String(req.params.id));
-        console.log(item);
+			if(req.params.id){
+				const item = await itemDB.deleteById(String(req.params.id));
+				console.log(item);
 
-        res.redirect("/profile");
-      }
-      else{
-				res.redirect('/login');
-      }
-
+				res.redirect("/profile");
+			}
+			else{
+						res.render('pages/error', { title: 'Error',errorMessage:"Cannot delete the post" });
+			}
 		} else {
-			res.render('pages/landingpage');
+			res.render('pages/login', { title: 'Login',err:"You must login first" });
 		}
 	} catch (error) {
 		res.status(400).render('pages/error', {

@@ -26,7 +26,7 @@ router.get('/', async (req, res) => {
 				img8: itemList[7],
 			});
 		} else {
-			res.render('pages/error', { errorMessage: 'You do not have authentication, please login to continue', title: '403' });
+			res.render('pages/login', { title: 'Login',err:"You must login first" });
 		}
 	} catch (error) {
 		res.status(400).render('pages/error', {

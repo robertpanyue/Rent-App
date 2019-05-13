@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
 		if (req.session && req.session.user) {
 			res.render('pages/listing', { title: 'New Listing' });
 		} else {
-			res.redirect('/login');
+			res.render('pages/login', { title: 'Login',err:"You must login first" });
 		}
 	} catch (e) {
 		res.status(400).render('pages/error', { errorMessage: 'listing page Error', title: 'Error' });
