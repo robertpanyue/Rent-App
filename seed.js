@@ -19,8 +19,8 @@ const bcrypt = require('./bcrypt_usage');
 		// 	console.log('Collection itemPosts created!');
 		// });
 
-		await dbo.collection('itemPosts').createIndex({ itemName: 'text', itemDescription: 'text' });
-		console.log('CreateIndex');
+		// await dbo.collection('itemPosts').createIndex({ itemName: 'text', itemDescription: 'text' });
+		// console.log('CreateIndex');
 
 		let firebaseConfig = {
 			apiKey: 'AIzaSyAWG_cGdLuTz23H_foOSZB8P0zOjuaCUeI',
@@ -36,7 +36,7 @@ const bcrypt = require('./bcrypt_usage');
 
 		let userId = '';
 		//insert user fake data
-		const cred = await firebase.auth().createUserWithEmailAndPassword('testtest@2.com', '123456');
+		const cred = await firebase.auth().createUserWithEmailAndPassword('testtest@3.com', '123456');
 		userId = cred.user.uid;
 		console.log(userId);
 		firebase.auth().signOut();
@@ -89,7 +89,7 @@ const bcrypt = require('./bcrypt_usage');
 			const item = await itemDB.createSeed(
 				'2019-05-01',
 				'2019-05-05',
-				'Listed',
+				'Post',
 				'open',
 				userId,
 				'iPhone Xr',
@@ -111,7 +111,7 @@ const bcrypt = require('./bcrypt_usage');
 			const item = await itemDB.createSeed(
 				'2019-06-01',
 				'2019-06-05',
-				'Listed',
+				'Post',
 				'open',
 				userId,
 				'Dell Inspiron 15',
@@ -133,7 +133,7 @@ const bcrypt = require('./bcrypt_usage');
 			const item = await itemDB.createSeed(
 				'2019-07-01',
 				'2019-07-05',
-				'Listed',
+				'Post',
 				'open',
 				userId,
 				'google pixel 2',
@@ -156,7 +156,7 @@ const bcrypt = require('./bcrypt_usage');
 			const item = await itemDB.createSeed(
 				'2019-04-01',
 				'2019-04-05',
-				'Requested',
+				'Request',
 				'open',
 				userId,
 				'google pixel 3',
@@ -180,7 +180,7 @@ const bcrypt = require('./bcrypt_usage');
 			const item = await itemDB.createSeed(
 				'2019-05-01',
 				'2019-05-05',
-				'Requested',
+				'Request',
 				'open',
 				userId,
 				'iphone 6s',
@@ -204,7 +204,7 @@ const bcrypt = require('./bcrypt_usage');
 			const item = await itemDB.createSeed(
 				'2019-06-01',
 				'2019-06-05',
-				'Requested',
+				'Request',
 				'open',
 				userId,
 				'Lenovo',
@@ -227,7 +227,7 @@ const bcrypt = require('./bcrypt_usage');
 			const item = await itemDB.createSeed(
 				'2019-05-01',
 				'2019-05-05',
-				'Requested',
+				'Request',
 				'open',
 				userId,
 				'acer predator helios 300',

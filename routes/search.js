@@ -13,7 +13,7 @@ router.get('/listings/:item', async (req, res) => {
 			const result = await itemCollection.find({ $text: { $search: keyWord } }).toArray();
 			const returnArray = [];
 			for (let i = 0; i < result.length; i++) {
-				if (result[i].requested == 'Listed') {
+				if (result[i].requested == 'Post') {
 					let user = await userCollection.findOne({ _id: result[i].userId });
 					result[i].userName = user.name;
 					result[i].email = user.email;
@@ -45,7 +45,7 @@ router.get('/requests/:item', async (req, res) => {
 			const returnArray = [];
 
 			for (let i = 0; i < result.length; i++) {
-				if (result[i].requested == 'Requested') {
+				if (result[i].requested == 'Request') {
 					let user = await userCollection.findOne({ _id: result[i].userId });
 					result[i].userName = user.name;
 					result[i].email = user.email;
@@ -53,7 +53,7 @@ router.get('/requests/:item', async (req, res) => {
 					returnArray.push(result[i]);
 				}
 			}
-
+			console.log(returnArray);
 			res.render('pages/searchResult', { title: keyWord, type: 'Requests', resultList: returnArray });
 		} else {
 			res.render('pages/error', { errorMessage: 'You do not have authentication', title: '403' });

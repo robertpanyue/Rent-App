@@ -7,6 +7,7 @@ const express = require('express');
 const landing = require('./landingpage');
 const deleteRoute = require('./delete');
 const profileRoute = require('./profile');
+const searchRoute = require('./search');
 const router = express.Router();
 
 // router.get('/', (req, res) => {
@@ -30,6 +31,7 @@ const constructorMethod = (app) => {
 	app.use('/listing', listingRoutes);
 	app.use('/delete', deleteRoute);
 	app.use('/profile', profileRoute);
+	app.use('/search', searchRoute);
 	app.use('*', (req, res) => {
 		res.status(404).json({
 			error: 'Invalid Route',
