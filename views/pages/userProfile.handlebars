@@ -51,6 +51,9 @@
     <div class="bottom-wrap">
         <div class="price-wrap h5">
             <span class="price-new">${{this.price}}</span>
+            <form action="/listing/view/{{this._id}}" method="get">
+              <button class="delete">View</button>
+            </form>
             <form action="/delete/{{this._id}}" method="post">
               <button class="delete">Delete</button>
             </form>
