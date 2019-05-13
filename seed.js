@@ -6,17 +6,17 @@ const firebase = require('firebase');
 const bcrypt = require('./bcrypt_usage');
 (async function() {
 	try {
-	
 		const db = await MongoClient.connect(url, { useNewUrlParser: true });
 		const dbo = db.db('Rent-App');
 		await dbo.createCollection('users', function(err, res) {
 			if (err) throw err;
 			console.log('Collection users created!');
 		});
-		// await dbo.createCollection('itemPosts', function(err, res) {
-		// 	if (err) throw err;
-		// 	console.log('Collection itemPosts created!');
-		// });
+
+		await dbo.createCollection('itemPosts', function(err, res) {
+			if (err) throw err;
+			console.log('Collection itemPosts created!');
+		});
 
 		await dbo.collection('itemPosts').createIndex({ itemName: 'text', itemDescription: 'text' });
 		console.log('CreateIndex');
@@ -35,7 +35,7 @@ const bcrypt = require('./bcrypt_usage');
 
 		let userId = '';
 		//insert user fake data
-		const cred = await firebase.auth().createUserWithEmailAndPassword('test2@2.com', '123456');
+		const cred = await firebase.auth().createUserWithEmailAndPassword('test@2.com', '123456');
 		userId = cred.user.uid;
 		console.log(userId);
 		firebase.auth().signOut();
@@ -52,17 +52,16 @@ const bcrypt = require('./bcrypt_usage');
 				'07030',
 				await bcrypt.getHashPassword('123456')
 			);
-			console.log(cred.user.uid);
+			// console.log(cred.user.uid);
 		} catch (error) {
 			throw error;
 		}
-
 		console.log('create user');
 		console.log(userId);
 		//insert item fake data
 		//item 1
 		try {
-			const item = await itemDB.create(
+			const item = await itemDB.createSeed(
 				'2019-04-01T00:00:00',
 				'2019-04-05T00:00:00',
 				'Listed',
@@ -80,7 +79,7 @@ const bcrypt = require('./bcrypt_usage');
 		} catch (error) {
 			throw error;
 		}
-		//item 2 
+		//item 2
 		try {
 			const item = await itemDB.create(
 				'2019-05-01T00:00:00',
@@ -163,7 +162,7 @@ const bcrypt = require('./bcrypt_usage');
 		}
 
 		//item2 - requested
-		
+
 		try {
 			const item = await itemDB.create(
 				'2019-05-01T00:00:00',
