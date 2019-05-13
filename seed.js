@@ -19,8 +19,8 @@ const bcrypt = require('./bcrypt_usage');
 			console.log('Collection itemPosts created!');
 		});
 
-		// await dbo.collection('itemPosts').createIndex({ itemName: 'text', itemDescription: 'text' });
-		// console.log('CreateIndex');
+		await dbo.collection('itemPosts').createIndex({ itemName: 'text', itemDescription: 'text' });
+		console.log('CreateIndex');
 
 		let firebaseConfig = {
 			apiKey: 'AIzaSyAWG_cGdLuTz23H_foOSZB8P0zOjuaCUeI',
@@ -46,7 +46,7 @@ const bcrypt = require('./bcrypt_usage');
 			const user = await userDB.create(
 				userId,
 				'Patrick Hill',
-				'test2@2.com',
+				'testtest@3.com',
 				'8888888888',
 				'Hoboken',
 				'NJ',
