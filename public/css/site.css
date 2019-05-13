@@ -358,8 +358,7 @@ h3 {
 .page-footer,.container-fluid1,.footer-copyright{
 	background-color:black;
 	color:white;
-
-}THORS
+}
 .text-uppercase {
 	text-decoration: underline;
 }
@@ -369,19 +368,34 @@ h3 {
 #errorRegister{
 	color:red
 }
-
-<<<<<<< HEAD
 #logouterr{
 	color:red;
 	text-align: center
-=======
+}
 #specialNav{
 	color: #525353;
 }
 #specialNav1{
 	color: #525353;
 }
-#darkButton {
+#specialNav2{
+	color: #525353;
+}
+#loginButton {
 	background-color: #007c00;
->>>>>>> 79134966fa2d760bc40b8325755e496103201119
+}
+#registerButton{
+	background-color: #007c00;
+}
+#submitButton{
+	background-color: #006dee;
+}
+#find-me {
+	background-color: #007c00;
+}
+#invis{
+	display: none;
+}
+#invis1{
+	display: none;
 }
