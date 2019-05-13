@@ -138,7 +138,40 @@ async function create(
 	}
 }
 
-async function update() {}
+async function update(
+	id,
+	startDate,
+	endDate,
+	requested,
+	status,
+	userId,
+	itemName,
+	itemDescription,
+	address,
+	city,
+	state,
+	zip,
+	price
+) {
+		const itemsCollection = await items();
+		const updates = {
+			startDate,
+			endDate,
+			requested,
+			status,
+			userId,
+			itemName,
+			itemDescription,
+			address,
+			city,
+			state,
+			zip,
+			price
+		};
+		const updatedInfo = await itemsCollection.findOneAndUpdate({ _id: ObjectId(id) }, { $set: updates });
+		if (updatedInfo == null) throw 'update listing fail';
+		return updatedInfo;
+}
 
 async function updateCloudinary(id, url, turl) {
 	try {

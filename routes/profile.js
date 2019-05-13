@@ -12,7 +12,6 @@ router.get('/', async (req, res) => {
 			items = [];
 
 			for (index = 0; index < itemIds.length; index++) {
-				console.log(itemIds[index]);
 				items.push(await itemData.get(String(itemIds[index])));
 			}
 
