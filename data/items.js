@@ -13,6 +13,9 @@ async function create(
 	itemName,
 	itemDescription,
 	address,
+	city,
+	state,
+	zip,
 	price
 ) {
 	if (
@@ -24,11 +27,15 @@ async function create(
 		!itemName ||
 		!itemDescription ||
 		!address ||
+		!city ||
+		!state ||
+		!zip ||
 		!price
 	) {
 		throw `Need all fields to create item`;
 	}
 	let cloudinaryURL = [];
+	let thumbnailURL = [];
 	const newItem = {
 		startDate,
 		endDate,
@@ -38,8 +45,12 @@ async function create(
 		itemName,
 		itemDescription,
 		address,
+		city,
+		state,
+		zip,
 		price,
-		cloudinaryURL
+		cloudinaryURL,
+		thumbnailURL
 	};
 	try {
 		const itemsCollection = await items();
@@ -61,13 +72,17 @@ async function create(
 
 async function update(){}
 
-async function updateCloudinary(id, url) {
+async function updateCloudinary(id, url, turl) {
 	try {
 		const itemsCollection = await items();
 		const item = await this.get(id);
-		let array = item.cloudinaryURL;
-		array.push(url);
-		const updatedItem = { $set: { cloudinaryURL: array } };
+		let urls = item.cloudinaryURL;
+		let turls = item.thumbnailURL;
+
+		urls.push(url);
+		turls.push(turl);
+
+		const updatedItem = { $set: { cloudinaryURL: urls, thumbnailURL:turls } };
 		const updatedInfo = await itemsCollection.updateOne({ _id: ObjectId.createFromHexString(id) }, updatedItem);
 		if (updatedInfo.modifiedCount === 0) throw 'updateCloudinary fail';
 		return updatedInfo;
@@ -94,6 +109,24 @@ async function getAll() {
 		return array;
 	} catch (error) {
 		throw 'getAll item error';
+	}
+}
+
+async function getCloudinaryURL(id) {
+	try {
+		let item = await this.get(id);
+		return item.cloudinaryURL;
+	} catch (error) {
+		throw 'Get cloudinary url error';
+	}
+}
+
+async function getThumbnailURL(id) {
+	try {
+		let item = await this.get(id);
+		return item.thumbnailURL;
+	} catch (error) {
+		throw 'Get thumbnail error';
 	}
 }
 
@@ -127,5 +160,7 @@ module.exports = {
 	get,
 	getAll,
 	deleteById,
-	updateCloudinary
+	updateCloudinary,
+	getCloudinaryURL,
+	getThumbnailURL
 };
