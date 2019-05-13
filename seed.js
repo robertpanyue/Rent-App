@@ -13,12 +13,6 @@ const bcrypt = require('./bcrypt_usage');
 			if (err) throw err;
 			console.log('Collection users created!');
 		});
-
-		await dbo.createCollection('itemPosts', function(err, res) {
-			if (err) throw err;
-			console.log('Collection itemPosts created!');
-		});
-
 		await dbo.collection('itemPosts').createIndex({ itemName: 'text', itemDescription: 'text' });
 		console.log('CreateIndex');
 
@@ -36,7 +30,7 @@ const bcrypt = require('./bcrypt_usage');
 
 		let userId = '';
 		//insert user fake data
-		const cred = await firebase.auth().createUserWithEmailAndPassword('testtest@4.com', '123456');
+		const cred = await firebase.auth().createUserWithEmailAndPassword('test5@5.com', '123456');
 		userId = cred.user.uid;
 		console.log(userId);
 		firebase.auth().signOut();
@@ -46,7 +40,7 @@ const bcrypt = require('./bcrypt_usage');
 			const user = await userDB.create(
 				userId,
 				'Patrick Hill',
-				'testtest@3.com',
+				'test5@5.com',
 				'8888888888',
 				'Hoboken',
 				'NJ',
