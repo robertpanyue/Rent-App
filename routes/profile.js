@@ -11,13 +11,10 @@ router.get('/', async (req, res) => {
 			const itemIds = user.itemsListed.concat(user.itemsRequested);
 			items = [];
 
-			console.log(itemIds);
-
 			for (index in itemIds) {
 				items.push(await itemData.getAsObject(itemIds[index]));
 			}
 
-			console.log(items);
 			res.render('pages/userProfile', { title: 'User Profile', person:user, resultList: items});
 		} else {
 			res.redirect('/login');

@@ -15,9 +15,6 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-	console.log(req.body);
-	console.log(req.session);
-	console.log(req.session.user);
 	try {
 		if (req.session && req.session.user) {
 			let addr = req.body.address.split(', ');
@@ -73,6 +70,17 @@ router.post('/images/add/addCloudinary/:id', (req, res) => {
 	try {
 		itemData.updateCloudinary(req.params.id, req.body.url, req.body.turl);
 		return;
+	} catch (e) {
+		console.log(e);
+		res.status(400).render('pages/error', { errorMessage: 'listing page Error', title: 'Error' });
+	}
+});
+
+router.get('/view/:id', async (req, res) => {
+	try {
+		let item = await itemData.get(req.params.id);
+		console.log(item);
+		res.render('pages/viewListing', { owner: true, item: item });
 	} catch (e) {
 		console.log(e);
 		res.status(400).render('pages/error', { errorMessage: 'listing page Error', title: 'Error' });
