@@ -54,18 +54,20 @@
 
         <div id="container" class="container">
           <div class="cloudinary-images text-center" id="cloudinary-images">
-            <table class="cloudinary-table">
+            <table class="cloudinary-table" id="cloudinary-table">
               <tr>
                 {{#each images}}
-                  <td>
-                    <img src={{this}}>
+                  <td id={{this.[url]}}>
+                    <img src={{this.[turl]}}>
                   </td>
                 {{/each}}
               </tr>
               <tr>
                 {{#each images}}
-                  <td>
-                    <button class="cloudinary-delete">&times;</button>
+                  <td id={{this.[turl]}}>
+                    <div class="text-center">
+                      <button class="cloudinary-delete btn {{this.[url]}} {{this.[turl]}}" id={{this}}>&times;</button>
+                    </div>
                   </td>
                 {{/each}}
               </tr>

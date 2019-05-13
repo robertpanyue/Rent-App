@@ -76,12 +76,38 @@ router.post('/images/add/addCloudinary/:id', (req, res) => {
 	}
 });
 
+router.post('/view/removeCloudinary/:id', (req, res) => {
+	try {
+		itemData.removeCloudinary(req.params.id, req.body.url, req.body.turl);
+		cloudinary.api.delete_resources([req.body.publicId],
+		  function(error, result){
+				console.log(result);
+			}
+		);
+		return;
+	} catch (e) {
+		console.log(e);
+		res.status(400).render('pages/error', { errorMessage: 'listing page Error', title: 'Error' });
+	}
+});
+
 router.get('/view/:id', async (req, res) => {
 	try {
+		// error here
 		let item = await itemData.get(req.params.id);
+		let urls = await itemData.getCloudinaryURL(req.params.id);
 		let turls = await itemData.getThumbnailURL(req.params.id);
-		
-		res.render('pages/viewListing', { owner: true, item: item, images: turls });
+
+		let images = [];
+
+		for (index in urls) {
+			images.push({
+				url: urls[index],
+				turl: turls[index]
+			});
+		}
+		console.log(images);
+		res.render('pages/viewListing', { owner: true, item: item, images: images });
 	} catch (e) {
 		console.log(e);
 		res.status(400).render('pages/error', { errorMessage: 'listing page Error', title: 'Error' });
