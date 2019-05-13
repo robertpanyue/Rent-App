@@ -4,22 +4,22 @@ const mainPageSearchRoutes = require('./main');
 const logoutRoutes = require('./logout');
 const listingRoutes = require('./listing');
 const express = require('express');
-const landing=require('./landingpage');
-const deleteRoute=require('./delete');
-const profileRoute=require('./profile');
+const landing = require('./landingpage');
+const deleteRoute = require('./delete');
+const profileRoute = require('./profile');
 const router = express.Router();
 
-router.get('/', (req, res) => {
-	try {
-		if (req.session && req.session.user) {
-			res.redirect('/main');
-		} else {
-			res.render('pages/mainPage', { title: 'Main Page' });
-		}
-	} catch (e) {
-		res.status(400).render('pages/error', { errorMessage: 'Main page Error', title: 'Error' });
-	}
-});
+// router.get('/', (req, res) => {
+// 	try {
+// 		if (req.session && req.session.user) {
+// 			res.redirect('/main');
+// 		} else {
+// 			res.render('pages/mainPage', { title: 'Main Page' });
+// 		}
+// 	} catch (e) {
+// 		res.status(400).render('pages/error', { errorMessage: 'Main page Error', title: 'Error' });
+// 	}
+// });
 
 const constructorMethod = (app) => {
 	app.get('/', landing);

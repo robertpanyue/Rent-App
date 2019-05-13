@@ -4,6 +4,7 @@ const users = db.users;
 const userData = require('./users');
 const { ObjectId } = require('mongodb');
 
+async function createSeed() {}
 async function create(
 	startDate,
 	endDate,
@@ -70,7 +71,7 @@ async function create(
 	}
 }
 
-async function update(){}
+async function update() {}
 
 async function updateCloudinary(id, url, turl) {
 	try {
@@ -82,7 +83,7 @@ async function updateCloudinary(id, url, turl) {
 		urls.push(url);
 		turls.push(turl);
 
-		const updatedItem = { $set: { cloudinaryURL: urls, thumbnailURL:turls } };
+		const updatedItem = { $set: { cloudinaryURL: urls, thumbnailURL: turls } };
 		const updatedInfo = await itemsCollection.updateOne({ _id: ObjectId.createFromHexString(id) }, updatedItem);
 		if (updatedInfo.modifiedCount === 0) throw 'updateCloudinary fail';
 		return updatedInfo;
@@ -156,11 +157,10 @@ async function deleteById(id) {
 		if (deletionInfo.deletedCount === 0) {
 			throw `Could not delete post with id of ${id}`;
 		}
-		if(itemdeleted.requested=="Listed"){
-			const info=await userData.removeItemList(String(itemdeleted.userId),String(itemdeleted._id))
-		}
-		else if(itemdeleted.requested=="Requested"){
-			const info=await userData.removeRequestList(String(itemdeleted.userId),String(itemdeleted._id))
+		if (itemdeleted.requested == 'Listed') {
+			const info = await userData.removeItemList(String(itemdeleted.userId), String(itemdeleted._id));
+		} else if (itemdeleted.requested == 'Requested') {
+			const info = await userData.removeRequestList(String(itemdeleted.userId), String(itemdeleted._id));
 		}
 		return itemdeleted;
 	} catch (e) {
