@@ -36,9 +36,9 @@ router.post('/', async (req, res) => {
 
 			let user = await userData.get(req.session.user);
 			if (req.body.reqOrPost === 'Post') {
-				userData.updateItemList(user._id, item._id);
+				userData.updateItemList(String(user._id), String(item._id));
 			} else if (req.body.reqOrPost === 'Request') {
-				userData.updateRequestList(user._id, item._id);
+				userData.updateRequestList(String(user._id), String(item._id));
 			} else {
 				console.log("item type is not listed nor requested");
 			}
@@ -58,7 +58,7 @@ router.post('/', async (req, res) => {
 
 router.get('/images/add/:id', async (req, res) => {
 	try {
-		let turls = await itemData.getThumbnailURL(req.params.id);
+		let turls = await itemData.getThumbnailURL(String(req.params.id));
 		res.render('pages/images', { images: turls });
 	} catch (e) {
 		console.log(e);
@@ -68,27 +68,27 @@ router.get('/images/add/:id', async (req, res) => {
 
 router.post('/images/add/addCloudinary/:id', (req, res) => {
 	try {
-		itemData.updateCloudinary(req.params.id, req.body.url, req.body.turl);
-		return;
+		itemData.updateCloudinary(String(req.params.id), req.body.url, req.body.turl);
+		res.sendStatus(200);
 	} catch (e) {
 		console.log(e);
-		res.status(400).render('pages/error', { errorMessage: 'listing page Error', title: 'Error' });
+		res.sendStatus(400);
 	}
 });
 
 router.post('/edit/addCloudinary/:id', (req, res) => {
 	try {
-		itemData.updateCloudinary(req.params.id, req.body.url, req.body.turl);
-		return;
+		itemData.updateCloudinary(String(req.params.id), req.body.url, req.body.turl);
+		res.sendStatus(200);
 	} catch (e) {
 		console.log(e);
-		res.status(400).render('pages/error', { errorMessage: 'listing page Error', title: 'Error' });
+		res.sendStatus(400);
 	}
 });
 
 router.post('/edit/removeCloudinary/:id', (req, res) => {
 	try {
-		itemData.removeCloudinary(req.params.id, req.body.url, req.body.turl);
+		itemData.removeCloudinary(String(req.params.id), req.body.url, req.body.turl);
 		cloudinary.api.delete_resources([req.body.publicId],
 		  function(error, result){
 				console.log(result);
@@ -104,9 +104,9 @@ router.post('/edit/removeCloudinary/:id', (req, res) => {
 router.get('/edit/:id', async (req, res) => {
 	try {
 		// error here
-		let item = await itemData.get(req.params.id);
-		let urls = await itemData.getCloudinaryURL(req.params.id);
-		let turls = await itemData.getThumbnailURL(req.params.id);
+		let item = await itemData.get(String(req.params.id));
+		let urls = await itemData.getCloudinaryURL(String(req.params.id));
+		let turls = await itemData.getThumbnailURL(String(req.params.id));
 
 		let images = [];
 
@@ -117,7 +117,7 @@ router.get('/edit/:id', async (req, res) => {
 			});
 		}
 		console.log(images);
-		res.render('pages/viewListing', { owner: true, item: item, images: images });
+		res.render('pages/viewListing', { item: item, images: images });
 	} catch (e) {
 		console.log(e);
 		res.status(400).render('pages/error', { errorMessage: 'listing page Error', title: 'Error' });
@@ -127,7 +127,7 @@ router.get('/edit/:id', async (req, res) => {
 router.put('/listing', async (req, res) => {
 	try {
 		let item = await itemData.get(req.params.id);
-		res.render('pages/viewListing', { owner: true, item: item });
+		res.render('pages/viewListing', { item: item });
 	} catch (e) {
 		console.log(e);
 		res.status(400).render('pages/error', { errorMessage: 'listing page Error', title: 'Error' });

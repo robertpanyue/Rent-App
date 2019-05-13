@@ -84,7 +84,7 @@ async function updateCloudinary(id, url, turl) {
 		turls.push(turl);
 
 		const updatedItem = { $set: { cloudinaryURL: urls, thumbnailURL: turls } };
-		const updatedInfo = await itemsCollection.updateOne({ _id: ObjectId.createFromHexString(id) }, updatedItem);
+		const updatedInfo = await itemsCollection.updateOne({ _id: ObjectId(id) }, updatedItem);
 		if (updatedInfo.modifiedCount === 0) throw 'updateCloudinary fail';
 		return updatedInfo;
 	} catch (error) {
@@ -112,7 +112,7 @@ async function removeCloudinary(id, url, turl) {
 		removeFromArray(turls, turl);
 
 		const updatedItem = { $set: { cloudinaryURL: urls, thumbnailURL: turls } };
-		const updatedInfo = await itemsCollection.updateOne({ _id: ObjectId.createFromHexString(id) }, updatedItem);
+		const updatedInfo = await itemsCollection.updateOne({ _id: ObjectId(id) }, updatedItem);
 		if (updatedInfo.modifiedCount === 0) throw 'removeCloudinary fail';
 		return updatedInfo;
 	} catch (error) {
@@ -123,19 +123,7 @@ async function removeCloudinary(id, url, turl) {
 async function get(id) {
 	try {
 		const itemsCollection = await items();
-		const item = await itemsCollection.findOne({ _id: ObjectId.createFromHexString(id) });
-		if (item === null) throw 'No item with that id';
-		return item;
-	} catch (error) {
-		console.log(error);
-		throw 'Get error';
-	}
-}
-
-async function getAsObject(id) {
-	try {
-		const itemsCollection = await items();
-		const item = await itemsCollection.findOne({ _id: id });
+		const item = await itemsCollection.findOne({ _id: ObjectId(id) });
 		if (item === null) throw 'No item with that id';
 		return item;
 	} catch (error) {
@@ -175,19 +163,19 @@ async function getThumbnailURL(id) {
 
 async function deleteById(id) {
 	try {
-		const itemsCollection = await items();
-		const itemdeleted = await itemsCollection.findOne({ _id: ObjectId.createFromHexString(id) });
 		if (!id) throw 'You must provide an id to search for';
 		if (typeof id !== 'string') {
 			throw 'ID parameter is invalid';
 		}
-		const deletionInfo = await itemsCollection.removeOne({ _id: ObjectId.createFromHexString(id) });
+		const itemsCollection = await items();
+		const itemdeleted = await itemsCollection.findOne({ _id: ObjectId(id) });
+		const deletionInfo = await itemsCollection.removeOne({ _id: ObjectId(id) });
 		if (deletionInfo.deletedCount === 0) {
 			throw `Could not delete post with id of ${id}`;
 		}
-		if (itemdeleted.requested == 'Listed') {
+		if (itemdeleted.requested == 'Post') {
 			const info = await userData.removeItemList(String(itemdeleted.userId), String(itemdeleted._id));
-		} else if (itemdeleted.requested == 'Requested') {
+		} else if (itemdeleted.requested == 'Request') {
 			const info = await userData.removeRequestList(String(itemdeleted.userId), String(itemdeleted._id));
 		}
 		return itemdeleted;
@@ -200,7 +188,6 @@ module.exports = {
 	create,
 	update,
 	get,
-	getAsObject,
 	getAll,
 	deleteById,
 	updateCloudinary,
