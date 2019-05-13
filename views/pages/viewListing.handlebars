@@ -3,6 +3,7 @@
         <div id="container" class="container">
             <div class="row">
                 <div class="col-sm-6 offset-sm-3">
+                  <h3>Edit Listing</h3>
                   <div class="info-form">
                     <form method="UPDATE" action="/listing" class="form-inlin justify-content-center">
                       <div class="form-group">
@@ -43,12 +44,24 @@
                         <input type="text" class="form-control" placeholder="Enter your ZIP" id="postal_code" name="postal_code" value={{item.[zip]}}>
                       </div>
                       <div class="text-center">
-                        <button type="submit" class="btn btn-success" id="submitListing">Submit</button>
+                        <button type="submit" class="btn btn-success" id="submitListing">Submit Changes</button>
                       </div>
                     </form>
                   </div>
                 </div>
             </div>
+        </div>
+
+        <div id="container" class="container">
+          <div class="text-center">
+            {{#each images}}
+              <img src={{this}}>
+            {{/each}}
+          </div>
+
+          <div class="text-center">
+            <button id="upload_widget" class="cloudinary-button">Upload Images</button>
+          </div>
         </div>
     </div>
 </section>
