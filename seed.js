@@ -6,7 +6,7 @@ const firebase = require('firebase');
 const bcrypt = require('./bcrypt_usage');
 (async function() {
 	try {
-	
+
 		const db = await MongoClient.connect(url, { useNewUrlParser: true });
 		const dbo = db.db('Rent-App');
 		await dbo.createCollection('users', function(err, res) {
@@ -80,7 +80,7 @@ const bcrypt = require('./bcrypt_usage');
 		} catch (error) {
 			throw error;
 		}
-		//item 2 
+		//item 2
 		try {
 			const item = await itemDB.create(
 				'2019-05-01T00:00:00',
@@ -163,7 +163,7 @@ const bcrypt = require('./bcrypt_usage');
 		}
 
 		//item2 - requested
-		
+
 		try {
 			const item = await itemDB.create(
 				'2019-05-01T00:00:00',

@@ -61,13 +61,7 @@ router.post('/', async (req, res) => {
 
 router.get('/images/add/:id', async (req, res) => {
 	try {
-		// cloudinary.api.resources_by_tag(`${req.params.id}`,
-    //   function(error, result){
-		// 		res.render('pages/images', { images: result.resources });
-		// 	}
-		// );
 		let turls = await itemData.getThumbnailURL(req.params.id);
-		console.log(turls);
 		res.render('pages/images', { images: turls });
 	} catch (e) {
 		console.log(e);

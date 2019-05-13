@@ -98,6 +98,19 @@ async function get(id) {
 		if (item === null) throw 'No item with that id';
 		return item;
 	} catch (error) {
+		console.log(error);
+		throw 'Get error';
+	}
+}
+
+async function getAsObject(id) {
+	try {
+		const itemsCollection = await items();
+		const item = await itemsCollection.findOne({ _id: id });
+		if (item === null) throw 'No item with that id';
+		return item;
+	} catch (error) {
+		console.log(error);
 		throw 'Get error';
 	}
 }
@@ -126,6 +139,7 @@ async function getThumbnailURL(id) {
 		let item = await this.get(id);
 		return item.thumbnailURL;
 	} catch (error) {
+		console.log(error);
 		throw 'Get thumbnail error';
 	}
 }
@@ -158,6 +172,7 @@ module.exports = {
 	create,
 	update,
 	get,
+	getAsObject,
 	getAll,
 	deleteById,
 	updateCloudinary,

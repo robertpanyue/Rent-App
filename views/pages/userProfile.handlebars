@@ -16,7 +16,7 @@
     <h1>User Name</h1>
     <div class="row m-y-6">
         <div class="col-lg-12 push-lg-4">
-            <ul class="nav nav-tabs"> 
+            <ul class="nav nav-tabs">
                 <li class="nav-item">
                     <a href="" data-target="#edit" data-toggle="tab" class="nav-link active">Edit Listings</a>
                 </li>
@@ -37,7 +37,7 @@
 
 	<figure>
         <div class="headercar">{{this.requested}}</div>
-		<div class="img-wrap"><img src="{{this.cloudinaryURL}}" alt="{{this.itemName}}"></div>
+		<div class="img-wrap"><img src="{{this.cloudinaryURL.[0]}}" alt="{{this.itemName}}"></div>
 		<figcaption class="info-wrap">
 				<h4 class="title">{{this.itemName}}</h4>
 				<p class="desc">{{this.itemDescription}}</p>
@@ -52,7 +52,7 @@
         <div class="price-wrap h5">
             <span class="price-new">${{this.price}}</span>
             <form action="/delete/{{this._id}}" method="post">
-            <button class="delete">Delete</button>
+              <button class="delete">Delete</button>
             </form>
         </div> <!-- price-wrap.// -->
     </div> <!-- bottom-wrap.// -->
@@ -62,14 +62,14 @@
 
 
 </div> <!-- row.// -->
-</div> 
-                </div> 
+</div>
+                </div>
                 <div class="tab-pane" id="profile">
                     <h4 class="m-y-2">User Profile</h4>
                     <div class="row">
                         <div class="col-md-6">
                             <table class="table table-hover table-striped">
-                                <tbody>                                    
+                                <tbody>
                                     <tr>
                                         <td>
                                             <strong>Name</strong>
@@ -124,7 +124,7 @@
                     </div>
                     <!--/row-->
                 </div>
-                
+
 <!--container.//-->
             </div>
         </div>
