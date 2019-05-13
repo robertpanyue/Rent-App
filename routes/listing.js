@@ -26,6 +26,7 @@ router.post('/', async (req, res) => {
 				req.session.user,
 				req.body.itemName,
 				req.body.itemDesc,
+				req.body.price,
 				addr[0],
 				addr[1],
 				addr[2],
