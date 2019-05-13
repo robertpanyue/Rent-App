@@ -7,6 +7,7 @@ router.get('/listings/:item', async (req, res) => {
 	try {
 		if (req.session && req.session.user) {
 			const keyWord = req.params.item;
+			// const Location = req.params.location;
 			const itemCollection = await items();
 			const userCollection = await users();
 			//get the result of the key word from the datbase

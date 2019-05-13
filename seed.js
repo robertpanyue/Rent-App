@@ -14,12 +14,8 @@ const bcrypt = require('./bcrypt_usage');
 			console.log('Collection users created!');
 		});
 
-		await dbo.createCollection('itemPosts', function(err, res) {
-			if (err) throw err;
-			console.log('Collection itemPosts created!');
-		});
-
 		await dbo.collection('itemPosts').createIndex({ itemName: 'text', itemDescription: 'text' });
+		console.log('Collection itemPosts created!');
 		console.log('CreateIndex');
 
 		let firebaseConfig = {
@@ -36,7 +32,7 @@ const bcrypt = require('./bcrypt_usage');
 
 		let userId = '';
 		//insert user fake data
-		const cred = await firebase.auth().createUserWithEmailAndPassword('testtest@4.com', '123456');
+		const cred = await firebase.auth().createUserWithEmailAndPassword('test111@4.com', '123456');
 		userId = cred.user.uid;
 		console.log(userId);
 		firebase.auth().signOut();
