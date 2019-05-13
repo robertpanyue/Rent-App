@@ -109,6 +109,7 @@ async function get(id) {
 		if (user === null) throw 'No user with that id';
 		return user;
 	} catch (error) {
+		console.log(error);
 		throw 'Get error';
 	}
 }

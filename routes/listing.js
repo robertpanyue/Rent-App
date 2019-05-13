@@ -14,9 +14,6 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-	console.log(req.body);
-	console.log(req.session);
-	console.log(req.session.user);
 	try {
 		if (req.session && req.session.user) {
 			let addr = req.body.address.split(',');
@@ -60,13 +57,7 @@ router.post('/', async (req, res) => {
 
 router.get('/images/add/:id', async (req, res) => {
 	try {
-		// cloudinary.api.resources_by_tag(`${req.params.id}`,
-		//   function(error, result){
-		// 		res.render('pages/images', { images: result.resources });
-		// 	}
-		// );
 		let turls = await itemData.getThumbnailURL(req.params.id);
-		console.log(turls);
 		res.render('pages/images', { images: turls });
 	} catch (e) {
 		console.log(e);
@@ -78,6 +69,62 @@ router.post('/images/add/addCloudinary/:id', (req, res) => {
 	try {
 		itemData.updateCloudinary(req.params.id, req.body.url, req.body.turl);
 		return;
+	} catch (e) {
+		console.log(e);
+		res.status(400).render('pages/error', { errorMessage: 'listing page Error', title: 'Error' });
+	}
+});
+
+router.post('/edit/addCloudinary/:id', (req, res) => {
+	try {
+		itemData.updateCloudinary(req.params.id, req.body.url, req.body.turl);
+		return;
+	} catch (e) {
+		console.log(e);
+		res.status(400).render('pages/error', { errorMessage: 'listing page Error', title: 'Error' });
+	}
+});
+
+router.post('/edit/removeCloudinary/:id', (req, res) => {
+	try {
+		itemData.removeCloudinary(req.params.id, req.body.url, req.body.turl);
+		cloudinary.api.delete_resources([ req.body.publicId ], function(error, result) {
+			console.log(result);
+		});
+		return;
+	} catch (e) {
+		console.log(e);
+		res.status(400).render('pages/error', { errorMessage: 'listing page Error', title: 'Error' });
+	}
+});
+
+router.get('/edit/:id', async (req, res) => {
+	try {
+		// error here
+		let item = await itemData.get(req.params.id);
+		let urls = await itemData.getCloudinaryURL(req.params.id);
+		let turls = await itemData.getThumbnailURL(req.params.id);
+
+		let images = [];
+
+		for (index in urls) {
+			images.push({
+				url: urls[index],
+				turl: turls[index]
+			});
+		}
+		console.log(images);
+		res.render('pages/viewListing', { owner: true, item: item, images: images });
+	} catch (e) {
+		console.log(e);
+		res.status(400).render('pages/error', { errorMessage: 'listing page Error', title: 'Error' });
+	}
+});
+
+router.put('/listing', async (req, res) => {
+	try {
+		let item = await itemData.get(req.params.id);
+		res.render('pages/viewListing', { owner: true, item: item });
 	} catch (e) {
 		console.log(e);
 		res.status(400).render('pages/error', { errorMessage: 'listing page Error', title: 'Error' });

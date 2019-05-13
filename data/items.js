@@ -159,6 +159,34 @@ async function updateCloudinary(id, url, turl) {
 	}
 }
 
+function removeFromArray(arr, ele) {
+	for (index in arr) {
+		if (arr[index] === ele) {
+			arr.splice(index, 1);
+		}
+	}
+	return arr;
+}
+
+async function removeCloudinary(id, url, turl) {
+	try {
+		const itemsCollection = await items();
+		const item = await this.get(id);
+		let urls = item.cloudinaryURL;
+		let turls = item.thumbnailURL;
+
+		removeFromArray(urls, url);
+		removeFromArray(turls, turl);
+
+		const updatedItem = { $set: { cloudinaryURL: urls, thumbnailURL: turls } };
+		const updatedInfo = await itemsCollection.updateOne({ _id: ObjectId.createFromHexString(id) }, updatedItem);
+		if (updatedInfo.modifiedCount === 0) throw 'removeCloudinary fail';
+		return updatedInfo;
+	} catch (error) {
+		throw error;
+	}
+}
+
 async function get(id) {
 	try {
 		const itemsCollection = await items();
@@ -166,6 +194,19 @@ async function get(id) {
 		if (item === null) throw 'No item with that id';
 		return item;
 	} catch (error) {
+		console.log(error);
+		throw 'Get error';
+	}
+}
+
+async function getAsObject(id) {
+	try {
+		const itemsCollection = await items();
+		const item = await itemsCollection.findOne({ _id: id });
+		if (item === null) throw 'No item with that id';
+		return item;
+	} catch (error) {
+		console.log(error);
 		throw 'Get error';
 	}
 }
@@ -194,6 +235,7 @@ async function getThumbnailURL(id) {
 		let item = await this.get(id);
 		return item.thumbnailURL;
 	} catch (error) {
+		console.log(error);
 		throw 'Get thumbnail error';
 	}
 }
@@ -226,9 +268,11 @@ module.exports = {
 	create,
 	update,
 	get,
+	getAsObject,
 	getAll,
 	deleteById,
 	updateCloudinary,
+	removeCloudinary,
 	getCloudinaryURL,
 	getThumbnailURL
 };
