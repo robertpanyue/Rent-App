@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const firebase = require('firebase');
 const data = require('../data');
 const cloudinary = require('cloudinary').v2;
 const itemData = data.items;
@@ -8,7 +7,7 @@ const userData = data.users;
 
 router.get('/', (req, res) => {
 	try {
-		res.render('pages/listing', { });
+		res.render('pages/listing', { title: 'Post Listing' });
 	} catch (e) {
 		res.status(400).render('pages/error', { errorMessage: 'listing page Error', title: 'Error' });
 	}
@@ -17,7 +16,7 @@ router.get('/', (req, res) => {
 router.post('/', async (req, res) => {
 	try {
 		if (req.session && req.session.user) {
-			let addr = req.body.address.split(', ');
+			let addr = req.body.address.split(',');
 
 			let item = await itemData.create(
 				req.body.startDate,
@@ -40,7 +39,7 @@ router.post('/', async (req, res) => {
 			} else if (req.body.reqOrPost === 'Request') {
 				userData.updateRequestList(String(user._id), String(item._id));
 			} else {
-				console.log("item type is not listed nor requested");
+				console.log('item type is not listed nor requested');
 			}
 
 			res.redirect(`/listing/images/add/${item._id}`);
@@ -103,7 +102,6 @@ router.post('/edit/removeCloudinary/:id', (req, res) => {
 
 router.get('/edit/:id', async (req, res) => {
 	try {
-		// error here
 		let item = await itemData.get(String(req.params.id));
 		let urls = await itemData.getCloudinaryURL(String(req.params.id));
 		let turls = await itemData.getThumbnailURL(String(req.params.id));

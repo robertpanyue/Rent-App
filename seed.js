@@ -7,7 +7,8 @@ const bcrypt = require('./bcrypt_usage');
 (async function() {
 	try {
 		const db = await MongoClient.connect(url, { useNewUrlParser: true });
-		const dbo = db.db('Rent-App');
+		const dbo = await db.db('Rent-App');
+
 		await dbo.createCollection('users', function(err, res) {
 			if (err) throw err;
 			console.log('Collection users created!');
@@ -35,7 +36,7 @@ const bcrypt = require('./bcrypt_usage');
 
 		let userId = '';
 		//insert user fake data
-		const cred = await firebase.auth().createUserWithEmailAndPassword('test@2.com', '123456');
+		const cred = await firebase.auth().createUserWithEmailAndPassword('testtest@2.com', '123456');
 		userId = cred.user.uid;
 		console.log(userId);
 		firebase.auth().signOut();
@@ -62,18 +63,22 @@ const bcrypt = require('./bcrypt_usage');
 		//item 1
 		try {
 			const item = await itemDB.createSeed(
-				'2019-04-01T00:00:00',
-				'2019-04-05T00:00:00',
+				'2019-04-01',
+				'2019-04-05',
 				'Listed',
 				'open',
 				userId,
 				'MacBook Pro',
 				'Laptop',
+				'1 Castle Point Terrace',
 				'Hoboken',
 				'New Jersey',
 				'07030',
 				100,
-				'https://res.cloudinary.com/dl6xltl5t/image/upload/v1557334517/macbook-select-space-gray-201706_GEO_US_uk1xhr.jpg'
+				[
+					'https://res.cloudinary.com/dl6xltl5t/image/upload/v1557334517/macbook-select-space-gray-201706_GEO_US_uk1xhr.jpg'
+				],
+				[]
 			);
 			console.log('create item');
 		} catch (error) {
@@ -81,19 +86,21 @@ const bcrypt = require('./bcrypt_usage');
 		}
 		//item 2
 		try {
-			const item = await itemDB.create(
-				'2019-05-01T00:00:00',
-				'2019-05-05T00:00:00',
+			const item = await itemDB.createSeed(
+				'2019-05-01',
+				'2019-05-05',
 				'Listed',
 				'open',
 				userId,
 				'iPhone Xr',
 				'Phone',
+				'1 Castle Point Terrace',
 				'Hoboken',
 				'New Jersey',
 				'07030',
 				100,
-				'https://res.cloudinary.com/dl6xltl5t/image/upload/v1557521042/iphone_egrdtd.jpg'
+				[ 'https://res.cloudinary.com/dl6xltl5t/image/upload/v1557521042/iphone_egrdtd.jpg' ],
+				[]
 			);
 			console.log('create item');
 		} catch (error) {
@@ -101,19 +108,21 @@ const bcrypt = require('./bcrypt_usage');
 		}
 		//item 3
 		try {
-			const item = await itemDB.create(
-				'2019-06-01T00:00:00',
-				'2019-06-05T00:00:00',
+			const item = await itemDB.createSeed(
+				'2019-06-01',
+				'2019-06-05',
 				'Listed',
 				'open',
 				userId,
 				'Dell Inspiron 15',
 				'Laptop',
+				'1 Castle Point Terrace',
 				'Hoboken',
 				'New Jersey',
 				'07030',
 				100,
-				'https://res.cloudinary.com/dl6xltl5t/image/upload/v1557521397/dell_qpvsul.webp'
+				[ 'https://res.cloudinary.com/dl6xltl5t/image/upload/v1557521397/dell_qpvsul.webp' ],
+				[]
 			);
 			console.log('create item');
 		} catch (error) {
@@ -121,19 +130,21 @@ const bcrypt = require('./bcrypt_usage');
 		}
 		//item 4 - listed
 		try {
-			const item = await itemDB.create(
-				'2019-07-01T00:00:00',
-				'2019-07-05T00:00:00',
+			const item = await itemDB.createSeed(
+				'2019-07-01',
+				'2019-07-05',
 				'Listed',
 				'open',
 				userId,
 				'google pixel 2',
 				'Phone',
+				'1 Castle Point Terrace',
 				'Hoboken',
 				'New Jersey',
 				'07030',
 				100,
-				'https://res.cloudinary.com/dl6xltl5t/image/upload/v1557521490/google-pixel-2header_wiyuy7.jpg'
+				[ 'https://res.cloudinary.com/dl6xltl5t/image/upload/v1557521490/google-pixel-2header_wiyuy7.jpg' ],
+				[]
 			);
 			console.log('create item');
 		} catch (error) {
@@ -142,19 +153,21 @@ const bcrypt = require('./bcrypt_usage');
 		//item 1- requested
 
 		try {
-			const item = await itemDB.create(
-				'2019-04-01T00:00:00',
-				'2019-04-05T00:00:00',
+			const item = await itemDB.createSeed(
+				'2019-04-01',
+				'2019-04-05',
 				'Requested',
 				'open',
 				userId,
 				'google pixel 3',
 				'Phone',
+				'1 Castle Point Terrace',
 				'Hoboken',
 				'New Jersey',
 				'07030',
 				100,
-				'https://res.cloudinary.com/dl6xltl5t/image/upload/v1557521395/google_pixel_3_cvug2p.jpg'
+				[ 'https://res.cloudinary.com/dl6xltl5t/image/upload/v1557521395/google_pixel_3_cvug2p.jpg' ],
+				[]
 			);
 			console.log('create item');
 		} catch (error) {
@@ -164,19 +177,21 @@ const bcrypt = require('./bcrypt_usage');
 		//item2 - requested
 
 		try {
-			const item = await itemDB.create(
-				'2019-05-01T00:00:00',
-				'2019-05-05T00:00:00',
+			const item = await itemDB.createSeed(
+				'2019-05-01',
+				'2019-05-05',
 				'Requested',
 				'open',
 				userId,
 				'iphone 6s',
 				'Phone',
+				'1 Castle Point Terrace',
 				'Hoboken',
 				'New Jersey',
 				'07030',
 				100,
-				'https://res.cloudinary.com/dl6xltl5t/image/upload/v1557521393/iphoen6s_zeihfk.jpg'
+				[ 'https://res.cloudinary.com/dl6xltl5t/image/upload/v1557521393/iphoen6s_zeihfk.jpg' ],
+				[]
 			);
 			console.log('create item');
 		} catch (error) {
@@ -186,19 +201,21 @@ const bcrypt = require('./bcrypt_usage');
 		//item3 - requested
 
 		try {
-			const item = await itemDB.create(
-				'2019-06-01T00:00:00',
-				'2019-06-05T00:00:00',
+			const item = await itemDB.createSeed(
+				'2019-06-01',
+				'2019-06-05',
 				'Requested',
 				'open',
 				userId,
 				'Lenovo',
 				'Laptop',
+				'1 Castle Point Terrace',
 				'Hoboken',
 				'New Jersey',
 				'07030',
 				100,
-				'https://res.cloudinary.com/dl6xltl5t/image/upload/v1557521390/lenovo_jzrfs7.jpg'
+				[ 'https://res.cloudinary.com/dl6xltl5t/image/upload/v1557521390/lenovo_jzrfs7.jpg' ],
+				[]
 			);
 			console.log('create item');
 		} catch (error) {
@@ -207,19 +224,21 @@ const bcrypt = require('./bcrypt_usage');
 
 		//item4- Requested
 		try {
-			const item = await itemDB.create(
-				'2019-05-01T00:00:00',
-				'2019-05-05T00:00:00',
+			const item = await itemDB.createSeed(
+				'2019-05-01',
+				'2019-05-05',
 				'Requested',
 				'open',
 				userId,
 				'acer predator helios 300',
 				'Laptop',
+				'1 Castle Point Terrace',
 				'Hoboken',
 				'New Jersey',
 				'07030',
 				100,
-				'https://res.cloudinary.com/dl6xltl5t/image/upload/v1557521391/acer_rwdjrw.jpg'
+				[ 'https://res.cloudinary.com/dl6xltl5t/image/upload/v1557521391/acer_rwdjrw.jpg' ],
+				[]
 			);
 			console.log('create item');
 		} catch (error) {
