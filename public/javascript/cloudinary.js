@@ -23,10 +23,24 @@ $(document).ready(function () {
             }
           });
 
-          let images = document.getElementById("cloudinary-images");
+          let imageRow = document.getElementById("cloudinary-image-row");
+          let xRow = document.getElementById("x-button-row");
+
+          let imageCell = document.createElement('td');
           let thumbnail = document.createElement('img');
+          let xCell = document.createElement('td');
+          let xButton = document.createElement('button');
+
+          imageCell.setAttribute('class', result.info.thumbnail_url);
           thumbnail.src = result.info.thumbnail_url;
-          images.appendChild(thumbnail);
+          xCell.setAttribute('class', result.info.url);
+          xButton.setAttribute('class', `cloudinary-delete btn ${result.info.url} ${result.info.thumbnail_url}`);
+          xButton.innerHTML = '&times;';
+
+          imageCell.appendChild(thumbnail);
+          imageRow.appendChild(imageCell);
+          xCell.appendChild(xButton);
+          xRow.appendChild(xCell);
         }
       }
     )

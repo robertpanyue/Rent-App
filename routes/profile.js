@@ -11,8 +11,9 @@ router.get('/', async (req, res) => {
 			const itemIds = user.itemsListed.concat(user.itemsRequested);
 			items = [];
 
-			for (index in itemIds) {
-				items.push(await itemData.getAsObject(itemIds[index]));
+			for (index = 0; index < itemIds.length; index++) {
+				console.log(itemIds[index]);
+				items.push(await itemData.get(String(itemIds[index])));
 			}
 
 			res.render('pages/userProfile', { title: 'User Profile', person:user, resultList: items});
