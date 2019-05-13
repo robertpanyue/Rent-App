@@ -6,10 +6,10 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class=" nav navbar-nav navbar-right ml-auto">
       <li class="nav-item">
-        <a class="nav-link" href="/login">Login</a>
+        <a class="nav-link" id="specialNav" href="/login">Login</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/register">Register</a>
+        <a class="nav-link" id="specialNav1" href="/register">Register</a>
       </li>
     </ul>
   </div>
@@ -50,8 +50,12 @@
         <div id="container" class="container">
             <div class="row">
                 <div class="col-sm-6 offset-sm-3">
+<<<<<<< HEAD
                     <h3>Sign In</h3>
                     <h6 id="logouterr">{{err}}</h6>
+=======
+                    <h1 class="text-center">Sign In</h1>
+>>>>>>> 79134966fa2d760bc40b8325755e496103201119
                     <div class="info-form">
                         <form method="POST" action="/login" class="form-inlin justify-content-center" id="form">
                             <div class="form-group">
@@ -63,7 +67,7 @@
                                 <input type="password" class="form-control" name="password" id="password" required>
                             </div>
                             <div class="text-center">
-                                <button type="submit" value="submit" class="btn btn-success" id="loginButton">Login!</button>
+                                <button id="darkButton" type="submit" value="submit" class="btn btn-success" id="loginButton">Login!</button>
                             </div>
                         </form>
                     </div>

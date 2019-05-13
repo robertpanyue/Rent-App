@@ -359,7 +359,7 @@ h3 {
 	background-color:black;
 	color:white;
 
-}
+}THORS
 .text-uppercase {
 	text-decoration: underline;
 }
@@ -370,7 +370,18 @@ h3 {
 	color:red
 }
 
+<<<<<<< HEAD
 #logouterr{
 	color:red;
 	text-align: center
+=======
+#specialNav{
+	color: #525353;
+}
+#specialNav1{
+	color: #525353;
+}
+#darkButton {
+	background-color: #007c00;
+>>>>>>> 79134966fa2d760bc40b8325755e496103201119
 }
