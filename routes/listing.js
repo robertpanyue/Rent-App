@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const firebase = require('firebase');
 const data = require('../data');
 const cloudinary = require('cloudinary').v2;
 const itemData = data.items;
@@ -8,7 +7,7 @@ const userData = data.users;
 
 router.get('/', (req, res) => {
 	try {
-		res.render('pages/listing', { });
+		res.render('pages/listing', { title: 'Post Listing' });
 	} catch (e) {
 		res.status(400).render('pages/error', { errorMessage: 'listing page Error', title: 'Error' });
 	}
@@ -17,7 +16,7 @@ router.get('/', (req, res) => {
 router.post('/', async (req, res) => {
 	try {
 		if (req.session && req.session.user) {
-			let addr = req.body.address.split(', ');
+			let addr = req.body.address.split(',');
 
 			let item = await itemData.create(
 				req.body.startDate,
@@ -40,7 +39,7 @@ router.post('/', async (req, res) => {
 			} else if (req.body.reqOrPost === 'Request') {
 				userData.updateRequestList(user._id, item._id);
 			} else {
-				console.log("item type is not listed nor requested");
+				console.log('item type is not listed nor requested');
 			}
 
 			res.redirect(`/listing/images/add/${item._id}`);
@@ -89,11 +88,9 @@ router.post('/edit/addCloudinary/:id', (req, res) => {
 router.post('/edit/removeCloudinary/:id', (req, res) => {
 	try {
 		itemData.removeCloudinary(req.params.id, req.body.url, req.body.turl);
-		cloudinary.api.delete_resources([req.body.publicId],
-		  function(error, result){
-				console.log(result);
-			}
-		);
+		cloudinary.api.delete_resources([ req.body.publicId ], function(error, result) {
+			console.log(result);
+		});
 		return;
 	} catch (e) {
 		console.log(e);

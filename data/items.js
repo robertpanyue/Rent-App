@@ -4,7 +4,74 @@ const users = db.users;
 const userData = require('./users');
 const { ObjectId } = require('mongodb');
 
-async function createSeed() {}
+async function createSeed(
+	startDate,
+	endDate,
+	requested,
+	status,
+	userId,
+	itemName,
+	itemDescription,
+	address,
+	city,
+	state,
+	zip,
+	price,
+	cloudinaryURL,
+	thumbnailURL
+) {
+	if (
+		!startDate ||
+		!endDate ||
+		!requested ||
+		!status ||
+		!userId ||
+		!itemName ||
+		!itemDescription ||
+		!address ||
+		!city ||
+		!state ||
+		!zip ||
+		!price ||
+		!cloudinaryURL ||
+		!thumbnailURL
+	) {
+		throw `Need all fields to create item`;
+	}
+
+	const newItem = {
+		startDate,
+		endDate,
+		requested,
+		status,
+		userId,
+		itemName,
+		itemDescription,
+		address,
+		city,
+		state,
+		zip,
+		price,
+		cloudinaryURL,
+		thumbnailURL
+	};
+	try {
+		const itemsCollection = await items();
+		const insertInfo = await itemsCollection.insertOne(newItem);
+		if (insertInfo.insertedCount === 0) throw 'Could not add item';
+		const newId = insertInfo.insertedId;
+		const itemInserted = await this.get(newId.toHexString());
+		if (requested == 'Requested') {
+			await userData.updateRequestList(userId, newId);
+		} else if (requested == 'Listed') {
+			await userData.updateItemList(userId, newId);
+		}
+		return itemInserted;
+	} catch (e) {
+		console.log(e);
+		throw error;
+	}
+}
 async function create(
 	startDate,
 	endDate,
@@ -197,6 +264,7 @@ async function deleteById(id) {
 }
 
 module.exports = {
+	createSeed,
 	create,
 	update,
 	get,
