@@ -6,10 +6,6 @@ const firebase = require('firebase');
 const bcrypt = require('./bcrypt_usage');
 (async function() {
 	try {
-<<<<<<< HEAD
-
-=======
->>>>>>> master
 		const db = await MongoClient.connect(url, { useNewUrlParser: true });
 		const dbo = db.db('Rent-App');
 		await dbo.createCollection('users', function(err, res) {

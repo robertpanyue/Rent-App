@@ -79,7 +79,18 @@ router.post('/images/add/addCloudinary/:id', (req, res) => {
 router.get('/view/:id', async (req, res) => {
 	try {
 		let item = await itemData.get(req.params.id);
-		console.log(item);
+		console.log(item.requested);
+		console.log(typeof item.requested);
+		res.render('pages/viewListing', { owner: true, item: item });
+	} catch (e) {
+		console.log(e);
+		res.status(400).render('pages/error', { errorMessage: 'listing page Error', title: 'Error' });
+	}
+});
+
+router.put('/listing', async (req, res) => {
+	try {
+		let item = await itemData.get(req.params.id);
 		res.render('pages/viewListing', { owner: true, item: item });
 	} catch (e) {
 		console.log(e);
