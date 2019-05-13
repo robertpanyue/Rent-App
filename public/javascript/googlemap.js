@@ -12,12 +12,11 @@ function initAutocomplete() {
 
   autocomplete.addListener('place_changed', function() {
     let place = autocomplete.getPlace();
-    console.log(place);
-
     for (index in place.address_components) {
       if (place.address_components[index].types.length == 1) {
         if (place.address_components[index].types[0] == "postal_code") {
-          console.log(place.address_components[index].types[0]);
+          // console.log(place.address_components[index].long_name);
+          document.getElementById('postal_code').value = place.address_components[index].long_name;
         }
       }
     }
