@@ -76,7 +76,17 @@ router.post('/images/add/addCloudinary/:id', (req, res) => {
 	}
 });
 
-router.post('/view/removeCloudinary/:id', (req, res) => {
+router.post('/edit/addCloudinary/:id', (req, res) => {
+	try {
+		itemData.updateCloudinary(req.params.id, req.body.url, req.body.turl);
+		return;
+	} catch (e) {
+		console.log(e);
+		res.status(400).render('pages/error', { errorMessage: 'listing page Error', title: 'Error' });
+	}
+});
+
+router.post('/edit/removeCloudinary/:id', (req, res) => {
 	try {
 		itemData.removeCloudinary(req.params.id, req.body.url, req.body.turl);
 		cloudinary.api.delete_resources([req.body.publicId],
@@ -91,7 +101,7 @@ router.post('/view/removeCloudinary/:id', (req, res) => {
 	}
 });
 
-router.get('/view/:id', async (req, res) => {
+router.get('/edit/:id', async (req, res) => {
 	try {
 		// error here
 		let item = await itemData.get(req.params.id);
