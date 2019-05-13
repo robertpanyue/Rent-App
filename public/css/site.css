@@ -376,6 +376,24 @@ h3 {
 #specialNav1{
 	color: #525353;
 }
-#darkButton {
+#specialNav2{
+	color: #525353;
+}
+#loginButton {
 	background-color: #007c00;
+}
+#registerButton{
+	background-color: #007c00;
+}
+#submitButton{
+	background-color: #006dee;
+}
+#find-me {
+	background-color: #007c00;
+}
+#invis{
+	display: none;
+}
+#invis1{
+	display: none;
 }
