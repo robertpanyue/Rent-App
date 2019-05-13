@@ -1,30 +1,19 @@
 const express = require('express');
 const router = express.Router();
 const data = require('../data');
-const items = data.items;
-const users = data.users;
+const itemDB = data.items;
+const userDB = data.users;
 router.get('/', async (req, res) => {
 	try {
 		if (req.session && req.session.user) {
-			const allItems = await items.getAll();
-			const itemList = allItems.slice(0, 8);
-			for (let i = 0; i < itemList.length; i++) {
-				let user = await users.get(itemList[i].userId);
-				itemList[i].email = user.email;
-				itemList[i].phoneNumber = user.phoneNumber;
-				itemList[i].name = user.name;
+			const user=await userDB.get(req.session.user)
+			const arr=user['itemsListed'].concat(user['itemsRequested'])
+			arr2=[]
+			for(let i=0;i<arr.length;i++){
+				const item=await itemDB.get(String(arr[i]))
+				arr2.push(item)
 			}
-			res.render('pages/mainPageSearch', {
-				title: 'Main Page',
-				img1: itemList[0],
-				img2: itemList[1],
-				img3: itemList[2],
-				img4: itemList[3],
-				img5: itemList[4],
-				img6: itemList[5],
-				img7: itemList[6],
-				img8: itemList[7],
-			});
+			res.render('pages/mainPageSearch', { title: 'User Profile',person:user,resultList:arr2});
 		} else {
 			res.render('pages/error', { errorMessage: 'You do not have authentication, please login to continue', title: '403' });
 		}

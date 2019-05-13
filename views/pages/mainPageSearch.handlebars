@@ -175,167 +175,37 @@
     </form>
 </div>
 
-<div class="container-fluid">
-    <div id="carouselExample" class="carousel slide" data-ride="carousel" data-interval="9000">
-        <div class="carousel-inner row w-10 mxauto" role="listbox">
-            <div class="carousel-item col-md-4 active">
-                <figure class="card card-product1" alt="slide 1">
-                    <div class="headercar">{{img1.requested}}</div>
-		            <div class="img-wrap1"><img src="{{img1.cloudinaryURL}}"></div>
-		            <figcaption class="info-wrap1">
-				        <h4 class="title">{{img1.itemName}}</h4>
-				        <p class="desc">{{img1.itemDescription}}</p>
-		            </figcaption>
-		            <div class="bottom-wrap1">
-                        <p>Name:{{img1.name}}</p>
-                        <p>Email id:{{img1.email}}</p>
-                        <p>Contact No:{{img1.phoneNumber}}</p>
-		            </div> <!-- bottom-wrap.// -->
-	            </figure>
-            </div>
-            <div class="carousel-item col-md-4">
-                <figure class="card card-product1" alt="slide 2">
-                    <div class="headercar">{{img2.requested}}</div>
-		            <div class="img-wrap1"><img src="{{img2.cloudinaryURL}}"></div>
-		            <figcaption class="info-wrap1">
-				        <h4 class="title">{{img2.itemName}}</h4>
-				        <p class="desc">{{img2.itemDescription}}</p>
-		            </figcaption>
-		            <div class="bottom-wrap1">
-                        <p>Name:{{img2.name}}</p>
-                        <p>Email id:{{img2.email}}</p>
-                        <p>Contact No:{{img2.phoneNumber}}</p>
-		            </div> <!-- bottom-wrap.// -->
-	            </figure>
-            </div>
-            <div class="carousel-item col-md-4">
-                <figure class="card card-product1" alt="slide 3">
-                    <div class="headercar">{{img3.requested}}</div>
-		            <div class="img-wrap1"><img src="{{img3.cloudinaryURL}}"></div>
-		            <figcaption class="info-wrap1">
-				        <h4 class="title">{{img3.itemName}}</h4>
-				        <p class="desc">{{img3.itemDescription}}</p>
-		            </figcaption>
-		            <div class="bottom-wrap1">
-<<<<<<< HEAD
-                        <p>Name:{{user3.name}}</p>
-                        <p>Email id:{{user3.email}}</p>
-                        <p>Contact No:{{user3.phoneNumber}}</p>
-=======
-                        <p>Name:{{img3.name}}</p>
-                        <p>Email id:{{img3.email}}</p>
-                        <p>Contact No:{{img3.phoneNumber}}</p>            
->>>>>>> master
-		            </div> <!-- bottom-wrap.// -->
-	            </figure>
-            </div>
-            <div class="carousel-item col-md-4">
-                <figure class="card card-product1" alt="slide 4 ">
-                    <div class="headercar">{{img4.requested}}</div>
-		            <div class="img-wrap1"><img src="{{img4.cloudinaryURL}}"></div>
-		            <figcaption class="info-wrap1">
-				        <h4 class="title">{{img4.itemName}}</h4>
-				        <p class="desc">{{img4.itemDescription}}</p>
-		            </figcaption>
-		            <div class="bottom-wrap1">
-                        <p>Name:{{img4.name}}</p>
-                        <p>Email id:{{img4.email}}</p>
-                        <p>Contact No:{{img4.phoneNumber}}</p>
-		            </div> <!-- bottom-wrap.// -->
-	            </figure>
-            </div>
-            <div class="carousel-item col-md-4">
-                <figure class="card card-product1" alt="slide 5 ">
-                    <div class="headercar">{{img5.requested}}</div>
-		            <div class="img-wrap1"><img src="{{img5.cloudinaryURL}}"></div>
-		            <figcaption class="info-wrap1">
-				        <h4 class="title">{{img5.itemName}}</h4>
-				        <p class="desc">{{img5.itemDescription}}</p>
-		            </figcaption>
-		            <div class="bottom-wrap1">
-<<<<<<< HEAD
 
-                        <p>Name:{{user5.name}}</p>
-                        <p>Email id:{{user5.email}}</p>
-                        <p>Contact No:{{user5.phoneNumber}}</p>
+<div class="container">
+<div class="row">
+{{#each resultList}}
 
-=======
-			            
-                        <p>Name:{{img5.name}}</p>
-                        <p>Email id:{{img5.email}}</p>
-                        <p>Contact No:{{img5.phoneNumber}}</p>
-                    
->>>>>>> master
-		            </div> <!-- bottom-wrap.// -->
-	            </figure>
-            </div>
-            <div class="carousel-item col-md-4">
-                <figure class="card card-product1" alt="slide 6">
-                    <div class="headercar">{{img6.requested}}</div>
-		            <div class="img-wrap1"><img src="{{img6.cloudinaryURL}}"></div>
-		            <figcaption class="info-wrap1">
-				        <h4 class="title">{{img6.itemName}}</h4>
-				        <p class="desc">{{img6.itemDescription}}</p>
-		            </figcaption>
-		            <div class="bottom-wrap1">
-<<<<<<< HEAD
-                        <p>Name:{{user6.name}}</p>
-                        <p>Email id:{{user6.email}}</p>
-                        <p>Contact No:{{user6.phoneNumber}}</p>
-=======
-                        <p>Name:{{img6.name}}</p>
-                        <p>Email id:{{img6.email}}</p>
-                        <p>Contact No:{{img6.phoneNumber}}</p>        
->>>>>>> master
-		            </div> <!-- bottom-wrap.// -->
-	            </figure>
-            </div>
-            <div class="carousel-item col-md-4">
-                <figure class="card card-product1" alt="slide 7">
-                    <div class="headercar">{{img7.requested}}</div>
-		            <div class="img-wrap1"><img src="{{img7.cloudinaryURL}}"></div>
-		            <figcaption class="info-wrap1">
-				        <h4 class="title">{{img7.itemName}}</h4>
-				        <p class="desc">{{img7.itemDescription}}</p>
-		            </figcaption>
-		            <div class="bottom-wrap1">
-                        <p>Name:{{img7.name}}</p>
-                        <p>Email id:{{img7.email}}</p>
-                        <p>Contact No:{{img7.phoneNumber}}</p>
-		            </div> <!-- bottom-wrap.// -->
-	            </figure>
-            </div>
-            <div class="carousel-item col-md-4">
-                <figure class="card card-product1" alt="slide 8">
-                    <div class="headercar">{{img8.requested}}</div>
-		            <div class="img-wrap1"><img src="{{img8.cloudinaryURL}}"></div>
-		            <figcaption class="info-wrap1">
-				        <h4 class="title">{{img8.itemName}}</h4>
-				        <p class="desc">{{img8.itemDescription}}</p>
-		            </figcaption>
-		            <div class="bottom-wrap1">
-                        <p>Name:{{img8.name}}</p>
-                        <p>Email id:{{img8.email}}</p>
-                        <p>Contact No:{{img8.phoneNumber}}</p>
-		            </div> <!-- bottom-wrap.// -->
-	            </figure>
-            </div>
-        </div>
-        <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">
+<div class="col-md-4 card card-product">
 
-            <i class="fa fa-chevron-left fa-lg text-muted">
-              <<
-            </i>
+	<figure>
+        <div class="headercar">{{this.requested}}</div>
+		<div class="img-wrap"><img src="{{this.cloudinaryURL}}" alt="{{this.itemName}}"></div>
+		<figcaption class="info-wrap">
+				<h4 class="title">{{this.itemName}}</h4>
+				<p class="desc">{{this.itemDescription}}</p>
+                <p class="desc">{{this.city}}</p>
+				{{!-- <div class="rating-wrap">
+					<div class="label-rating">132 reviews</div>
+					<div class="label-rating">154 orders </div>
+				</div> <!-- rating-wrap.// --> --}}
+		</figcaption>
+    </figure>
+    <div class="bottom-wrap">
+        <div class="price-wrap h5">
+            <span class="price-new">${{this.price}}</span>
+        </div> <!-- price-wrap.// -->
+    </div> <!-- bottom-wrap.// -->
 
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next text-faded" href="#carouselExample" role="button" data-slide="next">
-            <i class="fa fa-chevron-right fa-lg text-muted">
-              >>
-            </i>
-            <span class="sr-only">Next</span>
-        </a>
-    </div>
+</div> <!-- col // -->
+{{/each}}
+
+
+</div> <!-- row.// -->
 </div>
 
  <script src="public/javascript/carousel.js"></script>

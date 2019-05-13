@@ -12,13 +12,14 @@ router.get('/', async (req, res) => {
 				const item=await itemDB.get(String(arr[i]))
 				arr2.push(item)
 			}
+			console.log(arr2)
 			res.render('pages/userProfile', { title: 'User Profile',person:user,resultList:arr2});
 		} else {
 			res.redirect('/login');
 		}
 	} catch (error) {
 		res.status(400).render('pages/error', {
-			errorMessage: 'Logout GET Error',
+			errorMessage: 'Profile GET Error'+ `${error}`,
 			title: 'Error'
 		});
 	}
