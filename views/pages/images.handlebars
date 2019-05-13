@@ -1,7 +1,13 @@
-<button id="upload_widget" class="cloudinary-button">Upload Images</button>
+<div id="container" class="container">
+  <div class="cloudinary-images text-center" id="cloudinary-images">
+    <table class="cloudinary-table" id="cloudinary-table">
+      <tr id="cloudinary-image-row"></tr>
+      <tr id="x-button-row"></tr>
+    </table>
+  </div>
 
-<div class="cloudinary-images" id="cloudinary-images"></div>
-
-{{#each images}}
-  <img src={{this}}> 
-{{/each}}
+  <div class="text-center">
+    <button id="upload_widget" class="cloudinary-button">Upload Images</button>
+  </div>
+</div>
+</div>

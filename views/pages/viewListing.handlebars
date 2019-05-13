@@ -1,0 +1,88 @@
+<section id="cover">
+    <div id="cover-caption">
+        <div id="container" class="container">
+            <div class="row">
+                <div class="col-sm-6 offset-sm-3">
+                  <h3>Edit Listing</h3>
+                  <div class="info-form">
+                    <form method="PUT" action="/listing" class="form-inlin justify-content-center">
+                      <div class="form-group">
+                        <label for="itemName" >Item Name</label>
+                        <input type="text" class="form-control" placeholder="Potato" id="itemName" name="itemName" value={{item.[itemName]}}>
+                      </div>
+                      <div class="form-group">
+                        <label for="itemDesc" >Item Description</label>
+                        <br>
+                        <textarea name="itemDesc" class="itemDesc" row="100" cols="30" placeholder="mmmmm... starchy">{{item.[itemDescription]}}</textarea>
+                      </div>
+                      <div class="form-group">
+                        <label for="startDate" >Start Date</label>
+                        <input type="date" class="form-control" id="startDate" name="startDate" value={{item.[startDate]}}>
+                      </div>
+                      <div class="form-group">
+                        <label for="endDate" >End Date</label>
+                        <input type="date" class="form-control" id="endDate" name="endDate" value={{item.[endDate]}}>
+                      </div>
+                      <div class="form-group">
+                        <label for="price" >Price</label>
+                        <input type="number" class="form-control" id="price" name="price" value={{item.[price]}}>
+                      </div>
+                      <div class="form-group">
+                        <label for="reqOrPost">Request or Post Rental</label>
+                        <select class="form-control" id="reqOrPost" name="reqOrPost">
+                          <option selected>{{item.[requested]}}</option>
+                          <option value="Request">Request</option>
+                          <option value="Post">Post</option>
+                        </select>
+                      </div>
+                      <div class="form-group" id="locationField">
+                        <label for="address" >Address</label>
+                        <input type="text" class="form-control" placeholder="Enter your address" id="address" name="address" value="{{item.[address]}}, {{item.[city]}}, {{item.[state]}}">
+                      </div>
+                      <div class="form-group">
+                        <label for="postal_code" >Postal Code</label>
+                        <input type="text" class="form-control" placeholder="Enter your ZIP" id="postal_code" name="postal_code" value={{item.[zip]}}>
+                      </div>
+                      <div class="text-center">
+                        <button type="submit" class="btn btn-success" id="submitListing">Submit Changes</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="container" class="container">
+          <div class="cloudinary-images text-center" id="cloudinary-images">
+            <table class="cloudinary-table" id="cloudinary-table">
+              <tr id="cloudinary-image-row">
+                {{#each images}}
+                  <td id={{this.[turl]}}>
+                    <img src={{this.[turl]}}>
+                  </td>
+                {{/each}}
+              </tr>
+              <tr id="x-button-row">
+                {{#each images}}
+                  <td id={{this.[url]}}>
+                    <div class="text-center">
+                      <button class="cloudinary-delete btn {{this.[url]}} {{this.[turl]}}">&times;</button>
+                    </div>
+                  </td>
+                {{/each}}
+              </tr>
+            </table>
+          </div>
+
+          <div class="text-center">
+            <button id="upload_widget" class="cloudinary-button">Upload Images</button>
+          </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+<script type="text/javascript" src="/public/javascript/googlemap.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBnKr5o0fbzSWzkVKBTIawW4KSCQCBDtEs&libraries=places&callback=initAutocomplete" async defer></script>
