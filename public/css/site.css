@@ -359,7 +359,7 @@ h3 {
 	background-color:black;
 	color:white;
 
-}
+}THORS
 .text-uppercase {
 	text-decoration: underline;
 }
@@ -368,4 +368,8 @@ h3 {
 }
 #errorRegister{
 	color:red
+}
+
+#specialNav{
+	color: #525353;
 }
