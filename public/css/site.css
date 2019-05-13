@@ -21,6 +21,13 @@ h3 {
 	width: 80%;
 }
 
+.cloudinary-images {
+	display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 @media (min-width: 768px) {
 	/* show 3 items */
 	.carousel-inner .active,

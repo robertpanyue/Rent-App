@@ -53,10 +53,23 @@
         </div>
 
         <div id="container" class="container">
-          <div class="text-center">
-            {{#each images}}
-              <img src={{this}}>
-            {{/each}}
+          <div class="cloudinary-images text-center" id="cloudinary-images">
+            <table class="cloudinary-table">
+              <tr>
+                {{#each images}}
+                  <td>
+                    <img src={{this}}>
+                  </td>
+                {{/each}}
+              </tr>
+              <tr>
+                {{#each images}}
+                  <td>
+                    <button class="cloudinary-delete">&times;</button>
+                  </td>
+                {{/each}}
+              </tr>
+            </table>
           </div>
 
           <div class="text-center">
