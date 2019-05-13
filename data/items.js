@@ -61,10 +61,10 @@ async function createSeed(
 		if (insertInfo.insertedCount === 0) throw 'Could not add item';
 		const newId = insertInfo.insertedId;
 		const itemInserted = await this.get(newId.toHexString());
-		if (requested == 'Requested') {
-			await userData.updateRequestList(userId, newId);
-		} else if (requested == 'Listed') {
-			await userData.updateItemList(userId, newId);
+		if (requested == 'Request') {
+			await userData.updateRequestList(userId, String(newId));
+		} else if (requested == 'Post') {
+			await userData.updateItemList(userId,String(newId));
 		}
 		return itemInserted;
 	} catch (e) {

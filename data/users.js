@@ -35,10 +35,18 @@ async function create(id, name, email, phoneNumber, city, state, zip, hashedPass
 
 async function updateItemList(id, itemID) {
 	try {
+		if(!id && typeof(id) != "string") {
+			throw "id not string or undefined - updateItemList"
+
+		}
+		if(!itemID && typeof(itemID) != "string") {
+			throw "itemId not string or undefined - updateItemList"
+			
+		}
 		const userCollection = await users();
 		const user = await this.get(id);
 		let array = user.itemsListed;
-		array.push(itemID);
+		array.push(ObjectId.createFromHexString(itemID));
 		const updateInfo = userCollection.findOneAndUpdate({ _id: id }, { $set: { itemsListed: array } });
 		if (updateInfo == null) throw 'updateItemList fail';
 		return updateInfo;
@@ -49,10 +57,18 @@ async function updateItemList(id, itemID) {
 
 async function updateRequestList(id, itemID) {
 	try {
+		if(!id && typeof(id) != "string") {
+			throw "id not string or undefined - updateRequestList"
+
+		}
+		if(!itemID && typeof(itemID) != "string") {
+			throw "itemId not string or undefined - updateRequestList"
+			
+		}
 		const userCollection = await users();
 		const user = await this.get(id);
 		let array = user.itemsRequested;
-		array.push(itemID);
+		array.push(ObjectId.createFromHexString(itemID));
 		const updateInfo = userCollection.findOneAndUpdate({ _id: id }, { $set: { itemsRequested: array } });
 		if (updateInfo == null) throw 'updateRequestList fail';
 		return updateInfo;
@@ -63,7 +79,7 @@ async function updateRequestList(id, itemID) {
 
 function removeFromArray(arr, ele) {
 	for (index in arr) {
-		if (arr[index] === ele) {
+		if (String(arr[index]) === String(ele)) {
 			arr.splice(index, 1);
 		}
 	}
@@ -72,11 +88,19 @@ function removeFromArray(arr, ele) {
 
 async function removeItemList(id, itemID) {
 	try {
+		if(!id && typeof(id) != "string") {
+			throw "id not string or undefined - removeItemList"
+
+		}
+		if(!itemID && typeof(itemID) != "string") {
+			throw "itemId not string or undefined - removeItemList"
+			
+		}
 		const userCollection = await users();
 		const user = await this.get(id);
 		let array = user.itemsListed;
 
-		removeFromArray(array, itemID);
+		removeFromArray(array, ObjectId.createFromHexString(itemID));
 
 		const updatedItem = { $set: { itemsListed: array } };
 		const updatedInfo = await userCollection.updateOne({ _id: id }, updatedItem);
@@ -88,11 +112,19 @@ async function removeItemList(id, itemID) {
 }
 async function removeRequestList(id, itemID) {
 	try {
+		if(!id && typeof(id) != "string") {
+			throw "id not string or undefined - removeRequestList"
+
+		}
+		if(!itemID && typeof(itemID) != "string") {
+			throw "itemId not string or undefined  -removeRequestList"
+			
+		}
 		const userCollection = await users();
 		const user = await this.get(id);
 		let array = user.itemsRequested;
 
-		removeFromArray(array, itemID);
+		removeFromArray(array, ObjectId.createFromHexString(itemID));
 
 		const updatedItem = { $set: { itemsRequested: array } };
 		const updatedInfo = await userCollection.updateOne({ _id: id }, updatedItem);
