@@ -11,8 +11,13 @@ router.get('/', async (req, res) => {
 			arr2=[]
 			for(let i=0;i<arr.length;i++){
 				const item=await itemDB.get(String(arr[i]))
+				const users=await userDB.get(String(item.userId))
+				item['email']=users.email
+				item['userName']=users.name
+				item['phoneNumber']=users.phoneNumber
 				arr2.push(item)
 			}
+			console.log(arr2)
 			res.render('pages/mainPageSearch', { title: 'User Profile',person:user,resultList:arr2});
 		} else {
 			res.render('pages/error', { errorMessage: 'You do not have authentication, please login to continue', title: '403' });

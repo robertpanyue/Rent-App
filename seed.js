@@ -14,10 +14,10 @@ const bcrypt = require('./bcrypt_usage');
 			console.log('Collection users created!');
 		});
 
-		await dbo.createCollection('itemPosts', function(err, res) {
-			if (err) throw err;
-			console.log('Collection itemPosts created!');
-		});
+		// await dbo.createCollection('itemPosts', function(err, res) {
+		// 	if (err) throw err;
+		// 	console.log('Collection itemPosts created!');
+		// });
 
 		await dbo.collection('itemPosts').createIndex({ itemName: 'text', itemDescription: 'text' });
 		console.log('CreateIndex');
