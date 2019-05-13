@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const data = require('../data');
+const xss = require('xss');
 const cloudinary = require('cloudinary').v2;
 const itemData = data.items;
 const userData = data.users;
@@ -39,9 +40,9 @@ router.post('/', async (req, res) => {
 
 			let user = await userData.get(req.session.user);
 			if (req.body.reqOrPost === 'Post') {
-				userData.updateItemList(String(user._id), String(item._id));
+				userData.updateItemList(String(xss(user._id)), String(xss(item._id)));
 			} else if (req.body.reqOrPost === 'Request') {
-				userData.updateRequestList(String(user._id), String(item._id));
+				userData.updateRequestList(String(xss(user._id)), String(xss(item._id)));
 			} else {
 				console.log('item type is not listed nor requested');
 			}
@@ -62,7 +63,7 @@ router.post('/', async (req, res) => {
 router.get('/images/add/:id', async (req, res) => {
 	try {
 		if (req.session && req.session.user) {
-			let turls = await itemData.getThumbnailURL(String(req.params.id));
+			let turls = await itemData.getThumbnailURL(String(xss(req.params.id)));
 			res.render('pages/images', { images: turls });
 		} else {
 			res.redirect('/login');
@@ -78,7 +79,7 @@ router.get('/images/add/:id', async (req, res) => {
 router.post('/images/add/addCloudinary/:id', (req, res) => {
 	try {
 		if (req.session && req.session.user) {
-			itemData.updateCloudinary(String(req.params.id), req.body.url, req.body.turl);
+			itemData.updateCloudinary(String(xss(req.params.id)), xss(req.body.url), xss(req.body.turl));
 			res.sendStatus(200);
 		} else {
 			res.sendStatus(400);
@@ -92,7 +93,7 @@ router.post('/images/add/addCloudinary/:id', (req, res) => {
 router.post('/edit/addCloudinary/:id', (req, res) => {
 	try {
 		if (req.session && req.session.user) {
-			itemData.updateCloudinary(String(req.params.id), req.body.url, req.body.turl);
+			itemData.updateCloudinary(String(xss(req.params.id)), xss(req.body.url), xss(req.body.turl));
 			res.sendStatus(200);
 		} else {
 			res.sendStatus(400);
@@ -125,9 +126,9 @@ router.post('/edit/removeCloudinary/:id', (req, res) => {
 router.get('/edit/:id', async (req, res) => {
 	try {
 		if (req.session && req.session.user) {
-			let item = await itemData.get(String(req.params.id));
-			let urls = await itemData.getCloudinaryURL(String(req.params.id));
-			let turls = await itemData.getThumbnailURL(String(req.params.id));
+			let item = await itemData.get(String(xss(req.params.id)));
+			let urls = await itemData.getCloudinaryURL(String(xss(req.params.id)));
+			let turls = await itemData.getThumbnailURL(String(xss(req.params.id)));
 
 			let images = [];
 			let toggleStatus = "";
