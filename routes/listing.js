@@ -130,6 +130,7 @@ router.get('/edit/:id', async (req, res) => {
 			let turls = await itemData.getThumbnailURL(String(req.params.id));
 
 			let images = [];
+			let toggleStatus = "";
 
 			for (index in urls) {
 				images.push({
@@ -137,7 +138,16 @@ router.get('/edit/:id', async (req, res) => {
 					turl: turls[index]
 				});
 			}
-			res.render('pages/viewListing', { item: item, images: images });
+
+			if (item.status === "open") {
+				toggleStatus = "Close Listing"
+			} else if (item.status === "close") {
+				toggleStatus = "Open Listing"
+			} else {
+				toggleStatus = "NANI?";
+			}
+
+			res.render('pages/viewListing', { item: item, images: images, status: toggleStatus });
 		} else {
 			res.redirect('/login');
 		}
@@ -147,11 +157,27 @@ router.get('/edit/:id', async (req, res) => {
 	}
 });
 
-router.put('/listing', async (req, res) => {
+router.post('/update/:id', async (req, res) => {
 	try {
 		if (req.session && req.session.user) {
-			let item = await itemData.get(req.params.id);
-			res.render('pages/viewListing', { item: item });
+			// let item = await itemData.get(req.params.id);
+			let addr = req.body.address.split(',');
+			let item = await itemData.update(
+				req.params.id,
+				req.body.startDate,
+				req.body.endDate,
+				req.body.reqOrPost,
+				req.body.status,
+				req.session.user,
+				req.body.itemName,
+				req.body.itemDesc,
+				addr[0],
+				addr[1],
+				addr[2],
+				req.body.postal_code,
+				req.body.price,
+			);
+			res.redirect('/profile');
 		} else {
 			res.redirect('/login');
 		}
