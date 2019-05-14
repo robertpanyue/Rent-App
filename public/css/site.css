@@ -11,21 +11,21 @@ h3 {
 #searchbar-form {
 	height: 20%;
 	width: 100%;
-	margin-top: 10%;
+	margin-top: 3%;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 }
-#search-bar{
-	width: 80%;
+#search-bar {
+	width: 50%;
 }
 
 .cloudinary-images {
 	display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 
 @media (min-width: 768px) {
@@ -344,7 +344,7 @@ h3 {
 .input-group > .form-control:not(:first-child) {
 	border-top-left-radius: 0;
 	border-bottom-left-radius: 0;
-	width: 14rem;
+	width: 12rem;
 }
 
 .input-group > .form-control {
@@ -353,20 +353,81 @@ h3 {
 	flex: 1 1 auto;
 	width: 6rem;
 	margin-bottom: 0;
-	font-size: 20px
+	font-size: 20px;
 }
+.input-group > .form-control-city {
+	position: relative;
+	-ms-flex: 1 1 auto;
+	flex: 1 1 auto;
+	width: 1px;
+	margin-bottom: 0;
+	font-size: 20px;
+}
+<<<<<<< HEAD
+
+.page-footer,
+.container-fluid1,
+.footer-copyright {
+	background-color: black;
+	color: white;
+=======
 .page-footer,.container-fluid1,.footer-copyright{
 	background-color:black;
 	color:white;
+>>>>>>> bf09970f9be14417cbff9d5e10eeba464735d72a
 }
 .text-uppercase {
 	text-decoration: underline;
 }
-#landingp,#landingh{
-	text-align: center
+#landingp,
+#landingh {
+	text-align: center;
 }
-#errorRegister{
-	color:red
+#errorRegister {
+	color: red;
+}
+
+.lds-facebook {
+	display: inline-block;
+	position: relative;
+	width: 64px;
+	height: 64px;
+}
+.lds-facebook div {
+	display: inline-block;
+	position: absolute;
+	left: 6px;
+	width: 13px;
+	background: #fff;
+	animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+.lds-facebook div:nth-child(1) {
+	left: 6px;
+	animation-delay: -0.24s;
+}
+.lds-facebook div:nth-child(2) {
+	left: 26px;
+	animation-delay: -0.12s;
+}
+.lds-facebook div:nth-child(3) {
+	left: 45px;
+	animation-delay: 0;
+}
+@keyframes lds-facebook {
+	0% {
+		top: 6px;
+		height: 51px;
+	}
+	50%,
+	100% {
+		top: 19px;
+		height: 26px;
+	}
+}
+
+#find-me {
+	border-radius: 5px;
+	max-width: 10rem;
 }
 #logouterr{
 	color:red;

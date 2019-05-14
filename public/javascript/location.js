@@ -1,7 +1,7 @@
 function geoFindMe() {
 	// const status = document.querySelector('#status');
 	const button = document.querySelector('#find-me');
-
+	const inputText = document.querySelector('#city');
 	function success(position) {
 		const lat = position.coords.latitude;
 		const long = position.coords.longitude;
@@ -17,7 +17,8 @@ function geoFindMe() {
 				}
 			}
 			var zip = res[0].formatted_address.match(/,\s\w{2}\s(\d{5})/);
-			button.textContent = `City: ${city} Zip: ${zip[1]}`;
+			button.textContent = `Done`;
+			inputText.value = city;
 		});
 	}
 
@@ -34,3 +35,9 @@ function geoFindMe() {
 }
 
 document.querySelector('#find-me').addEventListener('click', geoFindMe);
+
+$(document).keypress(function(event) {
+	if (event.which == '13') {
+		event.preventDefault();
+	}
+});
