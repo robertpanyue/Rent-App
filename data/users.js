@@ -35,13 +35,11 @@ async function create(id, name, email, phoneNumber, city, state, zip, hashedPass
 
 async function updateItemList(id, itemID) {
 	try {
-		if(!id && typeof(id) != "string") {
-			throw "id not string or undefined - updateItemList"
-
+		if (!id || typeof id != 'string') {
+			throw 'id not string or undefined - updateItemList';
 		}
-		if(!itemID && typeof(itemID) != "string") {
-			throw "itemId not string or undefined - updateItemList"
-			
+		if (!itemID || typeof itemID != 'string') {
+			throw 'itemId not string or undefined - updateItemList';
 		}
 		const userCollection = await users();
 		const user = await this.get(id);
@@ -57,13 +55,11 @@ async function updateItemList(id, itemID) {
 
 async function updateRequestList(id, itemID) {
 	try {
-		if(!id && typeof(id) != "string") {
-			throw "id not string or undefined - updateRequestList"
-
+		if (!id || typeof id != 'string') {
+			throw 'id not string or undefined - updateRequestList';
 		}
-		if(!itemID && typeof(itemID) != "string") {
-			throw "itemId not string or undefined - updateRequestList"
-			
+		if (!itemID || typeof itemID != 'string') {
+			throw 'itemId not string or undefined - updateRequestList';
 		}
 		const userCollection = await users();
 		const user = await this.get(id);
@@ -88,13 +84,11 @@ function removeFromArray(arr, ele) {
 
 async function removeItemList(id, itemID) {
 	try {
-		if(!id && typeof(id) != "string") {
-			throw "id not string or undefined - removeItemList"
-
+		if (!id || typeof id != 'string') {
+			throw 'id not string or undefined - removeItemList';
 		}
-		if(!itemID && typeof(itemID) != "string") {
-			throw "itemId not string or undefined - removeItemList"
-			
+		if (!itemID || typeof itemID != 'string') {
+			throw 'itemId not string or undefined - removeItemList';
 		}
 		const userCollection = await users();
 		const user = await this.get(id);
@@ -112,13 +106,11 @@ async function removeItemList(id, itemID) {
 }
 async function removeRequestList(id, itemID) {
 	try {
-		if(!id && typeof(id) != "string") {
-			throw "id not string or undefined - removeRequestList"
-
+		if (!id || typeof id != 'string') {
+			throw 'id not string or undefined - removeRequestList';
 		}
-		if(!itemID && typeof(itemID) != "string") {
-			throw "itemId not string or undefined  -removeRequestList"
-			
+		if (!itemID || typeof itemID != 'string') {
+			throw 'itemId not string or undefined  -removeRequestList';
 		}
 		const userCollection = await users();
 		const user = await this.get(id);
@@ -137,6 +129,9 @@ async function removeRequestList(id, itemID) {
 
 async function get(id) {
 	try {
+		if (!id || typeof id != 'string') {
+			throw 'Cannot get user by id';
+		}
 		const userCollection = await users();
 		const user = await userCollection.findOne({ _id: id });
 		if (user === null) throw 'No user with that id';

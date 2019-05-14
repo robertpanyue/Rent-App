@@ -7,16 +7,17 @@ const { ObjectId } = require('mongodb');
 router.get('/', async (req, res) => {
 	try {
 		if (req.session && req.session.user) {
-			const user = await userData.get(req.session.user)
+			console.log(req.session.user);
+			const user = await userData.get(req.session.user);
 			const itemIds = user.itemsListed.concat(user.itemsRequested);
 			items = [];
 			for (index = 0; index < itemIds.length; index++) {
 				items.push(await itemData.get(String(itemIds[index])));
 			}
 
-			res.render('pages/userProfile', { title: 'User Profile', person:user, resultList: items});
+			res.render('pages/userProfile', { title: 'User Profile', person: user, resultList: items });
 		} else {
-			res.render('pages/login', { title: 'Login',err:"You must login first" });
+			res.render('pages/login', { title: 'Login', err: 'You must login first' });
 		}
 	} catch (error) {
 		console.log(error);
