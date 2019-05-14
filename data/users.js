@@ -103,7 +103,6 @@ async function removeRequestList(id, itemID) {
 	}
 }
 
-
 async function get(id) {
 	try {
 		const userCollection = await users();
@@ -111,8 +110,8 @@ async function get(id) {
 		if (user === null) throw 'No user with that id';
 		return user;
 	} catch (error) {
-		(error);
-		throw 'Get error';
+		error;
+		throw 'Get User error';
 	}
 }
 

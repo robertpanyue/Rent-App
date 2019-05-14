@@ -38,6 +38,7 @@ $(document).ready(function() {
 		});
 	}
 
+	//ajax for register
 	$('#registerButton').on('click', function() {
 		var name = $('#name').val();
 		var email = $('#email').val();
@@ -56,4 +57,10 @@ $(document).ready(function() {
 			}
 		};
 	});
+});
+
+$(document).keypress(function(event) {
+	if (event.which == '13') {
+		event.preventDefault();
+	}
 });
