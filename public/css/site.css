@@ -3,6 +3,7 @@ body,
 main {
 	height: 100%;
 }
+
 h3 {
 	text-align: center;
 	padding-top: 2rem;
@@ -363,18 +364,13 @@ h3 {
 	margin-bottom: 0;
 	font-size: 20px;
 }
-<<<<<<< HEAD
-
-.page-footer,
-.container-fluid1,
-.footer-copyright {
-	background-color: black;
-	color: white;
-=======
 .page-footer,.container-fluid1,.footer-copyright{
 	background-color:black;
 	color:white;
->>>>>>> bf09970f9be14417cbff9d5e10eeba464735d72a
+	bottom: 0;	
+}
+.page-footer{
+	margin-top: 5%;
 }
 .text-uppercase {
 	text-decoration: underline;
@@ -473,4 +469,23 @@ h3 {
 #submitListing{
 	color:#003400
 
+}
+#loginfoot{
+	margin-top: 12%
+}
+#regfoot{
+	margin-top: 5%
+}
+#logoutfoot{
+	margin-top: 26%
+}
+#landfoot{
+	margin-top:0%;
+}
+#imgfoot{
+	margin-top: 15%
+}
+#imglin{
+	color:black;
+	text-align: center
 }
