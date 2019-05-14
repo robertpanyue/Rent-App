@@ -299,8 +299,7 @@ h3 {
 	overflow: hidden;
 	padding: 15px;
 	border-top: 1px solid white;
-	font-size: 20px;
-	font-weight: bolder;
+	font-size: 18px;
 	color: black;
 	text-align: center;
 }
@@ -497,5 +496,11 @@ h3 {
 }
 #redirect{
 	color:#0072ee
+}
+#searchButton{
+	color:#003400
+}
+.card{
+	text-align: center
 }
 
