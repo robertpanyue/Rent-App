@@ -22,26 +22,33 @@
   </div>
 </nav>
 
+{{!-- search bar --}}
 <div id="searchbar-form">
-    {{!-- <button class="btn btn-success" id = "find-me">Show my location</button><br/>
-                    <p id = "status"></p>
-                    <a id = "map-link" target="_blank"></a> --}}
-
     <form method="POST" action="/search" class="search-bar" id="search-bar">
         <div class="input-group mb-3">
            <select class="form-control col-md-2" id="selectSearch" name="selectSearch" required>
                 <option value="Requests">Requests</option>
                 <option value="Listings">Listings</option>
             </select>
-            <button class="btn btn-success" id = "find-me" name="location">Show my location</button><br/>
-            <input type="text" class="form-control" name="searchContent" placeholder="Search" aria-label="Search" aria-describedby="basic-addon2" id="search" required>
+            <input type="text" class="form-control" name="searchContent" placeholder="Search Here" id="search" required>
+            <input type="text" class="form-control" name="cityContent" placeholder="City" id="city" required>
             <div class="input-group-append">
+<<<<<<< HEAD
+                <i class="btn" id = "find-me" type="button" name="location"><i class="fa fa-map-marker"></i></i>
+                <button type="submit" class="btn btn-success" id="searchButton">Search</button>
+=======
                 <button type="submit" class="btn btn-primary" id="submitButton" type="button">Submit</button>
+>>>>>>> bf09970f9be14417cbff9d5e10eeba464735d72a
             </div>
         </div>
     </form>
 </div>
+<<<<<<< HEAD
+
+
+=======
 <h1 class="text-center">Recently added items</h1>
+>>>>>>> bf09970f9be14417cbff9d5e10eeba464735d72a
 <div class="container-fluid">
     <div id="carouselExample" class="carousel slide" data-ride="carousel" data-interval="9000">
         <div class="carousel-inner row w-10 mxauto" role="listbox">
