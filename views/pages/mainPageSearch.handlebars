@@ -26,14 +26,17 @@
 <div id="searchbar-form">
     <form method="POST" action="/search" class="search-bar" id="search-bar">
         <div class="input-group mb-3">
-           <select class="form-control col-md-2" id="selectSearch" name="selectSearch" required>
-                <option value="Requests">Requests</option>
+           <select class="form-control col-md-2" id="selectSearch" name="selectSearch" required size= 1>
+                <option value="" disabled selected>Select your option</option>
+                <option value="Requests" >Requests</option>
                 <option value="Listings">Listings</option>
             </select>
+            <label for="search" hidden>Search</label>
+            <label for="city" hidden>City</label>
             <input type="text" class="form-control" name="searchContent" placeholder="Search Here" id="search" required>
             <input type="text" class="form-control" name="cityContent" placeholder="City" id="city" required>
             <div class="input-group-append">
-                <i class="btn" id = "find-me" name="location"><i class="fa fa-map-marker"></i></i>
+                <i class="btn" id = "find-me"><i class="fa fa-map-marker"></i></i>
                 <button type="submit" class="btn btn-success" id="searchButton">Search</button>
             </div>
         </div>
@@ -50,13 +53,11 @@
 		            <figcaption class="info-wrap1">
 				        <h2 class="title">{{img1.itemName}}</h2>
 				        <p class="desc">{{img1.itemDescription}}</p>
+                 <p>Name:{{img1.name}}</p>
+                  <p>Email id:{{img1.email}}</p>
+                  <p>Contact No:{{img1.phoneNumber}}</p>
+                  <p>Location:{{img1.city}},{{img1.state}}</p>
 		            </figcaption>
-		            <div class="bottom-wrap1">
-                        <p>Name:{{img1.name}}</p>
-                        <p>Email id:{{img1.email}}</p>
-                        <p>Contact No:{{img1.phoneNumber}}</p>
-                        <p>Location:{{img1.city}},{{img1.state}}</p>
-		            </div>
 	            </figure>
             </div>
             <div class="carousel-item col-md-4">
@@ -66,13 +67,11 @@
 		            <figcaption class="info-wrap1">
 				        <h2 class="title">{{img2.itemName}}</h2>
 				        <p class="desc">{{img2.itemDescription}}</p>
-		            </figcaption>
-		            <div class="bottom-wrap1">
-                        <p>Name:{{img2.name}}</p>
+                <p>Name:{{img2.name}}</p>
                         <p>Email id:{{img2.email}}</p>
                         <p>Contact No:{{img2.phoneNumber}}</p>
                         <p>Location:{{img2.city}},{{img2.state}}</p>
-		            </div> <!-- bottom-wrap.// -->
+		            </figcaption>
 	            </figure>
             </div>
             <div class="carousel-item col-md-4">
@@ -82,14 +81,12 @@
 		            <figcaption class="info-wrap1">
 				        <h2 class="title">{{img3.itemName}}</h2>
 				        <p class="desc">{{img3.itemDescription}}</p>
-		            </figcaption>
-		            <div class="bottom-wrap1">
-                        <p>Name:{{img3.name}}</p>
+                <p>Name:{{img3.name}}</p>
                         <p>Email id:{{img3.email}}</p>
                         <p>Contact No:{{img3.phoneNumber}}</p>
                         <p>Location:{{img3.city}},{{img3.state}}</p>
-		            </div> <!-- bottom-wrap.// -->
-	            </figure>
+		            </figcaption>
+		            	            </figure>
             </div>
             <div class="carousel-item col-md-4">
                 <figure class="card card-product1" title="slide 4 ">
@@ -98,13 +95,12 @@
 		            <figcaption class="info-wrap1">
 				        <h2 class="title">{{img4.itemName}}</h2>
 				        <p class="desc">{{img4.itemDescription}}</p>
-		            </figcaption>
-		            <div class="bottom-wrap1">
-                        <p>Name:{{img4.name}}</p>
+                <p>Name:{{img4.name}}</p>
                         <p>Email id:{{img4.email}}</p>
                         <p>Contact No:{{img4.phoneNumber}}</p>
                         <p>Location:{{img5.city}},{{img5.state}}</p>
-		            </div> <!-- bottom-wrap.// -->
+		            </figcaption>
+		          <!-- bottom-wrap.// -->
 	            </figure>
             </div>
             <div class="carousel-item col-md-4">
@@ -114,15 +110,13 @@
 		            <figcaption class="info-wrap1">
 				        <h2 class="title">{{img5.itemName}}</h2>
 				        <p class="desc">{{img5.itemDescription}}</p>
-		            </figcaption>
-		            <div class="bottom-wrap1">
-
+                
                         <p>Name:{{img5.name}}</p>
                         <p>Email id:{{img5.email}}</p>
                         <p>Contact No:{{img5.phoneNumber}}</p>
                         <p>Location:{{img5.city}},{{img5.state}}</p>
-
-		            </div> <!-- bottom-wrap.// -->
+		            </figcaption>
+		            
 	            </figure>
             </div>
             <div class="carousel-item col-md-4">
@@ -132,13 +126,12 @@
 		            <figcaption class="info-wrap1">
 				        <h2 class="title">{{img6.itemName}}</h2>
 				        <p class="desc">{{img6.itemDescription}}</p>
-		            </figcaption>
-		            <div class="bottom-wrap1">
-                        <p>Name:{{img6.name}}</p>
+                <p>Name:{{img6.name}}</p>
                         <p>Email id:{{img6.email}}</p>
                         <p>Contact No:{{img6.phoneNumber}}</p>
                         <p>Location:{{img6.city}},{{img6.state}}</p>
-		            </div> <!-- bottom-wrap.// -->
+		            </figcaption>
+		            
 	            </figure>
             </div>
             <div class="carousel-item col-md-4">
@@ -148,13 +141,11 @@
 		            <figcaption class="info-wrap1">
 				        <h2 class="title">{{img7.itemName}}</h2>
 				        <p class="desc">{{img7.itemDescription}}</p>
-		            </figcaption>
-		            <div class="bottom-wrap1">
-                        <p>Name:{{img7.name}}</p>
+                <p>Name:{{img7.name}}</p>
                         <p>Email id:{{img7.email}}</p>
                         <p>Contact No:{{img7.phoneNumber}}</p>
                         <p>Location:{{img7.city}},{{img7.state}}</p>
-		            </div> <!-- bottom-wrap.// -->
+		            </figcaption>
 	            </figure>
             </div>
             <div class="carousel-item col-md-4">
@@ -164,13 +155,11 @@
 		            <figcaption class="info-wrap1">
 				        <h2 class="title">{{img8.itemName}}</h2>
 				        <p class="desc">{{img8.itemDescription}}</p>
-		            </figcaption>
-		            <div class="bottom-wrap1">
-                        <p>Name:{{img8.name}}</p>
+                <p>Name:{{img8.name}}</p>
                         <p>Email id:{{img8.email}}</p>
                         <p>Contact No:{{img8.phoneNumber}}</p>
                         <p>Location:{{img8.city}},{{img8.state}}</p>
-		            </div> <!-- bottom-wrap.// -->
+		            </figcaption>
 	            </figure>
             </div>
         </div>
