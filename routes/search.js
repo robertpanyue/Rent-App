@@ -3,6 +3,7 @@ const router = express.Router();
 const db = require('../data/dbCollections');
 const items = db.itemPosts;
 const users = db.users;
+const xss = require('xss');
 router.get('/listings/:city/:item', async (req, res) => {
 	try {
 		if (req.session && req.session.user) {
@@ -71,9 +72,9 @@ router.get('/requests/:city/:item', async (req, res) => {
 router.post('/', async (req, res) => {
 	try {
 		if (req.session && req.session.user) {
-			const searchType = req.body.selectSearch;
-			const searchCity = req.body.cityContent;
-			const input = req.body.searchContent;
+			const searchType = xss(req.body.selectSearch);
+			const searchCity = xss(req.body.cityContent);
+			const input = xss(req.body.searchContent);
 			if (searchType == 'Listings') {
 				res.redirect(`/search/listings/${searchCity}/${input}`);
 			} else {
