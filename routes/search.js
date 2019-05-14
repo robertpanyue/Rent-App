@@ -3,6 +3,7 @@ const router = express.Router();
 const db = require('../data/dbCollections');
 const items = db.itemPosts;
 const users = db.users;
+const xss = require('xss');
 router.get('/listings/:city/:item', async (req, res) => {
 	try {
 		if (req.session && req.session.user) {
@@ -12,9 +13,10 @@ router.get('/listings/:city/:item', async (req, res) => {
 			const userCollection = await users();
 			//get the result of the key word from the datbase
 			const result = await itemCollection.find({ $text: { $search: keyWord } }).toArray();
+			console.log(result);
 			const returnArray = [];
 			for (let i = 0; i < result.length; i++) {
-				if (result[i].requested == 'Post' && result[i].city == location) {
+				if (result[i].requested == 'Post' && result[i].city == location.toLowerCase().trim()) {
 					let user = await userCollection.findOne({ _id: result[i].userId });
 					result[i].userName = user.name;
 					result[i].email = user.email;
@@ -22,7 +24,7 @@ router.get('/listings/:city/:item', async (req, res) => {
 					returnArray.push(result[i]);
 				}
 			}
-
+			console.log(returnArray);
 			res.render('pages/searchResult', { title: keyWord, type: 'Listings', resultList: returnArray });
 		} else {
 			res.render('pages/error', { errorMessage: 'You do not have authentication', title: '403' });
@@ -47,7 +49,7 @@ router.get('/requests/:city/:item', async (req, res) => {
 			const returnArray = [];
 
 			for (let i = 0; i < result.length; i++) {
-				if (result[i].requested == 'Request' && result[i].city == location) {
+				if (result[i].requested == 'Request' && result[i].city == location.toLowerCase().trim()) {
 					let user = await userCollection.findOne({ _id: result[i].userId });
 					result[i].userName = user.name;
 					result[i].email = user.email;
@@ -71,9 +73,9 @@ router.get('/requests/:city/:item', async (req, res) => {
 router.post('/', async (req, res) => {
 	try {
 		if (req.session && req.session.user) {
-			const searchType = req.body.selectSearch;
-			const searchCity = req.body.cityContent;
-			const input = req.body.searchContent;
+			const searchType = xss(req.body.selectSearch);
+			const searchCity = xss(req.body.cityContent);
+			const input = xss(req.body.searchContent);
 			if (searchType == 'Listings') {
 				res.redirect(`/search/listings/${searchCity}/${input}`);
 			} else {

@@ -38,7 +38,7 @@ async function createSeed(
 	) {
 		throw `Need all fields to create item`;
 	}
-
+	city = city.toLowerCase().trim();
 	const newItem = {
 		startDate,
 		endDate,
@@ -64,7 +64,7 @@ async function createSeed(
 		if (requested == 'Request') {
 			await userData.updateRequestList(userId, String(newId));
 		} else if (requested == 'Post') {
-			await userData.updateItemList(userId,String(newId));
+			await userData.updateItemList(userId, String(newId));
 		}
 		return itemInserted;
 	} catch (e) {
@@ -104,6 +104,7 @@ async function create(
 	}
 	let cloudinaryURL = [];
 	let thumbnailURL = [];
+	city = city.toLowerCase().trim();
 	const newItem = {
 		startDate,
 		endDate,
@@ -153,24 +154,25 @@ async function update(
 	zip,
 	price
 ) {
-		const itemsCollection = await items();
-		const updates = {
-			startDate,
-			endDate,
-			requested,
-			status,
-			userId,
-			itemName,
-			itemDescription,
-			address,
-			city,
-			state,
-			zip,
-			price
-		};
-		const updatedInfo = await itemsCollection.findOneAndUpdate({ _id: ObjectId(id) }, { $set: updates });
-		if (updatedInfo == null) throw 'update listing fail';
-		return updatedInfo;
+	const itemsCollection = await items();
+	city = city.toLowerCase().trim();
+	const updates = {
+		startDate,
+		endDate,
+		requested,
+		status,
+		userId,
+		itemName,
+		itemDescription,
+		address,
+		city,
+		state,
+		zip,
+		price
+	};
+	const updatedInfo = await itemsCollection.findOneAndUpdate({ _id: ObjectId(id) }, { $set: updates });
+	if (updatedInfo == null) throw 'update listing fail';
+	return updatedInfo;
 }
 
 async function updateCloudinary(id, url, turl) {
