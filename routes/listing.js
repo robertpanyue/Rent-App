@@ -144,7 +144,7 @@ router.get('/edit/:id', async (req, res) => {
 				toggleStatus = 'NANI?';
 			}
 
-			res.render('pages/viewListing', { item: item, images: images, status: toggleStatus });
+			res.render('pages/viewListing', { title: 'Edit Item', item: item, images: images, status: toggleStatus });
 		} else {
 			res.redirect('/login');
 		}
