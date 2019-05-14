@@ -7,7 +7,6 @@ const { ObjectId } = require('mongodb');
 router.get('/', async (req, res) => {
 	try {
 		if (req.session && req.session.user) {
-			console.log(req.session.user);
 			const user = await userData.get(req.session.user);
 			const itemIds = user.itemsListed.concat(user.itemsRequested);
 			items = [];
@@ -20,7 +19,6 @@ router.get('/', async (req, res) => {
 			res.render('pages/login', { title: 'Login', err: 'You must login first' });
 		}
 	} catch (error) {
-		console.log(error);
 		res.status(400).render('pages/error', {
 			errorMessage: 'profile GET Error',
 			title: 'Error'
