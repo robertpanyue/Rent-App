@@ -425,35 +425,35 @@ h3 {
 	border-radius: 5px;
 	max-width: 10rem;
 }
-#logouterr{
-	color:red;
-	text-align: center
+#logouterr {
+	color: red;
+	text-align: center;
 }
-#specialNav{
+#specialNav {
 	color: #525353;
 }
-#specialNav1{
+#specialNav1 {
 	color: #525353;
 }
-#specialNav2{
+#specialNav2 {
 	color: #525353;
 }
 #loginButton {
 	background-color: #007c00;
 }
-#registerButton{
+#registerButton {
 	background-color: #007c00;
 }
-#submitButton{
+#submitButton {
 	background-color: #006dee;
 }
 #find-me {
 	background-color: #007c00;
 }
-#invis{
+#invis {
 	display: none;
 }
-#invis1{
+#invis1 {
 	display: none;
 }
 #tognav1{
@@ -489,3 +489,4 @@ h3 {
 	color:black;
 	text-align: center
 }
+
