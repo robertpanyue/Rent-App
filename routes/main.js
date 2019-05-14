@@ -7,7 +7,7 @@ router.get('/', async (req, res) => {
 	try {
 		if (req.session && req.session.user) {
 			const allItems = await items.getAll();
-			const itemList = allItems.slice(0, 8);
+			const itemList = allItems.slice(-8);
 			for (let i = 0; i < itemList.length; i++) {
 				let user = await users.get(itemList[i].userId);
 				itemList[i].email = user.email;
@@ -26,7 +26,7 @@ router.get('/', async (req, res) => {
 				img8: itemList[7],
 			});
 		} else {
-			res.render('pages/error', { errorMessage: 'You do not have authentication, please login to continue', title: '403' });
+			res.render('pages/login', { title: 'Login',err:"You must login first" });
 		}
 	} catch (error) {
 		res.status(400).render('pages/error', {

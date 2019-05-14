@@ -363,12 +363,18 @@ h3 {
 	margin-bottom: 0;
 	font-size: 20px;
 }
+<<<<<<< HEAD
 
 .page-footer,
 .container-fluid1,
 .footer-copyright {
 	background-color: black;
 	color: white;
+=======
+.page-footer,.container-fluid1,.footer-copyright{
+	background-color:black;
+	color:white;
+>>>>>>> bf09970f9be14417cbff9d5e10eeba464735d72a
 }
 .text-uppercase {
 	text-decoration: underline;
@@ -422,4 +428,35 @@ h3 {
 #find-me {
 	border-radius: 5px;
 	max-width: 10rem;
+}
+#logouterr{
+	color:red;
+	text-align: center
+}
+#specialNav{
+	color: #525353;
+}
+#specialNav1{
+	color: #525353;
+}
+#specialNav2{
+	color: #525353;
+}
+#loginButton {
+	background-color: #007c00;
+}
+#registerButton{
+	background-color: #007c00;
+}
+#submitButton{
+	background-color: #006dee;
+}
+#find-me {
+	background-color: #007c00;
+}
+#invis{
+	display: none;
+}
+#invis1{
+	display: none;
 }

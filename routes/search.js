@@ -48,7 +48,11 @@ router.get('/requests/:city/:item', async (req, res) => {
 			const returnArray = [];
 
 			for (let i = 0; i < result.length; i++) {
+<<<<<<< HEAD
 				if (result[i].requested == 'Request' && result[i].city == location) {
+=======
+				if (result[i].requested == 'Requested') {
+>>>>>>> bf09970f9be14417cbff9d5e10eeba464735d72a
 					let user = await userCollection.findOne({ _id: result[i].userId });
 					result[i].userName = user.name;
 					result[i].email = user.email;

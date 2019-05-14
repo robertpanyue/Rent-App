@@ -9,7 +9,10 @@ const deleteRoute = require('./delete');
 const profileRoute = require('./profile');
 const searchRoute = require('./search');
 const router = express.Router();
+<<<<<<< HEAD
 
+=======
+>>>>>>> bf09970f9be14417cbff9d5e10eeba464735d72a
 const constructorMethod = (app) => {
 	app.get('/', landing);
 	app.use('/register', registerRoutes);
@@ -21,7 +24,12 @@ const constructorMethod = (app) => {
 	app.use('/profile', profileRoute);
 	app.use('/search', searchRoute);
 	app.use('*', (req, res) => {
+<<<<<<< HEAD
 		res.status(404).redirect('/');
 	});
+=======
+		res.status(404).redirect("/")
+		});	
+>>>>>>> bf09970f9be14417cbff9d5e10eeba464735d72a
 };
 module.exports = constructorMethod;

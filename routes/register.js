@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const firebase = require('firebase');
 const userDB = require('../data/users');
+const xss = require('xss');
 const bcrypt = require('../bcrypt_usage');
 
 router.get('/', async (req, res) => {
@@ -29,13 +30,13 @@ router.post('/', async (req, res) => {
 				//push the user date to the database
 				try {
 					const user = await userDB.create(
-						cred.user.uid,
-						req.body.name,
-						req.body.email,
-						req.body.phone,
-						req.body.city,
-						req.body.state,
-						req.body.zip,
+						xss(cred.user.uid),
+						xss(req.body.name),
+						xss(req.body.email),
+						xss(req.body.phone),
+						xss(req.body.city),
+						xss(req.body.state),
+						xss(req.body.zip),
 						await bcrypt.getHashPassword(req.body.password)
 					);
 					req.session.user = cred.user.uid;
