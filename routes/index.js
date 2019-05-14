@@ -20,7 +20,9 @@ const constructorMethod = (app) => {
 	app.use('/profile', profileRoute);
 	app.use('/search', searchRoute);
 	app.use('*', (req, res) => {
-		res.status(404).redirect('/');
-	});
+
+		res.status(404).redirect("/")
+		});	
+
 };
 module.exports = constructorMethod;
