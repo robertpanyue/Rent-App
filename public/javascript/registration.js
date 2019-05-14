@@ -53,7 +53,7 @@ $(document).ready(function() {
 			type: 'post',
 			data: { name, email, password, phone, city, state, zip },
 			success: function(data) {
-				console.log('successfullu register');
+				console.log('successful register');
 			}
 		};
 	});
