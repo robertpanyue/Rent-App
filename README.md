@@ -7,8 +7,8 @@
 3. Run the program <br/>
 <b>npm start</b>
 
-Contribution:
-Tim Leonard:
-Haritha Pothapragda: Wrote half of items db, seed file; main page, landing page, and profile handlebars and corresponding routing; part of validation and accesibility.
-Kah Soon Yap:
+Contribution:<br/>
+Tim Leonard: <br/>
+Haritha Pothapragda: Wrote half of items db, seed file; main page, landing page, and profile handlebars and corresponding routing; part of validation and accesibility.<br/>
+Kah Soon Yap:<br/>
 Yue Pan: Wrote the registration, login, and search routing and corresponding front-end handlebars and js and database manipulation. Also, the half of the seed file.
