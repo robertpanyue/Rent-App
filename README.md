@@ -1,8 +1,8 @@
 # Rent-App
-
+1. 
 npm install
 
-create database and collection
-  npm run-script build 
-  
+2. Create database and collection <br/>
+  npm run-script build     or   npm run build
+3.
 npm start
