@@ -64,7 +64,7 @@ router.get('/images/add/:id', async (req, res) => {
 	try {
 		if (req.session && req.session.user) {
 			let turls = await itemData.getThumbnailURL(String(xss(req.params.id)));
-			res.render('pages/images', { images: turls });
+			res.render('pages/images', { images: turls ,title:"Image uploader"});
 		} else {
 			res.redirect('/login');
 		}

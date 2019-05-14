@@ -11,7 +11,6 @@ router.get('/', async (req, res) => {
 			const user = await userData.get(req.session.user);
 			const itemIds = user.itemsListed.concat(user.itemsRequested);
 			items = [];
-
 			for (index = 0; index < itemIds.length; index++) {
 				items.push(await itemData.get(String(itemIds[index])));
 			}

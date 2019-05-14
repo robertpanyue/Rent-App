@@ -3,6 +3,7 @@ body,
 main {
 	height: 100%;
 }
+
 h3 {
 	text-align: center;
 	padding-top: 2rem;
@@ -363,13 +364,13 @@ h3 {
 	margin-bottom: 0;
 	font-size: 20px;
 }
-.page-footer,
-.container-fluid1,
-.footer-copyright {
-	background-color: black;
-	color: white;
-	bottom: 0;
-	left: 0;
+.page-footer,.container-fluid1,.footer-copyright{
+	background-color:black;
+	color:white;
+	bottom: 0;	
+}
+.page-footer{
+	margin-top: 5%;
 }
 .text-uppercase {
 	text-decoration: underline;
@@ -455,3 +456,37 @@ h3 {
 #invis1 {
 	display: none;
 }
+#tognav1{
+	color:#bd0e0e
+}
+#tognav2{
+	color:#767676,
+	
+}
+#tognav4{
+	color:#737373
+}
+#submitListing{
+	color:#003400
+
+}
+#loginfoot{
+	margin-top: 12%
+}
+#regfoot{
+	margin-top: 5%
+}
+#logoutfoot{
+	margin-top: 26%
+}
+#landfoot{
+	margin-top:0%;
+}
+#imgfoot{
+	margin-top: 15%
+}
+#imglin{
+	color:black;
+	text-align: center
+}
+
