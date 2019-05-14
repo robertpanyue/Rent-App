@@ -6,7 +6,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
         <li class="nav-item active">
-        <a class="nav-link" id="specialNav"href="/listing">New Listing<span class="sr-only">(current)</span></a>
+        <a class="nav-link" id="specialNav" href="/listing">New Listing<span class="sr-only">(current)</span></a>
         </li>
     </ul>
     <ul class=" nav navbar-nav navbar-right ml-auto">
@@ -33,7 +33,7 @@
             <input type="text" class="form-control" name="searchContent" placeholder="Search Here" id="search" required>
             <input type="text" class="form-control" name="cityContent" placeholder="City" id="city" required>
             <div class="input-group-append">
-                <i class="btn" id = "find-me" type="button" name="location"><i class="fa fa-map-marker"></i></i>
+                <i class="btn" id = "find-me" name="location"><i class="fa fa-map-marker"></i></i>
                 <button type="submit" class="btn btn-success" id="searchButton">Search</button>
             </div>
         </div>
@@ -44,7 +44,7 @@
     <div id="carouselExample" class="carousel slide" data-ride="carousel" data-interval="9000">
         <div class="carousel-inner row w-10 mxauto" role="listbox">
             <div class="carousel-item col-md-4 active">
-                <figure class="card card-product1" alt="slide 1">
+                <figure class="card card-product1" title="slide 1">
                     <div class="headercar">{{img1.requested}}</div>
 		            <div class="img-wrap1"><img src="{{img1.cloudinaryURL}}" alt="itemImage"></div>
 		            <figcaption class="info-wrap1">
@@ -56,11 +56,11 @@
                         <p>Email id:{{img1.email}}</p>
                         <p>Contact No:{{img1.phoneNumber}}</p>
                         <p>Location:{{img1.city}},{{img1.state}}</p>
-		            </div> <!-- bottom-wrap.// -->
+		            </div>
 	            </figure>
             </div>
             <div class="carousel-item col-md-4">
-                <figure class="card card-product1" alt="slide 2">
+                <figure class="card card-product1" title="slide 2">
                     <div class="headercar">{{img2.requested}}</div>
 		            <div class="img-wrap1"><img src="{{img2.cloudinaryURL}}" alt="itemImage"></div>
 		            <figcaption class="info-wrap1">
@@ -76,7 +76,7 @@
 	            </figure>
             </div>
             <div class="carousel-item col-md-4">
-                <figure class="card card-product1" alt="slide 3">
+                <figure class="card card-product1" title="slide 3">
                     <div class="headercar">{{img3.requested}}</div>
 		            <div class="img-wrap1"><img src="{{img3.cloudinaryURL}}" alt="itemImage"></div>
 		            <figcaption class="info-wrap1">
@@ -92,7 +92,7 @@
 	            </figure>
             </div>
             <div class="carousel-item col-md-4">
-                <figure class="card card-product1" alt="slide 4 ">
+                <figure class="card card-product1" title="slide 4 ">
                     <div class="headercar">{{img4.requested}}</div>
 		            <div class="img-wrap1"><img src="{{img4.cloudinaryURL}}" alt="itemImage"></div>
 		            <figcaption class="info-wrap1">
@@ -108,7 +108,7 @@
 	            </figure>
             </div>
             <div class="carousel-item col-md-4">
-                <figure class="card card-product1" alt="slide 5 ">
+                <figure class="card card-product1" title="slide 5 ">
                     <div class="headercar">{{img5.requested}}</div>
 		            <div class="img-wrap1"><img src="{{img5.cloudinaryURL}}" alt="itemImage"></div>
 		            <figcaption class="info-wrap1">
@@ -126,7 +126,7 @@
 	            </figure>
             </div>
             <div class="carousel-item col-md-4">
-                <figure class="card card-product1" alt="slide 6">
+                <figure class="card card-product1" title="slide 6">
                     <div class="headercar">{{img6.requested}}</div>
 		            <div class="img-wrap1"><img src="{{img6.cloudinaryURL}}" alt="itemImage"></div>
 		            <figcaption class="info-wrap1">
@@ -142,7 +142,7 @@
 	            </figure>
             </div>
             <div class="carousel-item col-md-4">
-                <figure class="card card-product1" alt="slide 7">
+                <figure class="card card-product1" title="slide 7">
                     <div class="headercar">{{img7.requested}}</div>
 		            <div class="img-wrap1"><img src="{{img7.cloudinaryURL}}" alt="itemImage"></div>
 		            <figcaption class="info-wrap1">
@@ -158,7 +158,7 @@
 	            </figure>
             </div>
             <div class="carousel-item col-md-4">
-                <figure class="card card-product1" alt="slide 8">
+                <figure class="card card-product1" title="slide 8">
                     <div class="headercar">{{img8.requested}}</div>
 		            <div class="img-wrap1"><img src="{{img8.cloudinaryURL}}" alt="itemImage"></div>
 		            <figcaption class="info-wrap1">
@@ -174,17 +174,15 @@
 	            </figure>
             </div>
         </div>
-        <a aria-label="previous"class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">
+        <a aria-label="previous" class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">
 
             <i class="fa fa-chevron-left fa-lg text-muted">
-              <<
             </i>
 
             <span class="sr-only" id="invis">Previous</span>
         </a>
         <a  aria-label="next" class="carousel-control-next text-faded" href="#carouselExample" role="button" data-slide="next">
             <i class="fa fa-chevron-right fa-lg text-muted">
-              >>
             </i>
             <span class="sr-only" id="invis1">Next</span>
         </a>
