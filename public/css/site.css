@@ -398,4 +398,21 @@ h3 {
 }
 #invis1{
 	display: none;
+<<<<<<< HEAD
+}
+#tognav1{
+	color:#bd0e0e
+}
+#tognav2{
+	color:#767676,
+	
+}
+#tognav4{
+	color:#737373
+}
+#submitListing{
+	color:#003400
+
+=======
+>>>>>>> bf09970f9be14417cbff9d5e10eeba464735d72a
 }
