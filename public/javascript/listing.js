@@ -1,30 +1,72 @@
 $(document).ready(function() {
-	$('#startDate').datetimepicker({
-		dateFormat: 'dd-M-yy',
-		minDate: 0,
-		onSelect: function() {
-			var endDate = $('#endDate');
-			var startDate = $(this).datepicker('getDate');
-			var minDate = $(this).datepicker('getDate');
-			var ed = endDate.datepicker('getDate');
-			//difference in days. 86400 seconds in day, 1000 ms in second
-			var dateDiff = (ed - minDate) / (86400 * 1000);
+	let sDateOK = false;
+	let eDateOK = false;
+	let dateOK = false;
+	let priceOK = false;
+	let addressOK = false;
 
-			startDate.setDate(startDate.getDate() + 30);
-			if (ed == null || dateDiff < 0) {
-				endDate.datepicker('setDate', minDate);
-			} else if (dateDiff > 30) {
-				endDate.datepicker('setDate', startDate);
-			}
-			//sets dt2 maxDate to the last day of 30 days window
-			endDate.datepicker('option', 'maxDate', startDate);
-			endDate.datepicker('option', 'minDate', minDate);
+	let removeError = function() {
+		let button = $('#submitListing');
+
+		if (dateOK && sDate && eDate && addressOK && priceOK) {
+			button.prop('disabled', false);
+		} else {
+			button.prop('disabled', true);
 		}
+	};
+
+	$('#startDate, #endDate').on('keyup', function() {
+		if (!$('#startDate').val()) {
+			sDateOK = false;
+			$('#sDate').html('Must have a valid start date!').css('color', 'red');
+		} else {
+			sDateOK = true;
+			$('#sDate').html('');
+		}
+		if (!$('#endDate').val()) {
+			$('#eDate').html('Must have a valid end date!').css('color', 'red');
+		} else {
+			eDateOK = true;
+			$('#eDate').html('');
+		}
+		if ($('#startDate').val() && $('#endDate').val()) {
+			if (Date.parse($('#startDate').val()) <= Date.parse($('#endDate').val())) {
+				dateOK = true;
+				$('#validDate').html('');
+			} else {
+				dateOK = false;
+				$('#validDate').html('End date must be later than or the same as the start date!').css('color', 'red');
+			}
+		}
+		removeError();
 	});
-	$('#endDate').datepicker({
-		dateFormat: 'dd-M-yy',
-		minDate: 0
+
+	$('#price').on('keyup', function() {
+		if (parseInt($('#price').val()) > 0) {
+			priceOK = true;
+			$('#validPrice').html('');
+		} else {
+			priceOK = false;
+			$('#validPrice').html('Price must be greater than 0!').css('color', 'red');
+		}
+		removeError();
 	});
+
+	$('#address').on('keyup', function() {
+		if ($('#address').val()) {
+			if (($('#address').val().match(/,/g) || []).length == 3) {
+				addressOK = true;
+				$('#validAddress').html('');
+			} else {
+				addressOK = false;
+				$('#validAddress').html('Please use the Google Maps Auto Complete Feature to select and an address that includes street, city, state, country.').css('color', 'red');
+			}
+		}
+		removeError();
+	});
+	// $('#submitListing').click(function(e) {
+	//
+	// });
 });
 
 $(document).keypress(function(event) {
