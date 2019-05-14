@@ -31,7 +31,7 @@ const bcrypt = require('./bcrypt_usage');
 
 		let userId = '';
 		//insert user fake data
-		const cred = await firebase.auth().createUserWithEmailAndPassword('test5@5.com', '123456');
+		const cred = await firebase.auth().createUserWithEmailAndPassword('test6@6.com', '123456');
 		userId = cred.user.uid;
 		console.log(userId);
 		firebase.auth().signOut();
@@ -41,7 +41,7 @@ const bcrypt = require('./bcrypt_usage');
 			const user = await userDB.create(
 				userId,
 				'Patrick Hill',
-				'test5@5.com.com',
+				'test6@6.com.com',
 				'8888888888',
 				'Hoboken',
 				'NJ',

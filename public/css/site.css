@@ -489,4 +489,13 @@ h3 {
 	color:black;
 	text-align: center
 }
+#passwordMatch{
+	color:#ee0000
+}
+#errland{
+	margin-top: 25%
+}
+#redirect{
+	color:#0072ee
+}
 
