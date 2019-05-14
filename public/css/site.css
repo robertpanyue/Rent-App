@@ -358,8 +358,7 @@ h3 {
 .page-footer,.container-fluid1,.footer-copyright{
 	background-color:black;
 	color:white;
-
-}THORS
+}
 .text-uppercase {
 	text-decoration: underline;
 }
@@ -399,6 +398,7 @@ h3 {
 }
 #invis1{
 	display: none;
+<<<<<<< HEAD
 }
 #tognav1{
 	color:#bd0e0e
@@ -413,4 +413,6 @@ h3 {
 #submitListing{
 	color:#003400
 
+=======
+>>>>>>> bf09970f9be14417cbff9d5e10eeba464735d72a
 }
