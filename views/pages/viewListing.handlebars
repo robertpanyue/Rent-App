@@ -6,15 +6,16 @@
   <div class="collapse navbar-collapse" id="navbarNav">
   <ul class="navbar-nav">
       <li class="nav-item active">
-      <a class="nav-link" href="/listing">New Listing<span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="/listing">New Listing<span class="sr-only">(current)</span></a>
       </li>
   </ul>
-  <div class="collapse navbar-collapse" id="navbarNav">
+  <div class="collapse navbar-collapse" id="navbarNavLogout">
     <ul class=" nav navbar-nav navbar-right ml-auto">
       <li class="nav-item">
         <a class="nav-link" href="/logout">Logout</a>
       </li>
     </ul>
+  </div>
   </div>
 </nav>
 
@@ -33,7 +34,7 @@
                       <div class="form-group">
                         <label for="itemDesc" >Item Description</label>
                         <br>
-                        <textarea name="itemDesc" class="itemDesc" row="100" cols="30" placeholder="mmmmm... starchy">{{item.[itemDescription]}}</textarea>
+                        <textarea name="itemDesc" class="itemDesc" cols="30" placeholder="mmmmm... starchy">{{item.[itemDescription]}}</textarea>
                       </div>
                       <div class="form-group">
                         <label for="status">Open or Close</label>
@@ -80,7 +81,7 @@
             </div>
         </div>
 
-        <div id="container" class="container">
+        <div id="container2" class="container">
           <div class="cloudinary-images text-center" id="cloudinary-images">
             <table class="cloudinary-table" id="cloudinary-table">
               <tr id="cloudinary-image-row">

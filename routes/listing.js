@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
 		if (req.session && req.session.user) {
 			res.render('pages/listing', { title: 'New Listing' });
 		} else {
-			res.render('pages/login', { title: 'Login',err:"You must login first" });
+			res.render('pages/login', { title: 'Login', err: 'You must login first' });
 		}
 	} catch (e) {
 		res.status(400).render('pages/error', { errorMessage: 'listing page Error', title: 'Error' });
@@ -24,18 +24,18 @@ router.post('/', async (req, res) => {
 			let addr = req.body.address.split(',');
 
 			let item = await itemData.create(
-				req.body.startDate,
-				req.body.endDate,
-				req.body.reqOrPost,
+				xss(req.body.startDate),
+				xss(req.body.endDate),
+				xss(req.body.reqOrPost),
 				'open',
-				req.session.user,
-				req.body.itemName,
-				req.body.itemDesc,
+				xss(req.session.user),
+				xss(req.body.itemName),
+				xss(req.body.itemDesc),
 				addr[0],
 				addr[1],
 				addr[2],
-				req.body.postal_code,
-				req.body.price,
+				xss(req.body.postal_code),
+				xss(req.body.price)
 			);
 
 			let user = await userData.get(req.session.user);
@@ -64,7 +64,7 @@ router.get('/images/add/:id', async (req, res) => {
 	try {
 		if (req.session && req.session.user) {
 			let turls = await itemData.getThumbnailURL(String(xss(req.params.id)));
-			res.render('pages/images', { images: turls ,title:"Image uploader"});
+			res.render('pages/images', { images: turls, title: 'Image uploader' });
 		} else {
 			res.redirect('/login');
 		}
@@ -73,8 +73,6 @@ router.get('/images/add/:id', async (req, res) => {
 		res.status(400).render('pages/error', { errorMessage: 'listing page Error', title: 'Error' });
 	}
 });
-
-
 
 router.post('/images/add/addCloudinary/:id', (req, res) => {
 	try {
@@ -107,12 +105,10 @@ router.post('/edit/addCloudinary/:id', (req, res) => {
 router.post('/edit/removeCloudinary/:id', (req, res) => {
 	try {
 		if (req.session && req.session.user) {
-			itemData.removeCloudinary(String(req.params.id), req.body.url, req.body.turl);
-			cloudinary.api.delete_resources([req.body.publicId],
-			  function(error, result){
-					console.log(result);
-				}
-			);
+			itemData.removeCloudinary(String(req.params.id), xss(req.body.url), xss(req.body.turl));
+			cloudinary.api.delete_resources([ xss(req.body.publicId) ], function(error, result) {
+				console.log(result);
+			});
 			res.sendStatus(200);
 		} else {
 			res.sendStatus(400);
@@ -131,7 +127,7 @@ router.get('/edit/:id', async (req, res) => {
 			let turls = await itemData.getThumbnailURL(String(xss(req.params.id)));
 
 			let images = [];
-			let toggleStatus = "";
+			let toggleStatus = '';
 
 			for (index in urls) {
 				images.push({
@@ -140,15 +136,15 @@ router.get('/edit/:id', async (req, res) => {
 				});
 			}
 
-			if (item.status === "open") {
-				toggleStatus = "Close Listing"
-			} else if (item.status === "close") {
-				toggleStatus = "Open Listing"
+			if (item.status === 'open') {
+				toggleStatus = 'Close Listing';
+			} else if (item.status === 'close') {
+				toggleStatus = 'Open Listing';
 			} else {
-				toggleStatus = "NANI?";
+				toggleStatus = 'NANI?';
 			}
 
-			res.render('pages/viewListing', { item: item, images: images, status: toggleStatus });
+			res.render('pages/viewListing', { title: 'Edit Item', item: item, images: images, status: toggleStatus });
 		} else {
 			res.redirect('/login');
 		}
@@ -162,21 +158,21 @@ router.post('/update/:id', async (req, res) => {
 	try {
 		if (req.session && req.session.user) {
 			// let item = await itemData.get(req.params.id);
-			let addr = req.body.address.split(',');
+			let addr = xss(req.body.address.split(','));
 			let item = await itemData.update(
-				req.params.id,
-				req.body.startDate,
-				req.body.endDate,
-				req.body.reqOrPost,
-				req.body.status,
-				req.session.user,
-				req.body.itemName,
-				req.body.itemDesc,
+				xss(req.params.id),
+				xss(req.body.startDate),
+				xss(req.body.endDate),
+				xss(req.body.reqOrPost),
+				xss(req.body.status),
+				xss(req.session.user),
+				xss(req.body.itemName),
+				xss(req.body.itemDesc),
 				addr[0],
 				addr[1],
 				addr[2],
-				req.body.postal_code,
-				req.body.price,
+				xss(req.body.postal_code),
+				xss(req.body.price)
 			);
 			res.redirect('/profile');
 		} else {
