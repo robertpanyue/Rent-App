@@ -14,7 +14,7 @@ $(document).ready(function() {
 		}
 	};
 
-	$('#startDate, #endDate').on('keyup', function() {
+	$('#startDate, #endDate').change(function() {
 		if (!$('#startDate').val()) {
 			sDateOK = false;
 			$('#sDate').html('Must have a valid start date!').css('color', 'red');
@@ -41,7 +41,7 @@ $(document).ready(function() {
 		removeError();
 	});
 
-	$('#price').on('keyup', function() {
+	$('#price').change(function() {
 		if (parseInt($('#price').val()) > 0) {
 			priceOK = true;
 			$('#validPrice').html('');
