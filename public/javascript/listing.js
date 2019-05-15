@@ -57,8 +57,8 @@ $(document).ready(function() {
 			if (($('#address').val().match(/,/g) || []).length == 3) {
 				$('#validAddress').html('');
 			} else {
-				e.preventDefault();
-				$('#validAddress').html('Please use the Google Maps Auto Complete Feature to select and an address that includes street, city, state, country.').css('color', 'red');
+				addressOK = false;
+				$('#validAddress').html('Please use the Google Maps Auto Complete Feature to select and an address that includes street, city, state, country.');
 			}
 		}
 	});

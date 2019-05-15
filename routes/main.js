@@ -5,7 +5,6 @@ const items = data.items;
 const users = data.users;
 router.get('/', async (req, res) => {
 	try {
-		console.log(req.session.user)
 		if (req.session && req.session.user) {
 			const allItems = await items.getAll();
 			const itemList = allItems.slice(-8);

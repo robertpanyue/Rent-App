@@ -488,7 +488,7 @@ h3 {
 	color:black;
 	text-align: center
 }
-#passwordMatch{
+#passwordMatch,#passwordLength{
 	color:#ee0000
 }
 #errland{
@@ -512,4 +512,10 @@ h3 {
 	
 	font-style: oblique
 
+}
+#sdate,#edate,#validAddress{
+	color: #ee0000
+}
+#login{
+	text-align: centerx
 }

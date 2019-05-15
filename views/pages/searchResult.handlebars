@@ -7,12 +7,12 @@
     <div class="collapse navbar-collapse" id="navbarNav">
     <ul class=" nav navbar-nav navbar-right ml-auto">
       <li class="nav-item">
-        <a class="nav-link" href="/profile">Profile</a>
+        <a class="nav-link" id="specialNav1" href="/profile">Profile</a>
       </li>
     </ul>
     <ul class=" nav navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" href="/logout">Logout</a>
+        <a class="nav-link" id="specialNav2" href="/logout">Logout</a>
       </li>
     </ul>
   </div>
@@ -26,9 +26,10 @@
 {{#each resultList}}
 <div class="col-md-4">
 	<figure class="card card-product">
-		<div class="img-wrap"><img src="{{this.cloudinaryURL}}"></div>
+		
 		<figcaption class="info-wrap">
-				<h4 class="title">{{this.itemName}}</h4>
+      <div class="img-wrap"><img src="{{this.cloudinaryURL}}" alt=""></div>
+				<h2 class="title">{{this.itemName}}</h2>
 				<p class="desc">{{this.itemDescription}}</p>
                 <p class="desc">Location: {{this.city}}</p>
                 <p class="desc">User: {{this.userName}}</p>

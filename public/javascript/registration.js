@@ -20,7 +20,7 @@ $(document).ready(function() {
 			// need to clean up error message
 			if ($('#password').val().length < 6) {
 				lengthOK = false;
-				$('#passwordLength').html('Password must be at least 6 characters long').css('color', 'red');
+				$('#passwordLength').html('Password must be at least 6 characters long');
 			} else {
 				lengthOK = true;
 				$('#passwordLength').html('');
@@ -31,7 +31,7 @@ $(document).ready(function() {
 				$('#passwordMatch').html('');
 			} else {
 				matchOK = false;
-				$('#passwordMatch').html('Not Matching').css('color', 'red');
+				$('#passwordMatch').html('Not Matching');
 			}
 
 			removeError();
