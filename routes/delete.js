@@ -7,8 +7,6 @@ router.post('/:id', async (req, res) => {
 		if (req.session && req.session.user) {
 			if(req.params.id){
 				const item = await itemDB.deleteById(String(req.params.id));
-				console.log(item);
-
 				res.redirect("/profile");
 			}
 			else{

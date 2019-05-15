@@ -488,8 +488,8 @@ h3 {
 	color:black;
 	text-align: center
 }
-#passwordMatch{
-	color:#ee0000;
+#passwordMatch,#passwordLength{
+	color:#ee0000
 }
 #errland{
 	margin-top: 25%
@@ -515,4 +515,7 @@ h3 {
 }
 #sdate,#edate,#validAddress{
 	color: #ee0000
+}
+#login{
+	text-align: centerx
 }
