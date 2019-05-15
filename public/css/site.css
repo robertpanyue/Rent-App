@@ -489,7 +489,7 @@ h3 {
 	text-align: center
 }
 #passwordMatch{
-	color:#ee0000
+	color:#ee0000;
 }
 #errland{
 	margin-top: 25%
@@ -512,4 +512,7 @@ h3 {
 	
 	font-style: oblique
 
+}
+#sdate,#edate,#validAddress{
+	color: #ee0000
 }

@@ -59,7 +59,7 @@ $(document).ready(function() {
 				$('#validAddress').html('');
 			} else {
 				addressOK = false;
-				$('#validAddress').html('Please use the Google Maps Auto Complete Feature to select and an address that includes street, city, state, country.').css('color', 'red');
+				$('#validAddress').html('Please use the Google Maps Auto Complete Feature to select and an address that includes street, city, state, country.');
 			}
 		}
 		removeError();
