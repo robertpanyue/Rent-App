@@ -8,7 +8,7 @@
 <b>npm start</b>
 
 Contribution:<br/>
-Tim Leonard: <br/>
-Haritha Pothapragda: Wrote half of items db, seed file; main page, landing page, and profile handlebars and corresponding routing; part of validation and accesibility.<br/>
+Tim Leonard:Helped with a portion of main page handlebar,forntend and js.Took care of adding security(xss),and a portion of accessibility and validation  <br/>
+Haritha Pothapragda: Wrote half of items db and seed file; main page, landing page, and profile handlebars and corresponding routing; part of validation and accesibility.<br/>
 Kah Soon Yap: Dealt with things related to items; new listing page and functions, item edit, item deletion, Cloudinary (image uploading), general debugging.<br/>
 Yue Pan: Wrote the registration, login, and search routing and corresponding front-end handlebars and js and database manipulation. Also, the half of the seed file.
