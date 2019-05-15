@@ -3,6 +3,7 @@
  <b>npm install</b>
 
 2. Create database and collection. The script can be only run once since it create a account on firebase. If the console shows the account is already exists, change the seed.js line 34 and line 44 with new account email.<b>Default according to seed .username:test8@8.com password:123456 <br/>
+ To run the seed file please use the command
   <b>npm run-script build</b> or <b>npm run build</b>
 3. Run the program <br/>
 <b>npm start</b>
