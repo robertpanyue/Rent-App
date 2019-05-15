@@ -16,7 +16,7 @@ $(document).ready(function() {
 	// check if confirmPassword exists in page
 	if (confirmPassword) {
 		// when something is typed into the field it will check if passwords are equal
-		$('#password, #confirmPassword').on('keyup', function() {
+		$('#password, #confirmPassword').on('change', function() {
 			// need to clean up error message
 			if ($('#password').val().length < 6) {
 				lengthOK = false;
