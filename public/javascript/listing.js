@@ -3,12 +3,11 @@ $(document).ready(function() {
 	let eDateOK = false;
 	let dateOK = false;
 	let priceOK = false;
-	let addressOK = false;
 
 	let removeError = function() {
 		let button = $('#submitListing');
 
-		if (dateOK && sDate && eDate && addressOK && priceOK) {
+		if (dateOK && sDate && eDate && priceOK) {
 			button.prop('disabled', false);
 		} else {
 			button.prop('disabled', true);
@@ -24,6 +23,7 @@ $(document).ready(function() {
 			$('#sDate').html('');
 		}
 		if (!$('#endDate').val()) {
+			eDateOK = false;
 			$('#eDate').html('Must have a valid end date!').css('color', 'red');
 		} else {
 			eDateOK = true;
@@ -52,21 +52,16 @@ $(document).ready(function() {
 		removeError();
 	});
 
-	$('#address').on('keyup', function() {
+	$('#submitListing').click(function(e) {
 		if ($('#address').val()) {
 			if (($('#address').val().match(/,/g) || []).length == 3) {
-				addressOK = true;
 				$('#validAddress').html('');
 			} else {
 				addressOK = false;
 				$('#validAddress').html('Please use the Google Maps Auto Complete Feature to select and an address that includes street, city, state, country.');
 			}
 		}
-		removeError();
 	});
-	// $('#submitListing').click(function(e) {
-	//
-	// });
 });
 
 $(document).keypress(function(event) {
