@@ -1,4 +1,7 @@
-# Rent-App
+# Rent-App <br/>
+
+credential to login: test@test.com 123456
+
 1. Install the package <br/>
  <b>npm install</b>
 
