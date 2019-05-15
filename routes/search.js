@@ -25,7 +25,21 @@ router.get('/listings/:city/:item', async (req, res) => {
 				}
 			}
 			console.log(returnArray);
-			res.render('pages/searchResult', { title: keyWord, type: 'Listings', resultList: returnArray });
+			if (returnArray.length > 0) {
+				res.render('pages/searchResult', {
+					title: keyWord,
+					type: 'Listings',
+					resultList: returnArray,
+					hasResult: true
+				});
+			} else {
+				res.render('pages/searchResult', {
+					title: keyWord,
+					type: 'Listings',
+					resultList: returnArray,
+					hasResult: false
+				});
+			}
 		} else {
 			res.render('pages/error', { errorMessage: 'You do not have authentication', title: '403' });
 		}
@@ -58,7 +72,21 @@ router.get('/requests/:city/:item', async (req, res) => {
 				}
 			}
 			console.log(returnArray);
-			res.render('pages/searchResult', { title: keyWord, type: 'Requests', resultList: returnArray });
+			if (returnArray.length > 0) {
+				res.render('pages/searchResult', {
+					title: keyWord,
+					type: 'Requests',
+					resultList: returnArray,
+					hasResult: true
+				});
+			} else {
+				res.render('pages/searchResult', {
+					title: keyWord,
+					type: 'Requests',
+					resultList: returnArray,
+					hasResult: false
+				});
+			}
 		} else {
 			res.render('pages/error', { errorMessage: 'You do not have authentication', title: '403' });
 		}

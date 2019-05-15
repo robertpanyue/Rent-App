@@ -22,6 +22,7 @@
 <br>
 <h1 class="text-center">{{type}}</h1>
 <hr>
+{{#if hasResult}}
 <div class="row">
 {{#each resultList}}
 <div class="col-md-4">
@@ -49,7 +50,9 @@
 	</figure>
 </div> <!-- col // -->
 {{/each}}
-
+{{else}}
+<p>Your search did not match any documents.Suggestions: Try different keywords.</p>
+{{/if}}
 
 </div> <!-- row.// -->
 </div>
