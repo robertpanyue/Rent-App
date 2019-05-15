@@ -12,3 +12,6 @@ Tim Leonard:Helped with a portion of main page handlebar,forntend and js.Took ca
 Haritha Pothapragda: Wrote half of items db and seed file; main page, landing page, and profile handlebars and corresponding routings; part of validation and accesibility.<br/>
 Kah Soon Yap: Dealt with things related to items; new listing page and functions, item edit, item deletion, Cloudinary (image uploading), general debugging.<br/>
 Yue Pan: Wrote the registration, login, and search routing and corresponding front-end handlebars and js and database manipulation. Also, the half of the seed file.
+
+
+Note:- the seed file contains only Hoboken.So if the user is in some other location please manually type Hoboken as the location in search bar.
